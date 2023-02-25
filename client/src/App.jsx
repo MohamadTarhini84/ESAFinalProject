@@ -1,31 +1,40 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 
 import './App.css';
+import Signup from './pages/signup/signup';
+import Signin from './pages/signin/signin';
 
 
 const App = () => {
 
   return (
-    <h1>hello!</h1>
 
+    <div>
+      <BrowserRouter>
+        <div>
+          <Routes>
+            {/* signup  */}
+            <Route path="/signup" element={(<Signup />)} />
 
-    // <div>
-    //   <BrowserRouter>
-    //     <div>
-    //       <Routes>
-    //         {/* dashboard  */}
-    //         <Route path="/" element={(<Home />)} />
+            {/* signin  */}
+            <Route path="/signin" element={(<Signin />)} />
 
-    //         {/* pages  */}
-    //         <Route path="/channels" element={<Channels />} />
-    //         <Route path="/users" element={<Users />} />
-    //         <Route path="/admins" element={<Admins />} />
-    //         <Route path="/packages" element={<Packages />} />
+            {/* dashboard 
+            <Route path="/" element={(<Home />)} />
 
-    //       </Routes>
-    //     </div>
-    //   </BrowserRouter>
-    // </div>
+            pages 
+            <Route path="/channels" element={<Channels />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/admins" element={<Admins />} />
+            <Route path="/packages" element={<Packages />} /> */}
+
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </div>
+
   );
 };
 
