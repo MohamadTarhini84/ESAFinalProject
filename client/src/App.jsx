@@ -3,8 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 import './App.css';
-import Signup from './pages/signup/signup';
-import Signin from './pages/signin/signin';
+import Signup from './pages/signUp/signUp';
+import Signin from './pages/signIn/signIn';
+import EditProfile from './pages/editProfile/editProfile';
 
 
 const App = () => {
@@ -15,11 +16,14 @@ const App = () => {
       <BrowserRouter>
         <div>
           <Routes>
-            {/* signup  */}
+            {/* signUp  */}
             <Route path="/signup" element={(<Signup />)} />
 
-            {/* signin  */}
+            {/* signIn  */}
             <Route path="/signin" element={(<Signin />)} />
+
+            {/* editProfile  */}
+            <Route path="/editprofile" element={(<EditProfile />)} />
 
             {/* dashboard 
             <Route path="/" element={(<Home />)} />
