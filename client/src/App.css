@@ -30,3 +30,17 @@
     animation: logo-spin infinite 20s linear;
   }
 }
+
+.navBar::before{
+    content: "";
+    height: 71px;
+    border-radius: 100% / 140%;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    position: fixed;
+    left: 0;
+    right: 0;
+    display:none
+}
