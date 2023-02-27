@@ -46,14 +46,14 @@
     margin-top:20px;
     display:flex;
     justify-content:center;
-    align-items:center
+    align-items:center;
+    width: 50%;
 }
 
 .edit_btn button {
     height:35px;
     outline:0;
     border:none;
-    width:180px;
     color:#fff;
     border-radius:10px;
     background-color:#d6ba2c;
@@ -61,6 +61,7 @@
     cursor:pointer;
     transition:all 0.5s;
     letter-spacing: 2px;
+    width: 100%;
 }
 
 .edit_btn button:hover{
@@ -71,14 +72,14 @@
     margin-top:20px;
     display:flex;
     justify-content:center;
-    align-items:center
+    align-items:center;
+    width: 50%;
 }
 
 .done_edit_btn button {
     height:35px;
     outline:0;
     border:none;
-    width:180px;
     color:#fff;
     border-radius:10px;
     background-color:#22be14;
@@ -86,6 +87,7 @@
     cursor:pointer;
     transition:all 0.5s;
     letter-spacing: 2px;
+    width: 100%;;
 }
 
 .done_edit_btn button:hover{
