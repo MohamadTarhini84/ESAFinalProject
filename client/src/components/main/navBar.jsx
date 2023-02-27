@@ -25,7 +25,7 @@ function NavBar(){
                     </div>
                     :<div className='relative group'>
                         <LightModeIcon onClick={()=>themeToggle(true)} className='group-hover:cursor-pointer'/>
-                        <span className='tooltip -left-6 sm:group-hover:scale-100'>Lightmode</span>
+                        <span className='tooltip sm:group-hover:scale-100'>Lightmode</span>
                     </div>}
                 <div className='relative group'>
                     <LogoutIcon onClick={()=>console.log("ok")} className='group-hover:cursor-pointer'/>
