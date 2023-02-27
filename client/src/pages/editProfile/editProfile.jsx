@@ -9,19 +9,19 @@ function EditProfile() {
 
     return (
         <div>
-            <div>
+            <div className="nav-bar">
                 <NavBar />
             </div>
-            <div className="container">
-                <div className="card">
-                    <div className="left-side">
-                        <form method="post">
-                            <div className="edit-profile">
-                                <h2>Hello, user!</h2>
-                            </div>
-                            <div>
-                                <h3>Edit Profile</h3>
-                            </div>
+            <div className="body-container">
+                <div className="card-edit-profile">
+                    <div className="card-left-side">
+                        <div className="edit-profile">
+                            <h2>Hello, user!</h2><br />
+                        </div>
+                        <div>
+                            <h3>Edit Profile</h3>
+                        </div>
+                        <form className="edit-profile-form" method="post">
                             <div className="input_text">
                                 <input type="text" placeholder="Username" />
                                 <FontAwesomeIcon className="fa" icon={faUser}></FontAwesomeIcon>
@@ -46,33 +46,27 @@ function EditProfile() {
                                 <div className="edit_btn" style={{ marginRight: "5px" }}>
                                     <button id="edit_profile_button">Edit</button>
                                 </div>
-                                <div className="edit_btn">
+                                <div className="done_edit_btn">
                                     <button id="edit_done_button">Done</button>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div className="right-side">
+                    <div className="card-right-side">
                         <p>Delete your</p>
                         <p>account permanently</p>
                         <div className="delete-btn">
-                        <button className="dlt-btn" id="delete_button">Delete</button>
+                            <button className="dlt-btn" id="delete_button">Delete</button>
                         </div>
                     </div>
                 </div>
                 <div className="subscribe-box">
                     <h1>Not Subscribed?!!</h1>
-                    <a href="/subscribe" className="login_acc subscribe">Go Subscribe Now!</a>
+                    <a href="/subscribe" className="subscribe">Go Subscribe Now!</a>
                     <p>Subscribe To Unlock All Channels</p>
                     <p>Enjoy :p</p>
                 </div>
             </div>
-            {/* <div>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div> */}
         </div>
     )
 }
