@@ -21,7 +21,7 @@ function NavBar(){
                 {theme?
                     <div className='relative group'>
                         <DarkModeIcon onClick={()=>themeToggle(false)} className='group-hover:cursor-pointer'/>
-                        <span className='tooltip sm:group-hover:scale-100'>Darmode</span>
+                        <span className='tooltip sm:group-hover:scale-100'>Darkmode</span>
                     </div>
                     :<div className='relative group'>
                         <LightModeIcon onClick={()=>themeToggle(true)} className='group-hover:cursor-pointer'/>
