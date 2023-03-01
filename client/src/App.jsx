@@ -1,15 +1,17 @@
-import './App.css'
+import './App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useContext } from 'react'
-import { themeContext } from './context/themeContext'
-import NavBar from './components/main/navBar'
-import MFeatured from './components/main/mobileFeatured'
-import Featured from './components/main/Featured'
-import MSearch from './components/mobileSearch'
+import { useContext } from 'react';
+import { themeContext } from './context/themeContext';
+import NavBar from './components/main/navBar';
+import MFeatured from './components/main/mobileFeatured';
+import Featured from './components/main/Featured';
+import MSearch from './components/mobileSearch';
 import Signup from './pages/signUp/signUp';
 import Signin from './pages/signIn/signIn';
 import EditProfile from './pages/editProfile/editProfile';
+
+import AddNewPackage from './components/addNewPackage/AddNewPackage';
 
 
 const App = () => {
@@ -43,6 +45,9 @@ const App = () => {
 
             {/* editProfile  */}
             <Route path="/editprofile" element={(<EditProfile />)} />
+           
+            {/* test  */}
+            <Route path="/test" element={(<AddNewPackage />)} />
 
             {/* dashboard 
             <Route path="/" element={(<Home />)} />
