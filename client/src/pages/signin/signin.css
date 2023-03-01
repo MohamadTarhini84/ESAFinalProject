@@ -42,7 +42,7 @@
     transition: 0.2s;
 }
 
-.container{
+.sign-in-container{
     display:flex;
     justify-content:center;
     align-items:center;
@@ -50,7 +50,7 @@
     background-image: linear-gradient(to right top,var(--brown),#d3ae09)
 }
 
-.container .card{
+.sign-in-container .card{
     height:420px;
     width:800px;
     background-color:var(--white);
@@ -61,7 +61,7 @@
     display:flex;
 }
 
-.container .card .left-side{
+.sign-in-container .card .left-side{
     width:50%;
     background-color:var(--white);
     height:100%;
@@ -123,7 +123,7 @@
     background-image: linear-gradient(to right,#cfc20f,var(--brown))
 }
 
-.container .card .right-side{
+.sign-in-container .card .right-side{
     width:50%;
     background-color:var(--white);
     height:100%;
@@ -219,17 +219,17 @@ input::-webkit-inner-spin-button {
 
 
 @media (max-width:750px){
-    .container{align-items: center;}
+    .sign-in-container{align-items: center;}
 
     #logo-signin{display:none}
 
     .card{margin:0 !important; width:90% !important}
 
-    .container .card{max-width: 350px}
+    .sign-in-container .card{max-width: 350px}
     
-    .container .card .right-side{width:100%}
+    .sign-in-container .card .right-side{width:100%}
     
-    .container .card .left-side{display: none}
+    .sign-in-container .card .left-side{display: none}
 
     .margin{margin-top:20px !important}
 

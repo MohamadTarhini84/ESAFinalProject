@@ -7,7 +7,7 @@ import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 function Signin() {
 
     return (
-        <div className="container">
+        <div className="sign-in-container">
             <img id="logo-signin" src={GigaImage} alt="Giga Chad" />
             <div className="card">
                 <div className="left-side">
