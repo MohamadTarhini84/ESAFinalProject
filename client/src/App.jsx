@@ -11,7 +11,7 @@ import Signup from './pages/signUp/signUp';
 import Signin from './pages/signIn/signIn';
 import EditProfile from './pages/editProfile/editProfile';
 
-import PackageContainer from './components/packageContainer/PackageContainer';
+import AddNewChannel from './components/addNewChannel/AddNewChannel'
 
 
 const App = () => {
@@ -47,7 +47,7 @@ const App = () => {
             <Route path="/editprofile" element={(<EditProfile />)} />
            
             {/* test  */}
-            <Route path="/test" element={(<PackageContainer />)} />
+            <Route path="/test" element={(<AddNewChannel />)} />
 
             {/* dashboard 
             <Route path="/" element={(<Home />)} />

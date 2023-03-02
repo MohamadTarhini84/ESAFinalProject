@@ -1,28 +1,39 @@
-.add-new-package-input{
+.add-new-channel-container{
+    margin: 1%;
+}
+
+.add-new-channel-inputs{
     display: flex;
     flex-wrap: wrap;
-    padding: 2%;
-    margin: 1%;
     border-radius: 10px;
     box-shadow:0 15px 30px rgba(0,0,0,0.1);
     background-color: #FDE68A;
     width: fit-content;
+    padding: 2%;
+    margin: 1%;
+    border-radius: 10px;
 }
 
-.add-package-btn{
-    margin-top:10px;
+.add-new-channel-side-1{
+    flex: auto;
+}
+
+.add-new-channel-side-2{
+    flex: auto;
+}
+
+.add-new-channel-side-3{
+    flex: auto;
+}
+
+.add-channel-btn{
     width:100%;
     position:relative;
     justify-content:center;
     align-items:center;
 }
 
-.add-package-title{
-    padding: 2%;
-    margin: 1%;
-}
-
-.add-package-btn button {
+.add-channel-btn button {
     height:35px;
     outline:0;
     border:none;
