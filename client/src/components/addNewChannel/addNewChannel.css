@@ -3,27 +3,29 @@
 }
 
 .add-new-channel-inputs{
-    display: flex;
-    flex-wrap: wrap;
     border-radius: 10px;
     box-shadow:0 15px 30px rgba(0,0,0,0.1);
     background-color: #FDE68A;
-    width: fit-content;
     padding: 2%;
     margin: 1%;
     border-radius: 10px;
 }
 
-.add-new-channel-side-1{
-    flex: auto;
+.flex-css{
+    flex: 30%;
+    margin: 5px;
 }
 
-.add-new-channel-side-2{
-    flex: auto;
+.inputs-top-side{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1%;
 }
 
-.add-new-channel-side-3{
-    flex: auto;
+.inputs-button-side{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1%;
 }
 
 .add-channel-btn{

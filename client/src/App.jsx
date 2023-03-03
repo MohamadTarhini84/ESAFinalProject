@@ -11,7 +11,7 @@ import Signup from './pages/signUp/signUp';
 import Signin from './pages/signIn/signIn';
 import EditProfile from './pages/editProfile/editProfile';
 
-import AddNewChannel from './components/addNewChannel/AddNewChannel'
+import DashbordChannelSearch from './components/dashboardChannelSearch/DashbordChannelSearch';
 
 
 const App = () => {
@@ -31,7 +31,6 @@ const App = () => {
   }
 
   return (
-
     <div>
       <BrowserRouter>
         <div>
@@ -47,7 +46,7 @@ const App = () => {
             <Route path="/editprofile" element={(<EditProfile />)} />
            
             {/* test  */}
-            <Route path="/test" element={(<AddNewChannel />)} />
+            <Route path="/test" element={(<DashbordChannelSearch />)} />
 
             {/* dashboard 
             <Route path="/" element={(<Home />)} />
