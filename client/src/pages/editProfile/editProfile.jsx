@@ -1,7 +1,6 @@
 import "./editProfile.css";
 
-import NavBar from "../../components/navBar/navBar";
-
+import NavBar from "../../components/main/navBar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
