@@ -1,0 +1,15 @@
+const mongoose=require('mongoose')
+
+const SubscriptionSchema=mongoose.Schema({
+    package:{
+        type:mongoose.Schema.Types.ObjectId,
+        required:true
+    },
+    expireAt: {
+        type: Date,
+        required:true,
+        expires: 60
+    }
+})
+
+module.exports=SubscriptionSchema

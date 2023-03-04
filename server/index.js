@@ -1,0 +1,32 @@
+const express=require('express');
+const authRoutes=require('./routes/AuthRoute')
+const userRoutes=require('./routes/UserRoute')
+const postsRoute=require('./routes/postsRoute')
+const commentsRoute=require('./routes/commentsRoute')
+const storiesRoute=require('./routes/storiesRoute')
+const searchRoute=require('./routes/SearchRoute')
+const connect=require('./config/db')
+
+const app=express()//creates an express app
+    
+app.use(express.urlencoded({extended:false}))
+app.use(express.json())
+app.use('*/assets',express.static(__dirname+'/assets'))
+
+// app.use((req,res,next)=>{
+//     console.log(req.path,req.method)
+//     next()
+// })
+
+//routes
+app.use(express.urlencoded({extended:true}))
+app.use('/api/auth', authRoutes)
+app.use('/api//user', userRoutes)
+app.use('/api/posts', postsRoute)
+app.use('/api/comments', commentsRoute)
+app.use('/api/stories', storiesRoute)
+app.use('/api', searchRoute)
+
+// connect to db
+
+connect(app)
