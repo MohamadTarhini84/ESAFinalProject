@@ -45,17 +45,6 @@ const App = () => {
             {/* editProfile  */}
             <Route path="/editprofile" element={(<EditProfile />)} />
            
-            {/* test  */}
-            <Route path="/test" element={(<DashboardDigitalInfo />)} />
-
-            {/* dashboard 
-            <Route path="/" element={(<Home />)} />
-
-            pages 
-            <Route path="/channels" element={<Channels />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/admins" element={<Admins />} />
-            <Route path="/packages" element={<Packages />} /> */}
 
           </Routes>
         </div>
