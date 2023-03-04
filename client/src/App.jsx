@@ -11,7 +11,7 @@ import Signup from './pages/signUp/signUp';
 import Signin from './pages/signIn/signIn';
 import EditProfile from './pages/editProfile/editProfile';
 
-import AdminTable from './components/adminTable/AdminTable';
+import DashboardDigitalInfo from './components/dashboardDigitalInfo/DashboardDigitalInfo';
 
 
 const App = () => {
@@ -46,7 +46,7 @@ const App = () => {
             <Route path="/editprofile" element={(<EditProfile />)} />
            
             {/* test  */}
-            <Route path="/test" element={(<AdminTable />)} />
+            <Route path="/test" element={(<DashboardDigitalInfo />)} />
 
             {/* dashboard 
             <Route path="/" element={(<Home />)} />
