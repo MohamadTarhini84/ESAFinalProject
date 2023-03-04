@@ -11,7 +11,7 @@ import Signup from './pages/signUp/signUp';
 import Signin from './pages/signIn/signIn';
 import EditProfile from './pages/editProfile/editProfile';
 
-import AddNewAdmin from './components/addNewAdmin/AddNewAdmin';
+import AdminTable from './components/adminTable/AdminTable';
 
 
 const App = () => {
@@ -46,7 +46,7 @@ const App = () => {
             <Route path="/editprofile" element={(<EditProfile />)} />
            
             {/* test  */}
-            <Route path="/test" element={(<AddNewAdmin />)} />
+            <Route path="/test" element={(<AdminTable />)} />
 
             {/* dashboard 
             <Route path="/" element={(<Home />)} />
