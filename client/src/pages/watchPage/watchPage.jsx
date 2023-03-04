@@ -1,14 +1,15 @@
+import Details from "./watchDetails"
+
 function Watch(){
     return (
         <div className="w-full min-h-screen bg-amber-200 dark:bg-amber-900">
             <div className="w-full flex justify-center items-center">
                 <div className="w-11/12 min-h-80 bg-gray-200 dark:bg-stone-800 flex flex-col mt-20 justify-between 
-                            sm:justify-evenly items-center gap-8 rounded-sm shadow-lg">
-                    <video tabIndex="-1" className="w-full sm:w-4/6 aspect-video sm:mt-12" controls 
-                        src="blob:https://www.youtube.com/2b604f92-50c6-4689-8fdb-752940afc945"/>
-                    <div className="w-full sm:w-4/6 h-32 bg-black mb-12">
-
-                    </div>
+                            sm:justify-evenly items-center sm:gap-8 rounded-sm shadow-lg sm:p-12">
+                    <video tabIndex="-1" controls
+                        className="w-full sm:w-5/6 aspect-video rounded-md border-2 border-black dark:border-white shadow-lg"
+                        src="https://cdn.discordapp.com/attachments/829155749040750597/1024320124322332722/zero.mp4"/>
+                    <Details/>
                 </div>
             </div>
         </div>

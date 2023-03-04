@@ -17,7 +17,7 @@ function NavBar(){
     },[isVisible])
  
     return (
-        <div className={`navBar w-full fixed z-50 h-12 flex justify-between items-center sm:items-end px-4 
+        <header className={`navBar w-full fixed z-50 h-12 flex justify-between items-center sm:items-end px-4 
                          dark:text-white sm:px-12 sm:before:block before:hidden bg-white dark:bg-stone-800 
                          sm:bg-transparent sm:dark:bg-transparent before:bg-white before:shadow-md dark:before:bg-stone-800
                         ${show?"":"show"}`}>
@@ -41,7 +41,7 @@ function NavBar(){
                     <span className='tooltip sm:group-hover:scale-100'>Logout</span>
                 </div>
             </div>
-        </div>
+        </header>
     )
 }
 
