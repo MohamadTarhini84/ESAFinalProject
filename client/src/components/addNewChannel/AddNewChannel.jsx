@@ -32,7 +32,7 @@ function AddNewChannel() {
                 </div>
                 <div className="inputs-button-side">
                     <div className="flex-css">
-                        <input type="file" />
+                    <input class="custom-file-input" type="file"/>
                     </div>
                     <div className="add-channel-btn flex-css">
                         <button id="add-channel-button">Add</button>

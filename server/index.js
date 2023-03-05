@@ -22,10 +22,6 @@ app.use('*/assets',express.static(__dirname+'/assets'))
 app.use(express.urlencoded({extended:true}))
 app.use('/api/auth', authRoutes)
 app.use('/api//user', userRoutes)
-app.use('/api/posts', postsRoute)
-app.use('/api/comments', commentsRoute)
-app.use('/api/stories', storiesRoute)
-app.use('/api', searchRoute)
 
 // connect to db
 

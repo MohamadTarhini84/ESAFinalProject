@@ -7,7 +7,7 @@ import { faUsers, faBox, faUserCheck, faTv, faSackDollar } from '@fortawesome/fr
 function DashboardDigitalInfo() {
 
     return (
-        <div className="digital-info-container">
+        <div className="digital-info-container w-full">
             <div className="digital-info-left-side">
                 <div className="digital-info-left-side-left-side">
                     <div className="digital-info-side">
@@ -67,7 +67,7 @@ function DashboardDigitalInfo() {
                 </div>
             </div>
             <div className="digital-info-right-side">
-                <div className="total-income">
+                <div className="total-income h-full flex flex-col justify-between">
                     <div className="card-top">
                         <div className="card-name">
                             Total incomes

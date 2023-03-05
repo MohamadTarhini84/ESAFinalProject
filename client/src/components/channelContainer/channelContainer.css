@@ -17,24 +17,19 @@
 
 .channel-footer{
     margin: 0% 3%;
+    display:flex;
+    justify-content: space-between;
 }
 
 .channel-footer{
     display: flex;
 }
 
-.channel-name{
-    flex: 50%;
-}
 
-.channel-buttons{
-    flex: 50%;
-}
-
-.channel-name span{
+/* .channel-name span{
     padding: 2%;
 }
 
 .channel-button{
     margin: 0% 3%;
-}
+} */

@@ -10,8 +10,8 @@ import Watch from './pages/watchPage/watchPage';
 import Subscribe from './pages/subscribe/subscribePage';
 import { useContext } from 'react'
 import { themeContext } from './context/themeContext';
+import Admin from './pages/adminPage/admin';
 
-import DashboardDigitalInfo from './components/dashboardDigitalInfo/DashboardDigitalInfo';
 // import SideBar from './components/sideBar/SideBar';
 
 
@@ -38,7 +38,7 @@ const App = () => {
             <Route path="/editprofile" element={(<EditProfile />)} />
 
             {/* test  */}
-            <Route path="/test" element={(<DashboardDigitalInfo />)} />
+            <Route path='/admin' element={<Admin/>}/>
            
 
           </Routes>
