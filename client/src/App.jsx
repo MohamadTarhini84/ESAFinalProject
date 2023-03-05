@@ -12,6 +12,7 @@ import Signin from './pages/signIn/signIn';
 import EditProfile from './pages/editProfile/editProfile';
 
 import DashboardDigitalInfo from './components/dashboardDigitalInfo/DashboardDigitalInfo';
+// import SideBar from './components/sideBar/SideBar';
 
 
 const App = () => {
@@ -44,6 +45,9 @@ const App = () => {
 
             {/* editProfile  */}
             <Route path="/editprofile" element={(<EditProfile />)} />
+
+            {/* test  */}
+            <Route path="/test" element={(<DashboardDigitalInfo />)} />
            
 
           </Routes>
