@@ -1,0 +1,40 @@
+.channel-container{
+    background-color: #FDE047;
+    width: 30%;
+    box-shadow:0 15px 30px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    margin: 1%;
+}
+
+.channel-logo{
+    background-color:#D9D9D9;
+    border-radius: 10px;
+    padding: 2%;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.channel-footer{
+    margin: 0% 3%;
+}
+
+.channel-footer{
+    display: flex;
+}
+
+.channel-name{
+    flex: 50%;
+}
+
+.channel-buttons{
+    flex: 50%;
+}
+
+.channel-name span{
+    padding: 2%;
+}
+
+.channel-button{
+    margin: 0% 3%;
+}

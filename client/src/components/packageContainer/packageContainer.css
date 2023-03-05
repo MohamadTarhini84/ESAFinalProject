@@ -1,0 +1,40 @@
+.package-container{
+    background-color: #FDE047;
+    width: 30%;
+    box-shadow:0 15px 30px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    margin: 1%;
+}
+
+.package-info{
+    background-color:#D9D9D9;
+    border-radius: 10px;
+    padding: 2%;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.package-footer{
+    margin: 0% 3%;
+}
+
+.package-footer{
+    display: flex;
+}
+
+.package-name{
+    flex: 50%;
+}
+
+.package-buttons{
+    flex: 50%;
+}
+
+.package-name span{
+    padding: 2%;
+}
+
+.package-button{
+    margin: 0% 3%;
+}

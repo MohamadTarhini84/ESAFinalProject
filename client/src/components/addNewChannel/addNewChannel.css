@@ -1,0 +1,50 @@
+.add-new-channel-container{
+    margin: 1%;
+}
+
+.add-new-channel-inputs{
+    border-radius: 10px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.1);
+    background-color: #FDE68A;
+    padding: 2%;
+    margin: 1%;
+    border-radius: 10px;
+}
+
+.flex-css{
+    flex: 30%;
+    margin: 5px;
+}
+
+.inputs-top-side{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1%;
+}
+
+.inputs-button-side{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1%;
+}
+
+.add-channel-btn{
+    width:100%;
+    position:relative;
+    justify-content:center;
+    align-items:center;
+}
+
+.add-channel-btn button {
+    height:35px;
+    outline:0;
+    border:none;
+    color:#fff;
+    border-radius:10px;
+    background-color:#22be14;
+    font-size:13px;
+    cursor:pointer;
+    transition:all 0.5s;
+    letter-spacing: 2px;
+    width: 100%;;
+}

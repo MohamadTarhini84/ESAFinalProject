@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/main/navBar'
@@ -10,6 +10,10 @@ import Watch from './pages/watchPage/watchPage';
 import Subscribe from './pages/subscribe/subscribePage';
 import { useContext } from 'react'
 import { themeContext } from './context/themeContext';
+
+import DashboardDigitalInfo from './components/dashboardDigitalInfo/DashboardDigitalInfo';
+// import SideBar from './components/sideBar/SideBar';
+
 
 const App = () => {
   const {theme}=useContext(themeContext)
@@ -33,14 +37,9 @@ const App = () => {
             {/* editProfile  */}
             <Route path="/editprofile" element={(<EditProfile />)} />
 
-            {/* dashboard 
-            <Route path="/" element={(<Home />)} />
-
-            pages 
-            <Route path="/channels" element={<Channels />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/admins" element={<Admins />} />
-            <Route path="/packages" element={<Packages />} /> */}
+            {/* test  */}
+            <Route path="/test" element={(<DashboardDigitalInfo />)} />
+           
 
           </Routes>
         </div>

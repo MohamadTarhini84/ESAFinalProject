@@ -1,6 +1,8 @@
 import "./editProfile.css";
 
 import NavBar from "../../components/main/navBar";
+// import NavBar from "../../components/main/navBar";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,10 +10,10 @@ function EditProfile() {
 
     return (
         <div>
-            <div className="nav-bar">
+            {/* <div> 
                 <NavBar />
-            </div>
-            <div className="body-container">
+            </div> */}
+            <div className="edit-profile-body-container">
                 <div className="card-edit-profile">
                     <div className="card-left-side">
                         <div className="edit-profile">

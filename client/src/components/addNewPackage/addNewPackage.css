@@ -1,0 +1,37 @@
+.add-new-package-input{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2%;
+    margin: 1%;
+    border-radius: 10px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.1);
+    background-color: #FDE68A;
+    /* width: fit-content; */
+}
+
+.add-package-title{
+    padding: 2%;
+    margin: 1%;
+}
+
+.add-package-btn{
+    margin-top:10px;
+    width:100%;
+    position:relative;
+    justify-content:center;
+    align-items:center;
+}
+
+.add-package-btn button {
+    height:35px;
+    outline:0;
+    border:none;
+    color:#fff;
+    border-radius:10px;
+    background-color:#22be14;
+    font-size:13px;
+    cursor:pointer;
+    transition:all 0.5s;
+    letter-spacing: 2px;
+    width: 100%;;
+}
