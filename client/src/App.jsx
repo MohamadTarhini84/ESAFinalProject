@@ -12,7 +12,8 @@ import { useContext } from 'react'
 import { themeContext } from './context/themeContext';
 import Admin from './pages/adminPage/admin';
 
-// import SideBar from './components/sideBar/SideBar';
+
+import DashboardPackages from './pages/dashboardPackages/DashboardPackages';
 
 
 const App = () => {
@@ -39,6 +40,9 @@ const App = () => {
 
             {/* test  */}
             <Route path='/admin' element={<Admin/>}/>
+           
+            {/* test  */}
+            <Route path='/test' element={<DashboardPackages/>}/>
            
 
           </Routes>
