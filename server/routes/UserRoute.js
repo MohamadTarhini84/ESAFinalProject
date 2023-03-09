@@ -68,6 +68,26 @@ const DeleteUser = async (req, res) => {
   }
 };
 
+router.patch('/makeAdmin/:userId', (req,res)=>{
+  try{
+    let result=User.updateOne({_id:req.params.userId},{isAdmin:true})
+    res.status(200).json(result)
+  } catch (error){
+    const errors= handleErrors(error)
+    res.status(401).json({errors})
+  }
+})
+
+router.patch('/removeAdmin/:userId', (req,res)=>{
+  try{
+    let result=User.updateOne({_id:req.params.userId},{isAdmin:false})
+    res.status(200).json(result)
+  } catch (error){
+    const errors= handleErrors(error)
+    res.status(401).json({errors})
+  }
+})
+
 router.get('/:id', getUser)
 router.patch('/:id', UpdateUser)
 router.delete('/:id', DeleteUser)

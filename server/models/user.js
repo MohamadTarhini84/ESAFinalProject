@@ -9,6 +9,14 @@ const UserSchema = mongoose.Schema({
           required: true,
           unique:true
       },
+      firstName:{
+        type:String,
+        required:true
+      },
+      lastName:{
+        type:String,
+        required:true
+      },
       email:{
           type:String,
           required: true,
@@ -19,13 +27,12 @@ const UserSchema = mongoose.Schema({
           required: true
       },
       plan:{
-        type:subSchema,
-        require:true
+        type:subSchema
       },
       isAdmin : {
           type: Boolean,
           default: false,
-      },
+      }
     })
 
 UserSchema.statics.signup = async function(email,username,firstname,lastname, password) {//needs to be a regular function to use this.
