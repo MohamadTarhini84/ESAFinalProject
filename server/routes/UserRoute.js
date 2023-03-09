@@ -68,6 +68,7 @@ const DeleteUser = async (req, res) => {
   }
 };
 
+// Make Admin
 router.patch('/makeAdmin/:userId', (req,res)=>{
   try{
     let result=User.updateOne({_id:req.params.userId},{isAdmin:true})
@@ -78,6 +79,7 @@ router.patch('/makeAdmin/:userId', (req,res)=>{
   }
 })
 
+// Remove Admin
 router.patch('/removeAdmin/:userId', (req,res)=>{
   try{
     let result=User.updateOne({_id:req.params.userId},{isAdmin:false})

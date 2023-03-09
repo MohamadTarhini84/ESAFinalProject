@@ -12,6 +12,9 @@ function SideBar(props) {
             <button onClick={() => props.function("channels")}>
                 Channels
             </button>
+            <button onClick={() => props.function("broadcasts")}>
+                Broadcasts
+            </button>
             <button onClick={() => props.function("users")}>
                 Users
             </button>

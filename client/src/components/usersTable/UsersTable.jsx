@@ -1,7 +1,7 @@
 import "./usersTable.css";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 function UsersTable() {
@@ -15,8 +15,7 @@ function UsersTable() {
           <th>Last Name</th>
           <th>Username</th>
           <th>Email</th>
-          <th>Password</th>
-          <th>Edit</th>
+          <th>Make Admin</th>
           <th>Delete</th>
         </tr>
         <tr>
@@ -25,10 +24,9 @@ function UsersTable() {
           <td>Messi</td>
           <td>leo</td>
           <td>leo@gmail.com</td>
-          <td>********</td>
           <td>
             <button>
-              <FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
             </button>
           </td>
           <td>
@@ -43,15 +41,14 @@ function UsersTable() {
           <td>Ronaldo</td>
           <td>cr7</td>
           <td>cr7@gmail.com</td>
-          <td>********</td>
           <td>
             <button className="channel-button">
-              <FontAwesomeIcon className="fa-icon" icon={faPenToSquare}></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
             </button>
           </td>
           <td>
             <button>
-              <FontAwesomeIcon className="fa-icon" icon={faTrash}></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
             </button>
           </td>
         </tr>
@@ -61,15 +58,14 @@ function UsersTable() {
           <td>Chicken</td>
           <td>3alfahem</td>
           <td>alabdullah@gmail.com</td>
-          <td>********</td>
           <td>
             <button className="channel-button">
-              <FontAwesomeIcon className="fa-icon" icon={faPenToSquare}></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
             </button>
           </td>
           <td>
             <button>
-              <FontAwesomeIcon className="fa-icon" icon={faTrash}></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
             </button>
           </td>
         </tr>

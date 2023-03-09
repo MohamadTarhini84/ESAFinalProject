@@ -27,6 +27,8 @@ function Admin(){
                     </div>
                 }
                 
+                { show=='broadcasts' && <DashboardUsers />}
+                
                 { show=='users' && <DashboardUsers />}
                 
                 { show=='admins' && <DashboardAdmins />}

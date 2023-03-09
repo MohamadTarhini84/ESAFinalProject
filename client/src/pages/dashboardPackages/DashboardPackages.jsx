@@ -9,7 +9,11 @@ function DashboardPackages() {
     return (
         <div>
             <AddNewPackage />
-            <PackageContainer />
+            <div className="dash-pack-c">
+                    <PackageContainer />
+                    <PackageContainer />
+                    <PackageContainer />
+            </div>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import "./adminTable.css";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faUserMinus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 function AdminTable() {
@@ -15,8 +15,7 @@ function AdminTable() {
           <th>Last Name</th>
           <th>Username</th>
           <th>Email</th>
-          <th>Password</th>
-          <th>Edit</th>
+          <th>Remove Admin</th>
           <th>Delete</th>
         </tr>
         <tr>
@@ -25,10 +24,9 @@ function AdminTable() {
           <td>Chad</td>
           <td>giga</td>
           <td>gigachad@giga.com</td>
-          <td>********</td>
           <td>
             <button>
-              <FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faUserMinus}></FontAwesomeIcon>
             </button>
           </td>
           <td>
@@ -43,15 +41,14 @@ function AdminTable() {
           <td>Barakat</td>
           <td>fadib</td>
           <td>fadib@gmail.com</td>
-          <td>********</td>
           <td>
             <button className="channel-button">
-              <FontAwesomeIcon className="fa-icon" icon={faPenToSquare}></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faUserMinus}></FontAwesomeIcon>
             </button>
           </td>
           <td>
             <button>
-              <FontAwesomeIcon className="fa-icon" icon={faTrash}></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
             </button>
           </td>
         </tr>
