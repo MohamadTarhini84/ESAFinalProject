@@ -1,10 +1,6 @@
 const express=require('express');
 const authRoutes=require('./routes/AuthRoute')
 const userRoutes=require('./routes/UserRoute')
-const postsRoute=require('./routes/postsRoute')
-const commentsRoute=require('./routes/commentsRoute')
-const storiesRoute=require('./routes/storiesRoute')
-const searchRoute=require('./routes/SearchRoute')
 const connect=require('./config/db')
 
 const app=express()//creates an express app

@@ -1,5 +1,7 @@
-const User = require('../models/user')
+const express = require('express')
+const router = express.Router();
 const bcrypt = require('bcrypt');
+const User=require('../models/user')
 
 // get a User
 const getUser = async (req, res) => {
@@ -66,63 +68,8 @@ const DeleteUser = async (req, res) => {
   }
 };
 
-//follow user
-const followUser = async (req, res) => {
-  const id = req.params.id;
+router.get('/:id', getUser)
+router.patch('/:id', UpdateUser)
+router.delete('/:id', DeleteUser)
 
-  const { currentUserId } = req.body;
-
-  if (currentUserId === id) {
-    res.status(403).json("Action forbidden");
-  } else {
-    try {
-      const followUser = await User.findById(id);
-      const followingUser = await User.findById(currentUserId);
-
-      if (!followUser.followers.includes(currentUserId)) {
-        await followUser.updateOne({ $push: { followers: currentUserId } });
-        await followingUser.updateOne({ $push: { following: id } });
-        res.status(200).json("User followed!");
-      } else {
-        res.status(403).json("User is Already followed by you");
-      }
-    } catch (error) {
-      res.status(500).json("something went wrong");
-    }
-  }
-};
-
-// UnFollow a User
-const UnFollowUser = async (req, res) => {
-  const id = req.params.id;
-
-  const { currentUserId } = req.body;
-
-  if (currentUserId === id) {
-    res.status(403).json("Action forbidden");
-  } else {
-    try {
-      const followUser = await User.findById(id);
-      const followingUser = await User.findById(currentUserId);
-
-      if (followUser.followers.includes(currentUserId)) {
-        await followUser.updateOne({ $pull: { followers: currentUserId } });
-        await followingUser.updateOne({ $pull: { following: id } });
-        res.status(200).json("User Unfollowed!");
-      } else {
-        res.status(403).json("You don't follow this user");
-      }
-    } catch (error) {
-      res.status(500).json(error);
-    }
-  }
-};
-
-module.exports = {
-
-  getUser,
-  UpdateUser,
-  DeleteUser,
-  followUser,
-  UnFollowUser
-}
+module.exports = router

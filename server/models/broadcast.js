@@ -12,7 +12,11 @@ const broadcastSchema=mongoose.Schema({
     path:{
         type:String,
         required:true
+    },
+    channel:{
+        type:mongoose.Types.ObjectId,
+        required:true
     }
 })
 
-module.exports=broadcastSchema
+module.exports=mongoose.model('broadcast',broadcastSchema)

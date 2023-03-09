@@ -8,7 +8,7 @@ const SubscriptionSchema=mongoose.Schema({
     expireAt: {
         type: Date,
         required:true,
-        expires: 60
+        expires: 10
     }
 })
 

@@ -1,17 +1,19 @@
-const User = require('../models/user')
+const express = require('express')
 const jwt = require('jsonwebtoken')
-
+const User=require('../models/user')
 const bcrypt = require('bcrypt');
+
+const router = express.Router()
+
+router.post('/signup', signupUser)
+router.post('/login', loginUser)
 
 //Create static method instead of the ones already present
 
-const createToken = (_id) => {//make it as a function since we need to generate a token for signup and login and _id since mangodb uses it 
-  //but we can name it whatever we re passing the id as an argument because it will be part of the payload
-  return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })//first arg is part of the payload we can send multiple things but
-  // never anything sensitive like a password the user will stay logged in for 3 days and then it will expire
+const createToken = (_id) => {
+  return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
 }
 
-// login a user
 const loginUser = async (req, res) => {
   const {email, password} = req.body
 
@@ -27,16 +29,12 @@ const loginUser = async (req, res) => {
   }
 }
 
-//json web tokens is a way to manage authentication between back and frontend
-
-// signup a user
 const signupUser = async (req, res) => {
   const {email,username,firstname,lastname, password} = req.body
 
   try {
     const user = await User.signup(email,username,firstname,lastname, password)
 
-    // create a token
     const token = createToken(user._id)
 
     res.status(200).json({email,username,firstname,lastname, token})
@@ -45,6 +43,4 @@ const signupUser = async (req, res) => {
   }
 }
 
-module.exports = { signupUser, loginUser }
-
-
+module.exports = router

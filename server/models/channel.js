@@ -1,5 +1,4 @@
 const mongoose=require('mongoose')
-const broadcastSchema=require('./broadcast')
 
 const ChannelSchema=mongoose.Schema({
     name:{
@@ -9,9 +8,7 @@ const ChannelSchema=mongoose.Schema({
     logo:{
         type:String,
         required:true
-    },
-    broadcasts:[{
-        type:broadcastSchema,
-        default:[]
-    }]
+    }
 })
+
+module.exports=mongoose.model('channel', ChannelSchema)
