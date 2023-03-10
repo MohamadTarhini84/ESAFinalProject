@@ -1,11 +1,10 @@
 import SideBar from '../../components/sideBar/SideBar';
 import DashboardHome from '../../pages/dashboardHome/DashboardHome';
-import DashboardChannelSearch from '../../components/dashboardChannelSearch/DashbordChannelSearch';
-import AddNewChannel from '../../components/addNewChannel/AddNewChannel';
 import { useState } from 'react';
 import DashboardUsers from '../../pages/dashboardUsers/DashboardUsers';
 import DashboardAdmins from '../dashboardAdmins/DashboardAdmins';
 import DashboardPackages from '../dashboardPackages/DashboardPackages';
+import DashboardChannels from '../dashboardChannels/DashboardChannels';
 
 function Admin(){
     const [show, setShow]=useState('dashboard')
@@ -20,12 +19,7 @@ function Admin(){
             <div className='flex flex-col w-full'>
                 { show=='dashboard' && <DashboardHome/>}
                 
-                { show=='channels' && 
-                    <div className='flex flex-col w-full h-full'>
-                        <AddNewChannel/>
-                        <DashboardChannelSearch/>
-                    </div>
-                }
+                { show=='channels' && <DashboardChannels />}
                 
                 { show=='broadcasts' && <DashboardUsers />}
                 
