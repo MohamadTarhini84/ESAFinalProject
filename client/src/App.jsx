@@ -13,7 +13,7 @@ import { themeContext } from './context/themeContext';
 import Admin from './pages/adminPage/admin';
 
 
-import AddNewBroadcast from './components/addNewBroadcast/AddNewBroadcast';
+import DashboardBroadcast from './pages/dashboardBroadcast/DashboardBroadcast';
 
 
 const App = () => {
@@ -42,7 +42,7 @@ const App = () => {
             <Route path='/admin' element={<Admin/>}/>
            
             {/* test  */}
-            <Route path='/test' element={<AddNewBroadcast />}/>
+            <Route path='/test' element={<DashboardBroadcast />}/>
            
 
           </Routes>

@@ -1,4 +1,4 @@
-.package-container{
+.broadcast-container{
     background-color: #FDE047;
     width: 30%;
     box-shadow:0 15px 30px rgba(0,0,0,0.1);
@@ -6,7 +6,7 @@
     margin: 1%;
 }
 
-.package-info{
+.broadcast-live{
     background-color:#D9D9D9;
     border-radius: 10px;
     padding: 2%;
@@ -15,23 +15,8 @@
     text-align: center;
 }
 
-.package-footer{
+.broadcast-footer{
     margin: 0% 3%;
-    display: flex;
-}
-
-.package-name{
-    flex: 50%;
-}
-
-.package-buttons{
-    flex: 50%;
-}
-
-.package-name span{
-    padding: 2%;
-}
-
-.package-button{
-    margin: 0% 3%;
+    display:flex;
+    justify-content: space-between;
 }
