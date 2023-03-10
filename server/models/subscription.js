@@ -12,4 +12,4 @@ const SubscriptionSchema=mongoose.Schema({
     }
 })
 
-module.exports=SubscriptionSchema
+module.exports=SubscriptionSchema;

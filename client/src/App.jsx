@@ -13,7 +13,7 @@ import { themeContext } from './context/themeContext';
 import Admin from './pages/adminPage/admin';
 
 
-import DashboardPackages from './pages/dashboardPackages/DashboardPackages';
+import AddNewBroadcast from './components/addNewBroadcast/AddNewBroadcast';
 
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
     <div>
       <BrowserRouter>
         <div className={theme?"":"dark"}>
-          <NavBar/>
+          {/* <NavBar/> */}
           <Routes>
             <Route path='/home' element={(<Home/>)}/>
             <Route path='/watch' element={<Watch/>}/>
@@ -42,7 +42,7 @@ const App = () => {
             <Route path='/admin' element={<Admin/>}/>
            
             {/* test  */}
-            <Route path='/test' element={<DashboardPackages/>}/>
+            <Route path='/test' element={<AddNewBroadcast />}/>
            
 
           </Routes>

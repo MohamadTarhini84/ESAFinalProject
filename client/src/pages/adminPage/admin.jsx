@@ -5,6 +5,7 @@ import DashboardUsers from '../../pages/dashboardUsers/DashboardUsers';
 import DashboardAdmins from '../dashboardAdmins/DashboardAdmins';
 import DashboardPackages from '../dashboardPackages/DashboardPackages';
 import DashboardChannels from '../dashboardChannels/DashboardChannels';
+import DashboardBroadcast from '../dashboardBroadcast/DashboardBroadcast';
 
 function Admin(){
     const [show, setShow]=useState('dashboard')
@@ -21,7 +22,7 @@ function Admin(){
                 
                 { show=='channels' && <DashboardChannels />}
                 
-                { show=='broadcasts' && <DashboardUsers />}
+                { show=='broadcasts' && <DashboardBroadcast />}
                 
                 { show=='users' && <DashboardUsers />}
                 

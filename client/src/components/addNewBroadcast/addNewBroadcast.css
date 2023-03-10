@@ -1,8 +1,8 @@
-.add-new-channel-container{
+.add-new-broadcast-container{
     margin: 1%;
 }
 
-.add-new-channel-inputs{
+.add-new-broadcast-inputs{
     border-radius: 10px;
     box-shadow:0 15px 30px rgba(0,0,0,0.1);
     background-color: #FDE68A;
@@ -29,14 +29,14 @@
     margin: 1%;
 }
 
-.add-channel-btn{
+.add-broadcast-btn{
     width:100%;
     position:relative;
     justify-content:center;
     align-items:center;
 }
 
-.add-channel-btn button {
+.add-broadcast-btn button {
     height:35px;
     outline:0;
     border:none;
@@ -54,7 +54,7 @@
     visibility: hidden;
   }
   .custom-file-input::before {
-    content: 'Channel Logo';
+    content: 'broadcast Logo';
     display: inline-block;
     border: 1px solid #999;
     border-radius: 3px;
