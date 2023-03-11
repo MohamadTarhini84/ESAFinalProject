@@ -37,15 +37,15 @@ const getUser = async (req, res) => {
 // update a user
 const UpdateUser = async (req, res) => {
   const id = req.params.id;
-  const { currentUserId, currentUserAdminStatus, password } = req.body;
+  const userId = req.body;
 
-  if (id === currentUserId || currentUserAdminStatus) {
+  if (id === userId) {
     try {
       if (password) {
         const salt = await bcrypt.genSalt(10);
         req.body.password = await bcrypt.hash(password, salt);
       }
-
+      
       const user = await User.findOneAndUpdate({ _id: id }, {
         ...req.body//spread the object,
       });
@@ -64,10 +64,9 @@ const UpdateUser = async (req, res) => {
 // Delete user
 const DeleteUser = async (req, res) => {
   const id = req.params.id;
+  const userId = req.body;
 
-  const { currentUserId, currentUserAdminStatus } = req.body;
-
-  if (currentUserId === id || currentUserAdminStatus) {
+  if (userId === id) {
     try {
       await User.findOneAndDelete({ _id: id });
       res.status(200).json("User deleted successfully");
