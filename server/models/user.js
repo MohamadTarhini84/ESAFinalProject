@@ -4,11 +4,6 @@ const validator = require('validator')
 const subSchema=require('./subscription')
 
 const UserSchema = mongoose.Schema({
-      username: {
-          type: String,
-          required: true,
-          unique:true
-      },
       firstName:{
         type:String,
         required:true

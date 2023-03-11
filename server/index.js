@@ -8,7 +8,7 @@ const connect=require('./config/db')
 const app=express()//creates an express app
     
 app.use(express.urlencoded({extended:false}))
-// app.use(express.json())
+app.use(express.json())
 app.use('*/assets',express.static(__dirname+'/assets'))
 // app.use(cors({
 //     origin:'http://localhost:300'
