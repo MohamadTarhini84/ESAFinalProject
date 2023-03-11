@@ -49,3 +49,5 @@ router.delete('/delete/:channelId', async (req, res)=>{
         res.status(401).json({errors})
     }
 })
+
+module.exports=router

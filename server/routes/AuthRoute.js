@@ -1,7 +1,6 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
 const User=require('../models/user')
-const bcrypt = require('bcrypt');
 
 const router = express.Router()
 
@@ -43,4 +42,26 @@ const signupUser = async (req, res) => {
   }
 }
 
-module.exports = router;
+
+router.post('/googleLogin', async (req, res) => {
+  try{
+      const {email, firstName, lastName} = req.body
+      let userExist = await User.find({email})
+
+      if(!userExist){
+        const user = await User.signup(email,firstName,lastName, process.env.SECRET)
+        const token = createToken(user._id)
+        res.status(200).json({email,firstName,lastName, token})
+      } else{
+        const user = await User.login(email, process.env.SECRET)
+        const token = createToken(user._id)
+        res.status(200).json({email, token})
+      }
+  }
+  catch(err){
+      console.log(err.message)
+      res.status(400).json({error:err.message})
+  }
+})
+
+module.exports = router
