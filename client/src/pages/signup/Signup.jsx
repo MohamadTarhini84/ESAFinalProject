@@ -20,10 +20,10 @@ function Signup() {
                         <div className="login">
                             <h2>Create Account</h2>
                         </div>
-                        <div className="input_text">
+                        {/* <div className="input_text">
                             <input type="text" placeholder="Username" />
                             <FontAwesomeIcon className="fa" icon={faUser}></FontAwesomeIcon>
-                        </div>
+                        </div> */}
                         <div style={{ display: "flex" }}>
                             <div className="input_text" style={{ marginRight: "5px" }}>
                                 <input type="text" placeholder="First Name" />

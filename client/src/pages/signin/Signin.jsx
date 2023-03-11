@@ -1,7 +1,7 @@
 import "./signin.css";
 import GigaImage from './GigaChad.jpeg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
 
 function Signin() {
@@ -21,9 +21,13 @@ function Signin() {
                         <div className="login">
                             <h2>User Login</h2>
                         </div>
-                        <div className="input_text">
+                        {/* <div className="input_text">
                             <input type="text" placeholder="Username" />
                             <FontAwesomeIcon className="fa" icon={faUser}></FontAwesomeIcon>
+                        </div> */}
+                        <div className="input_text">
+                            <input type="email" placeholder="Email" />
+                            <FontAwesomeIcon className="fa" icon={faEnvelope}></FontAwesomeIcon>
                         </div>
                         <div className="input_text">
                             <input className="signin_pass" id="passInput" type="password" name="password" placeholder="Password" />

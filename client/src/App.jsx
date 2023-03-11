@@ -24,7 +24,7 @@ const App = () => {
     <div>
       <BrowserRouter>
         <div className={theme?"":"dark"}>
-          {/* <NavBar/> */}
+          <NavBar/>
           <Routes>
             <Route path='/home' element={(<Home/>)}/>
             <Route path='/watch' element={<Watch/>}/>

@@ -23,10 +23,10 @@ function EditProfile() {
                             <h3>Edit Profile</h3>
                         </div>
                         <form className="edit-profile-form" method="post">
-                            <div className="input_text">
+                            {/* <div className="input_text">
                                 <input type="text" placeholder="Username" />
                                 <FontAwesomeIcon className="fa" icon={faUser}></FontAwesomeIcon>
-                            </div>
+                            </div> */}
                             <div style={{ display: "flex" }}>
                                 <div className="input_text" style={{ marginRight: "5px" }}>
                                     <input type="text" placeholder="First Name" />

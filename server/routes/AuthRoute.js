@@ -5,8 +5,8 @@ const bcrypt = require('bcrypt');
 
 const router = express.Router()
 
-router.post('/signup', signupUser)
-router.post('/login', loginUser)
+//router.post('/signup', signupUser)
+//router.post('/login', loginUser)
 
 //Create static method instead of the ones already present
 
@@ -30,17 +30,17 @@ const loginUser = async (req, res) => {
 }
 
 const signupUser = async (req, res) => {
-  const {email,username,firstname,lastname, password} = req.body
+  const {email,firstname,lastname, password} = req.body
 
   try {
-    const user = await User.signup(email,username,firstname,lastname, password)
+    const user = await User.signup(email,firstname,lastname, password)
 
     const token = createToken(user._id)
 
-    res.status(200).json({email,username,firstname,lastname, token})
+    res.status(200).json({email,firstname,lastname, token})
   } catch (error) {
     res.status(400).json({error: error.message})
   }
 }
 
-module.exports = router
+module.exports = router;
