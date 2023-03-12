@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserMinus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
-function AdminTable() {
+const AdminTable = ({ data }) => {
 
   return (
     <div className="table-container">
@@ -13,16 +13,34 @@ function AdminTable() {
           <th>ID</th>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>Username</th>
           <th>Email</th>
           <th>Remove Admin</th>
           <th>Delete</th>
         </tr>
+
+        {/* {data.map((item) => (
+          <tr key={item.id}>
+            <td>{item.id}</td>
+            <td>{item.first_name}</td>
+            <td>{item.last_name}</td>
+            <td>{item.email}</td>
+            <td>
+              <button>
+                <FontAwesomeIcon icon={faUserMinus}></FontAwesomeIcon>
+              </button>
+            </td>
+            <td>
+              <button>
+                <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
+              </button>
+            </td>
+          </tr>
+        ))} */}
+
         <tr>
           <td>1</td>
           <td>Giga</td>
           <td>Chad</td>
-          <td>giga</td>
           <td>gigachad@giga.com</td>
           <td>
             <button>
@@ -39,7 +57,6 @@ function AdminTable() {
           <td>2</td>
           <td>Fadi</td>
           <td>Barakat</td>
-          <td>fadib</td>
           <td>fadib@gmail.com</td>
           <td>
             <button className="channel-button">

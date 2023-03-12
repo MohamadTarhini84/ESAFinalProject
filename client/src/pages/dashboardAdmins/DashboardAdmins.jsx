@@ -3,8 +3,21 @@ import './dashboardAdmins.css';
 // import AddNewAdmin from '../../components/addNewAdmin/AddNewAdmin';
 import AdminTable from '../../components/adminTable/AdminTable';
 
+
+import { useEffect, useState} from "react";
+
 function DashboardAdmins() {
 
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await axios.get("api/admins");
+            setData(res.data);
+        };
+        fetchData();
+    }, []);
+    
     return (
         <div>
             {/* <AddNewAdmin /> */}
@@ -16,7 +29,7 @@ function DashboardAdmins() {
                     <input type="search" placeholder="Search" />
                 </div>
             </div>
-            <AdminTable />
+            <AdminTable data={data} />
         </div>
     )
 }

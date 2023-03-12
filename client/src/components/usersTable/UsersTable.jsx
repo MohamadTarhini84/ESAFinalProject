@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
-function UsersTable() {
+const UsersTable = ({ data }) => {
 
   return (
     <div className="table-container">
@@ -13,16 +13,35 @@ function UsersTable() {
           <th>ID</th>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>Username</th>
           <th>Email</th>
           <th>Make Admin</th>
           <th>Delete</th>
         </tr>
+
+
+        {/* {data.map((item) => (
+          <tr key={item.id}>
+            <td>{item.id}</td>
+            <td>{item.first_name}</td>
+            <td>{item.last_name}</td>
+            <td>{item.email}</td>
+            <td>
+              <button>
+                <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
+              </button>
+            </td>
+            <td>
+              <button>
+                <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
+              </button>
+            </td>
+          </tr>
+        ))} */}
+
         <tr>
           <td>1</td>
           <td>Lionel</td>
           <td>Messi</td>
-          <td>leo</td>
           <td>leo@gmail.com</td>
           <td>
             <button>
@@ -35,11 +54,11 @@ function UsersTable() {
             </button>
           </td>
         </tr>
+
         <tr>
           <td>2</td>
           <td>Cristiano</td>
           <td>Ronaldo</td>
-          <td>cr7</td>
           <td>cr7@gmail.com</td>
           <td>
             <button className="channel-button">
@@ -56,7 +75,6 @@ function UsersTable() {
           <td>3</td>
           <td>Abdullah</td>
           <td>Chicken</td>
-          <td>3alfahem</td>
           <td>alabdullah@gmail.com</td>
           <td>
             <button className="channel-button">
@@ -69,6 +87,7 @@ function UsersTable() {
             </button>
           </td>
         </tr>
+
       </table>
     </div>
   )

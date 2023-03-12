@@ -1,7 +1,19 @@
 import UsersTable from '../../components/usersTable/UsersTable';
 import './dashboardUsers.css';
 
+import { useEffect, useState} from "react";
+
 function DashboardUsers() {
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await axios.get("api/admins");
+            setData(res.data);
+        };
+        fetchData();
+    }, []);
 
     return (
         <div>
@@ -13,7 +25,7 @@ function DashboardUsers() {
                     <input type="search" placeholder="Search" />
                 </div>
             </div>
-            <UsersTable />
+            <UsersTable data={data} />
         </div>
     )
 }
