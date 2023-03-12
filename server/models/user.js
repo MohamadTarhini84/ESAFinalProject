@@ -30,10 +30,10 @@ const UserSchema = mongoose.Schema({
       }
     })
 
-UserSchema.statics.signup = async function(email,firstname,lastname, password) {//needs to be a regular function to use this.
+UserSchema.statics.signup = async function(email,firstName,lastName, password) {//needs to be a regular function to use this.
 
     // validation
-    if (!email || !password || !firstname|| !lastname) {
+    if (!email || !password || !firstName|| !lastName) {
       throw Error('All fields must be filled')
     }
     if (!validator.isEmail(email)) {
@@ -48,7 +48,7 @@ UserSchema.statics.signup = async function(email,firstname,lastname, password) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
   
-    const user = await this.create({ emailfirstname,lastname, password: hash })
+    const user = await this.create({ email,firstName,lastName, password: hash })
   
     return user
   }

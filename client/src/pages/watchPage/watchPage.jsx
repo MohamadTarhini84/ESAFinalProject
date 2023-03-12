@@ -6,9 +6,9 @@ function Watch(){
             <div className="w-full flex justify-center items-center">
                 <div className="w-11/12 min-h-80 bg-gray-200 dark:bg-stone-800 flex flex-col mt-20 justify-between 
                             sm:justify-evenly items-center sm:gap-8 rounded-lg shadow-lg sm:p-12">
-                    <video tabIndex="-1" controls
-                        className="w-full sm:w-5/6 aspect-video rounded-sm border-2 border-black dark:border-white shadow-lg"
-                        src="https://cdn.discordapp.com/attachments/829155749040750597/1024320124322332722/zero.mp4"/>
+                        <iframe className="w-full sm:w-9/12 aspect-video rounded-sm border-2 border-black dark:border-white shadow-lg"
+                            src="https://www.youtube.com/embed/MbqSMgMAzxU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+                                clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     <Details/>
                 </div>
             </div>
