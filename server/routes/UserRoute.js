@@ -68,7 +68,7 @@ const DeleteUser = async (req, res) => {
   const id = req.params.id;
   const userId = req.body;
 
-  if (userId === id) {
+  if (userId === id) { //tarhine
     try {
       await User.findOneAndDelete({ _id: id });
       res.status(200).json("User deleted successfully");
@@ -80,7 +80,7 @@ const DeleteUser = async (req, res) => {
   }
 };
 
-// Make Admin
+// Make Admin //tarhine
 router.patch('/makeAdmin/:userId', (req, res) => {
   try {
     let result = User.updateOne({ _id: req.params.userId }, { isAdmin: true })
@@ -91,7 +91,7 @@ router.patch('/makeAdmin/:userId', (req, res) => {
   }
 })
 
-// Remove Admin
+// Remove Admin //tarhine
 router.patch('/removeAdmin/:userId', (req, res) => {
   try {
     let result = User.updateOne({ _id: req.params.userId }, { isAdmin: false })
