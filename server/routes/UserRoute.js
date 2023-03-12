@@ -41,17 +41,19 @@ const UpdateUser = async (req, res) => {
 
   if (id === userId) {
     try {
-      if (password) {
-        const salt = await bcrypt.genSalt(10);
-        req.body.password = await bcrypt.hash(password, salt);
-      }
       
+      // if (password) {
+      //   const salt = await bcrypt.genSalt(10);
+      //   req.body.password = await bcrypt.hash(password, salt);
+      // }
+
       const user = await User.findOneAndUpdate({ _id: id }, {
         ...req.body//spread the object,
       });
       if (!user) {
         return res.status(400).json({ error: 'No such user' })
       }
+      console.log(user);
       res.status(200).json(user);
     } catch (error) {
       res.status(500).json(error);

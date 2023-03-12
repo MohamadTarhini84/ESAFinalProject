@@ -4,8 +4,8 @@ const User=require('../models/user')
 
 const router = express.Router()
 
-//router.post('/signup', signupUser)
-//router.post('/login', loginUser)
+// router.post('/signup', signupUser)
+// router.post('/login', loginUser)
 
 //Create static method instead of the ones already present
 
