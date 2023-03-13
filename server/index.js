@@ -3,19 +3,22 @@ const authRoutes = require('./routes/AuthRoute');
 const userRoutes = require('./routes/UserRoute');
 const subRoute = require('./routes/subsRoute');
 const connect = require('./config/db');
+const packageRoute = require('./routes/packagesRoute');
 const cors = require('cors');
 
 const app = express()//creates an express app
 
-app.use(cors());
+app.use('*/assets', express.static(__dirname + '/assets'))
+app.use(cors({
+    origin: 'http://localhost:5173'
+}))
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+
 app.use('*/assets', express.static(__dirname + '/assets'))
 
-// app.use(cors({
-//     origin:'http://localhost:300'
-// }))
+
 
 // app.use((req,res,next)=>{
 //     console.log(req.path,req.method)
@@ -27,7 +30,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/subscribe', subRoute)
+app.use('/api/packages', packageRoute)
 
 // connect to db
 
 connect(app)
+

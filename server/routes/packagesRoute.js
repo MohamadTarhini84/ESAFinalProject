@@ -24,12 +24,18 @@ router.get('/all',async (req,res)=>{
 })
 
 router.post('/new', upload.fields([{name:'image'}]), async (req,res)=>{
-    const newPackage=new Package({
-        name:req.body.name,
-        duration:req.body.duration,
-        cost: req.body.cost,
-        background:req.files.image[0].path
-    })
+    const newPackage=new Package()
+        newPackage['name']=req.body.name
+        newPackage['duration']=parseInt(req.body.duration)
+        if(req.body.cost){
+            newPackage['cost']=parseInt(req.body.cost)
+        }
+        if(req.body.description){
+            newPackage['description']=req.body.description
+        }
+        if(req.files.image){
+            newPackage['background']=req.files.image[0].path
+        }
     
     try{
         let create=await Package.create(newPackage)
@@ -50,3 +56,5 @@ router.delete('/delete/:packageId', async (req,res)=>{
         res.status(401).json({errors})
     }
 })
+
+module.exports=router

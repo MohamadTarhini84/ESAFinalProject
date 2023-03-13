@@ -10,10 +10,15 @@ const PackageSchema=mongoose.Schema({
         required:true
     },
     cost:{
+        type:Number,
+        default:0
+    },
+    description:{
         type:String
     },
     background:{
-        type:String
+        type:String,
+        default:""
     }
 })
 
