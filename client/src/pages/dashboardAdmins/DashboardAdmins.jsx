@@ -1,10 +1,7 @@
 import './dashboardAdmins.css';
-
-// import AddNewAdmin from '../../components/addNewAdmin/AddNewAdmin';
 import AdminTable from '../../components/adminTable/AdminTable';
-
-
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function DashboardAdmins() {
 
@@ -12,15 +9,18 @@ function DashboardAdmins() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await axios.get("api/admins");
+            // const res = await axios.get("http://localhost:3001/api/user/all");
+            // console.log(res.data); // log the data to the console
+            // setData(res.data);
+            const res = await axios.get("http://localhost:3001/api/user/all");
+            console.log(res); // log the entire response object
             setData(res.data);
         };
         fetchData();
     }, []);
-    
+
     return (
         <div>
-            {/* <AddNewAdmin /> */}
             <div className="search-from-users-list">
                 <div className="search-from-users-list-left-side">
                     <p className="table-title">List Of Admins:</p>
@@ -31,7 +31,8 @@ function DashboardAdmins() {
             </div>
             <AdminTable data={data} />
         </div>
-    )
+    );
+
 }
 
 export default DashboardAdmins;

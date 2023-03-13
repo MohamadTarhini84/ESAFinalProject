@@ -1,5 +1,4 @@
 import "./usersTable.css";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,7 +17,6 @@ const UsersTable = ({ data }) => {
           <th>Delete</th>
         </tr>
 
-
         {/* {data.map((item) => (
           <tr key={item.id}>
             <td>{item.id}</td>
@@ -26,9 +24,9 @@ const UsersTable = ({ data }) => {
             <td>{item.last_name}</td>
             <td>{item.email}</td>
             <td>
-              <button>
-                <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
-              </button>
+            <button>
+              <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
+            </button>
             </td>
             <td>
               <button>
@@ -38,6 +36,7 @@ const UsersTable = ({ data }) => {
           </tr>
         ))} */}
 
+      
         <tr>
           <td>1</td>
           <td>Lionel</td>
@@ -94,3 +93,56 @@ const UsersTable = ({ data }) => {
 }
 
 export default UsersTable;
+
+
+
+// import "./usersTable.css";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faUserPlus, faUserMinus, faTrash } from '@fortawesome/free-solid-svg-icons';
+
+// const UsersTable = ({ data }) => {
+//   return (
+//     <div className="table-container">
+//       <table className="responsive-users-table">
+//         <thead>
+//           <tr>
+//             <th>ID</th>
+//             <th>First Name</th>
+//             <th>Last Name</th>
+//             <th>Email</th>
+//             <th>Make Admin</th>
+//             <th>Delete</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {data ? (
+//             data.map((item) => (
+//               <tr key={item.id}>
+//                 <td>{item.id}</td>
+//                 <td>{item.first_name}</td>
+//                 <td>{item.last_name}</td>
+//                 <td>{item.email}</td>
+//                 <td>
+//                   <button>
+//                     <FontAwesomeIcon icon={faUserMinus}></FontAwesomeIcon>
+//                   </button>
+//                 </td>
+//                 <td>
+//                   <button>
+//                     <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
+//                   </button>
+//                 </td>
+//               </tr>
+//             ))
+//           ) : (
+//             <tr>
+//               <td colSpan={6}>No data available</td>
+//             </tr>
+//           )}
+//         </tbody>
+//       </table>
+//     </div>
+//   )
+// }
+
+// export default UsersTable;

@@ -1,6 +1,5 @@
-import UsersTable from '../../components/usersTable/UsersTable';
 import './dashboardUsers.css';
-
+import UsersTable from '../../components/usersTable/UsersTable';
 import { useEffect, useState} from "react";
 
 function DashboardUsers() {
@@ -9,7 +8,7 @@ function DashboardUsers() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await axios.get("api/admins");
+            const res = await axios.get("localhost:3001/api/user/all");
             setData(res.data);
         };
         fetchData();
