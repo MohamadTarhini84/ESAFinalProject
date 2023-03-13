@@ -2,17 +2,18 @@ const express=require('express');
 const authRoutes=require('./routes/AuthRoute')
 const userRoutes=require('./routes/UserRoute')
 const subRoute=require('./routes/subsRoute')
+const packageRoute=require('./routes/packagesRoute')
 const connect=require('./config/db')
-// const cors=require('cors')
+const cors=require('cors')
 
 const app=express()//creates an express app
     
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.use('*/assets',express.static(__dirname+'/assets'))
-// app.use(cors({
-//     origin:'http://localhost:300'
-// }))
+app.use(cors({
+    origin:'http://localhost:5173'
+}))
 
 // app.use((req,res,next)=>{
     //     console.log(req.path,req.method)
@@ -24,6 +25,7 @@ app.use('*/assets',express.static(__dirname+'/assets'))
     app.use('/api/auth', authRoutes)
     app.use('/api/user', userRoutes)
     app.use('/api/subscribe', subRoute)
+    app.use('/api/packages', packageRoute)
     
     // connect to db
     

@@ -7,6 +7,16 @@ const Package=require('../models/package')
 const Stripe=require('stripe').default
 const stripe = new Stripe(process.env.STRIPE_KEY)
 
+function handleErrors(error){
+    let err={}
+    console.log(error)
+    Object.values(error.errors).forEach(({properties})=>{
+        err[properties.path]=properties.message
+    })
+
+    return err
+}
+
 // router.use((req, res, next) => {
 //     if (req.originalUrl === '/webhook') {
 //       next();
@@ -15,9 +25,10 @@ const stripe = new Stripe(process.env.STRIPE_KEY)
 //     }
 //   });
 
-router.get('/subscribe', async (req, res)=>{
+router.get('/subscribe/:packageId', async (req, res)=>{
     try{
-        let packageDetails=await Package.find({_id:req.body.id})
+        let packageDetails=await Package.findOne({_id:req.params.packageId})
+        console.log(packageDetails)
         let session=await stripe.checkout.sessions.create({
             payment_method_types:['card'],
             mode:'payment',
@@ -25,21 +36,21 @@ router.get('/subscribe', async (req, res)=>{
                 price_data:{
                     currency:'usd',
                     product_data:{
-                        name:"packageDetails.name"
+                        name:packageDetails.name
                     },
-                    unit_amount:11111,
-                    // unit_amount:[packageDetails.cost],
+                    // unit_amount:11111,
+                    unit_amount:packageDetails.cost,
                 },
                 quantity:1,
             }],
             metadata:{hello:"Hello World!"},
-            success_url:"https://www.google.com",
-            cancel_url:"https://www.google.com"
+            success_url:"http://localhost:5173/subscribe",
+            cancel_url:"http://localhost:5173/subscribe"
         })
         res.status(200).json(session.url)
     } catch (error){
-        // const errors= handleErrors(error)
-        res.status(401).json({error})
+        const errors= handleErrors(error)
+        res.status(401).json({errors})
     }
 })
 

@@ -6,6 +6,8 @@ import { navBarContext } from '../../context/navBarContext';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LogoutIcon from '@mui/icons-material/Logout';
+import {Link} from "react-router-dom"
+import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 
 function NavBar(){
     const {theme,themeToggle}=useContext(themeContext)
@@ -21,12 +23,19 @@ function NavBar(){
                          dark:text-white sm:px-12 sm:before:block before:hidden bg-white dark:bg-stone-800 
                          sm:bg-transparent sm:dark:bg-transparent before:bg-white before:shadow-md dark:before:bg-stone-800
                         ${show?"":"show"}`}>
-            <PodcastsIcon className='scale-150 sm:mb-2'/>
+                <Link to='/home' className='relative group text-inherit hover:text-inherit'>
+                    <PodcastsIcon className='scale-150 sm:mb-2 group-hover:cursor-pointer'/>
+                    <span className='tooltip sm:group-hover:scale-100'>Home</span>
+                </Link>
             <div className='flex gap-4 sm:gap-16 sm:mr-10 mb-2'>
                 <a href='#search_goto' className='relative group text-inherit hover:text-inherit'>
                     <SearchIcon className='group-hover:cursor-pointer'/>
                     <span className='tooltip sm:group-hover:scale-100'>Search</span>
                 </a>
+                <Link to='/subscribe' className='relative group text-inherit hover:text-inherit'>
+                    <SubscriptionsIcon className='group-hover:cursor-pointer'/>
+                    <span className='tooltip sm:group-hover:scale-100'>Subscriptions</span>
+                </Link>
                 {theme?
                     <div className='relative group'>
                         <DarkModeIcon onClick={()=>themeToggle(false)} className='group-hover:cursor-pointer'/>
