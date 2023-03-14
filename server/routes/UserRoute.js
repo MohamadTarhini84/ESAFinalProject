@@ -41,12 +41,6 @@ const UpdateUser = async (req, res) => {
 
   if (id === userId) {
     try {
-      
-      // if (password) {
-      //   const salt = await bcrypt.genSalt(10);
-      //   req.body.password = await bcrypt.hash(password, salt);
-      // }
-
       const user = await User.findOneAndUpdate({ _id: id }, {
         ...req.body//spread the object,
       });
@@ -63,12 +57,13 @@ const UpdateUser = async (req, res) => {
   }
 };
 
+
 // Delete user
 const DeleteUser = async (req, res) => {
   const id = req.params.id;
   const userId = req.body;
 
-  if (userId === id) { //tarhine
+  if (userId === id) {
     try {
       await User.findOneAndDelete({ _id: id });
       res.status(200).json("User deleted successfully");
@@ -80,21 +75,21 @@ const DeleteUser = async (req, res) => {
   }
 };
 
-// Make Admin //tarhine
-router.patch('/makeAdmin/:userId', (req, res) => {
+// Make Admin
+router.patch('/makeAdmin/:userId', async (req, res) => {
   try {
-    let result = User.updateOne({ _id: req.params.userId }, { isAdmin: true })
+    const result = await User.updateOne({ _id: req.params.userId }, { isAdmin: true })
     res.status(200).json(result)
   } catch (error) {
     const errors = handleErrors(error)
     res.status(401).json({ errors })
   }
-})
+}),
 
-// Remove Admin //tarhine
-router.patch('/removeAdmin/:userId', (req, res) => {
+// Remove Admin
+router.patch('/removeAdmin/:userId', async (req, res) => {
   try {
-    let result = User.updateOne({ _id: req.params.userId }, { isAdmin: false })
+    const result = await User.updateOne({ _id: req.params.userId }, { isAdmin: false })
     res.status(200).json(result)
   } catch (error) {
     const errors = handleErrors(error)
@@ -107,4 +102,4 @@ router.get('/:id', getUser)
 router.patch('/:id', UpdateUser)
 router.delete('/:id', DeleteUser)
 
-module.exports = router
+module.exports = router;

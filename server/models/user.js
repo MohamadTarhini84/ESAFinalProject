@@ -1,7 +1,7 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt')//hashing function
-const validator = require('validator')
-const subSchema=require('./subscription')
+const validator = require('validator');
+const subSchema=require('./subscription');
 
 const UserSchema = mongoose.Schema({
       firstName:{
@@ -26,7 +26,7 @@ const UserSchema = mongoose.Schema({
       },
       isAdmin : {
           type: Boolean,
-          default: false,
+          default: false
       }
     })
 

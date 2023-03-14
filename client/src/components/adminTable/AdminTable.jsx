@@ -41,40 +41,6 @@ const AdminTable = ({ data }) => {
             </tr>
           ))}
 
-        <tr>
-          <td>1</td>
-          <td>Giga</td>
-          <td>Chad</td>
-          <td>gigachad@giga.com</td>
-          <td>
-            <button>
-              <FontAwesomeIcon icon={faUserMinus}></FontAwesomeIcon>
-            </button>
-          </td>
-          <td>
-            <button>
-              <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
-            </button>
-          </td>
-        </tr>
-
-        <tr>
-          <td>2</td>
-          <td>Fadi</td>
-          <td>Barakat</td>
-          <td>fadib@gmail.com</td>
-          <td>
-            <button className="channel-button">
-              <FontAwesomeIcon icon={faUserMinus}></FontAwesomeIcon>
-            </button>
-          </td>
-          <td>
-            <button>
-              <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
-            </button>
-          </td>
-        </tr>
-
         </tbody>
 
       </table>
