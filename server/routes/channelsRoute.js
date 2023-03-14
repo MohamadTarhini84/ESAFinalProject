@@ -14,6 +14,7 @@ function handleErrors(error){
     return err
 }
 
+// get all channels
 router.get('/all',async (req, res)=>{
     try{
         let channels=await Channel.find()
@@ -24,6 +25,7 @@ router.get('/all',async (req, res)=>{
     }
 })
 
+// upload channel logo
 router.post('/new', upload.fields([{name:'image'}]), async (req, res)=>{
     try{
         const newChannel = new Channel({
@@ -39,6 +41,7 @@ router.post('/new', upload.fields([{name:'image'}]), async (req, res)=>{
     }
 })
 
+// delete channel
 router.delete('/delete/:channelId', async (req, res)=>{
     try{
         let result=await Channel.findOneAndDelete({_id:req.params.channelId})
@@ -50,4 +53,4 @@ router.delete('/delete/:channelId', async (req, res)=>{
     }
 })
 
-module.exports=router
+module.exports=router;

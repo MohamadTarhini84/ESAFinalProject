@@ -23,7 +23,7 @@ const AdminTable = ({ data }) => {
         <tbody>
 
           {data.map((item) => (
-            <tr key={item.id}>
+            <tr key={item._id}>
               <td>{item._id}</td>
               <td>{item.firstName}</td>
               <td>{item.lastName}</td>

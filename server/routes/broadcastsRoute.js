@@ -13,6 +13,7 @@ function handleErrors(error){
     return err
 }
 
+// get all broadcasts
 router.get('/all',async (req,res)=>{
     const page=req.query.page || 0
     const broadcastsPerPage=30
@@ -26,6 +27,7 @@ router.get('/all',async (req,res)=>{
     }
 })
 
+// get one broadcast
 router.get('/single/:broadcastId',async (req,res)=>{
     try{
         let broadcast=await Broadcast.find({_id:req.params.broadcastId})
@@ -36,6 +38,7 @@ router.get('/single/:broadcastId',async (req,res)=>{
     }
 })
 
+// add new broadcast
 router.post('/new', upload.fields([{name:'image'}]), async (req,res)=>{
     const newBroadcast=new Broadcast({
         title:req.body.title,
@@ -53,6 +56,7 @@ router.post('/new', upload.fields([{name:'image'}]), async (req,res)=>{
     }
 })
 
+// edit broadcast
 router.patch('/edit/:broadcastId', async (req,res)=>{
     let broadcast={}
 
@@ -71,6 +75,7 @@ router.patch('/edit/:broadcastId', async (req,res)=>{
     }
 })
 
+// search for broadcast
 router.get('/search', async (req, res)=>{
     let match=new RegExp(req.query.value, 'i')
     
@@ -83,6 +88,7 @@ router.get('/search', async (req, res)=>{
     }
 })
 
+// delete broadcast
 router.delete('/delete/:broadcastId', async (req,res)=>{
     try{
         let result=await Broadcast.findOneAndDelete({_id:req.params.broadcastId})
@@ -93,3 +99,4 @@ router.delete('/delete/:broadcastId', async (req,res)=>{
     }
 })
 
+module.exports=router;
