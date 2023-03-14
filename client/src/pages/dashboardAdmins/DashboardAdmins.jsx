@@ -9,9 +9,6 @@ function DashboardAdmins() {
 
     useEffect(() => {
         const fetchData = async () => {
-            // const res = await axios.get("http://localhost:3001/api/user/all");
-            // console.log(res.data); // log the data to the console
-            // setData(res.data);
             const res = await axios.get("http://localhost:3001/api/user/all");
             console.log(res); // log the entire response object
             setData(res.data);
