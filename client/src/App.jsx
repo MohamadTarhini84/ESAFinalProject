@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import NavBar from './components/main/navBar'
 import Signup from './pages/signUp/signUp';
 import Signin from './pages/signIn/signIn';
@@ -27,7 +27,7 @@ const App = () => {
           <NavBar/>
           <Routes>
             <Route path='/home' element={(<Home/>)}/>
-            <Route path='/watch' element={<Watch/>}/>
+            <Route path='/watch/:id' element={<Watch/>}/>
             <Route path='/subscribe' element={<Subscribe/>}/>
             {/* signUp  */}
             <Route path="/signup" element={(<Signup />)} />
@@ -43,7 +43,7 @@ const App = () => {
            
             {/* test  */}
             <Route path='/test' element={<DashboardBroadcast />}/>
-           
+           <Route path='*' element={<Navigate to='/home'/>}/>
 
           </Routes>
         </div>
