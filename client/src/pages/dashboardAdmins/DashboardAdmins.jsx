@@ -16,6 +16,11 @@ function DashboardAdmins() {
         fetchData();
     }, []);
 
+    const filtered = data.filter(user => {
+        return user.isAdmin == true;
+    });
+    console.log(filtered);
+
     return (
         <div>
             <div className="search-from-users-list">
@@ -26,7 +31,7 @@ function DashboardAdmins() {
                     <input type="search" placeholder="Search" />
                 </div>
             </div>
-            <AdminTable data={data} />
+            <AdminTable data={filtered} />
         </div>
     );
 
