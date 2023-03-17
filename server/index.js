@@ -1,9 +1,10 @@
 const express = require('express');
-const authRoutes = require('./routes/AuthRoute');
-const userRoutes = require('./routes/UserRoute');
+const authRoute = require('./routes/AuthRoute');
+const userRoute = require('./routes/UserRoute');
 const subRoute = require('./routes/subsRoute');
 const connect = require('./config/db');
-const packageRoute = require('./routes/packagesRoute');
+const packagesRoute = require('./routes/packagesRoute');
+const channelsRoute=require('./routes/channelsRoute')
 const cors = require('cors');
 
 const app = express()//creates an express app
@@ -27,10 +28,11 @@ app.use('*/assets', express.static(__dirname + '/assets'))
 
 //routes
 app.use(express.urlencoded({ extended: true }))
-app.use('/api/auth', authRoutes)
-app.use('/api/user', userRoutes)
+app.use('/api/auth', authRoute)
+app.use('/api/user', userRoute)
 app.use('/api/subscribe', subRoute)
-app.use('/api/packages', packageRoute)
+app.use('/api/packages', packagesRoute)
+app.use('/api/channels',channelsRoute)
 
 // connect to db
 

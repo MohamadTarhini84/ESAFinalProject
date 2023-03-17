@@ -25,6 +25,17 @@ router.get('/all',async (req, res)=>{
     }
 })
 
+router.get('/single/:channelId',async (req,res)=>{
+    try{
+        let channel=await Channel.findOne({_id:req.params.channelId})
+        res.status(200).json(channel)
+    } catch (error){
+        // const errors= handleErrors(error)
+        res.status(401).json({error})
+        // console.log(error)
+    }
+})
+
 // upload channel logo
 router.post('/new', upload.fields([{name:'image'}]), async (req, res)=>{
     try{
