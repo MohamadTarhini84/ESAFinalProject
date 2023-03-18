@@ -1,10 +1,25 @@
 import "./dashboardDigitalInfo.css";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faBox, faUserCheck, faTv, faSackDollar } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 function DashboardDigitalInfo() {
+
+    const [users, setUsers] = useState([]);
+    const [packages, setPackages] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const allUsers = await axios.get("http://localhost:3001/api/user/all");
+            const packages = await axios.get("http://localhost:3001/api/packages/all");
+
+            setUsers(allUsers.data);
+            setPackages(packages.data);
+        };
+        fetchData();
+    }, []);
 
     return (
         <div className="digital-info-container w-full">
@@ -20,7 +35,7 @@ function DashboardDigitalInfo() {
                             </div>
                         </div>
                         <div className="card-value">
-                            186784
+                            {users.length}
                         </div>
                     </div>
                     <div className="digital-info-side">
@@ -33,7 +48,7 @@ function DashboardDigitalInfo() {
                             </div>
                         </div>
                         <div className="card-value">
-                            3
+                            {packages.length}
                         </div>
                     </div>
                 </div>
