@@ -10,12 +10,12 @@ function Watch(){
 
     useEffect(()=>{
         try{
-            axios.get('http://localhost:3001/api/broadcast/single/'+id)
-                .then((res)=>{setMedia(res.data)})
+            // axios.get('http://localhost:3001/api/broadcast/single/'+id)
+            //     .then((res)=>{setMedia(res.data)})
         } catch(error){
             console.log(error)
         }
-        // setMedia({title:"real madrid vs barcelona",category:"sports",channel:"641431a47c134d16ebaf5617",path:id})
+        setMedia({title:"real madrid vs barcelona",category:"sports",channel:"641431a47c134d16ebaf5617",path:id})
     },[])
     return (
         <div className="w-full min-h-screen bg-amber-200 dark:bg-amber-900">
@@ -32,7 +32,7 @@ function Watch(){
                 <div className="w-11/12 sm:min-h-80 bg-gray-200 dark:bg-stone-800 flex flex-col mt-20 justify-between 
                             sm:justify-evenly items-center sm:gap-8 rounded-lg shadow-lg sm:p-12">
                         <iframe className="w-full sm:w-9/12 aspect-video rounded-sm border-2 border-black dark:border-white shadow-lg"
-                            src={"https://www.youtube.com/embed/"+"MbqSMgMAzxU"} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; 
+                            src={"https://www.youtube.com/embed/"+media.path} title="YouTube video player" allow="accelerometer; autoplay; 
                                 clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     {media && <Details broadcast={media}/>}
                 </div>

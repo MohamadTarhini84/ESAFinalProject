@@ -30,7 +30,7 @@ router.get('/all',async (req,res)=>{
 // get one broadcast
 router.get('/single/:broadcastId',async (req,res)=>{
     try{
-        let broadcast=await Broadcast.find({_id:req.params.broadcastId})
+        let broadcast=await Broadcast.findOne({_id:req.params.broadcastId})
         res.status(200).json(broadcast)
     } catch (error){
         const errors= handleErrors(error)
@@ -39,11 +39,12 @@ router.get('/single/:broadcastId',async (req,res)=>{
 })
 
 // add new broadcast
-router.post('/new', upload.fields([{name:'image'}]), async (req,res)=>{
+router.post('/new', async (req,res)=>{
     const newBroadcast=new Broadcast({
         title:req.body.title,
         category:req.body.category,
-        path:req.files.image[0].path,
+        path:req.body.path,
+        channelName: req.body.channelName,
         channel: req.body.channel
     })
     
@@ -61,10 +62,10 @@ router.patch('/edit/:broadcastId', async (req,res)=>{
     let broadcast={}
 
     if(req.body.title){
-        broadcast.title=req.body.title
+        broadcast['title']=req.body.title
     }
     if(req.body.category){
-        broadcast.category=req.body.category
+        broadcast['category']=req.body.category
     }
     try{
         const oldBroadcast=await Broadcast.findOneAndUpdate({_id:req.params.broadcastId},broadcast)
@@ -78,9 +79,12 @@ router.patch('/edit/:broadcastId', async (req,res)=>{
 // search for broadcast
 router.get('/search', async (req, res)=>{
     let match=new RegExp(req.query.value, 'i')
+
+    const page=req.query.page || 0
+    const broadcastsPerPage=30
     
     try{
-        let results= Broadcast.aggregate([{$match:{$or:[{title:match},{category:match},{channel:match}]}}])
+        let results=await Broadcast.aggregate([{$match:{$or:[{title:match},{category:match},{channelName:match}]}}]).skip(page*broadcastsPerPage).limit(broadcastsPerPage)
         res.status(200).json(results)
     } catch (error){
         const errors= handleErrors(error)

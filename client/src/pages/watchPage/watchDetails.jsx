@@ -10,10 +10,8 @@ function Details(props){
         try{
             axios.get('http://localhost:3001/api/channels/single/'+props.broadcast.channel)
                 .then((res)=>{setChannel(res.data)})
-
-                // console.log(channel)
         } catch(error){
-
+            alert("An error occured: ",error)
         }
     },[])
     return (

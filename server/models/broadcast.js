@@ -13,6 +13,10 @@ const broadcastSchema=mongoose.Schema({
         type:String,
         required:true
     },
+    channelName:{
+        type:String,
+        required:true
+    },
     channel:{
         type:mongoose.Types.ObjectId,
         required:true

@@ -1,4 +1,14 @@
+import Card from '../../components/main/broadcastCard'
+
 function Search(){
+    const broadcast={
+        image:"https://cdn.discordapp.com/attachments/574294825378250752/1086017930778660945/b69iha9c2xna1.jpg",
+        title:"real madrid vs barcelona",
+        category:"sports",
+        channel:"test123",
+        path:"KkY3JGDqMT8"
+    }
+    
     return(
         <div id="main_search" className="w-full p-6 h-auto mt-14 flex flex-col gap-4">
             <h1 className="text-2xl ml-4">Find Broadcasts: </h1>
@@ -8,28 +18,14 @@ function Search(){
                     <input style={{border:"1px solid black"}} id="search_goto" className="w-1/2 p-2 text-black" type="text" placeholder="Enter Title or Genre or Channel"/>
                     <button className="border-2 border-gray-300 rounded-md py-1 px-3">Search</button>
                 </div>
-                <div className="flex flex-wrap justify-center h-auto gap-2 pt-10 ">
-                    <div className="h-52 min-w-40 bg-black">
-                        
-                    </div>
-                    <div className="h-52 min-w-40 bg-black">
-                        
-                    </div>
-                    <div className="h-52 min-w-40 bg-black">
-                        
-                    </div>
-                    <div className="h-52 min-w-40 bg-black">
-                        
-                    </div>
-                    <div className="h-52 min-w-40 bg-black">
-                        
-                    </div>
-                    <div className="h-52 min-w-40 bg-black">
-                        
-                    </div>
-                    <div className="h-52 min-w-40 bg-black">
-                        
-                    </div>
+                <div className="flex flex-wrap justify-center h-auto gap-2 pt-5">
+                    <Card content={broadcast}/>
+                    <Card content={broadcast}/>
+                    <Card content={broadcast}/>
+                    <Card content={broadcast}/>
+                    <Card content={broadcast}/>
+                    <Card content={broadcast}/>
+                    <Card content={broadcast}/>
                 </div>
             </div>
         </div>

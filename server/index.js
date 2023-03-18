@@ -5,6 +5,7 @@ const subRoute = require('./routes/subsRoute');
 const connect = require('./config/db');
 const packagesRoute = require('./routes/packagesRoute');
 const channelsRoute=require('./routes/channelsRoute')
+const broadcastsRoute=require('./routes/broadcastsRoute')
 const cors = require('cors');
 
 const app = express()//creates an express app
@@ -33,6 +34,7 @@ app.use('/api/user', userRoute)
 app.use('/api/subscribe', subRoute)
 app.use('/api/packages', packagesRoute)
 app.use('/api/channels',channelsRoute)
+app.use('/api/broadcasts',broadcastsRoute)
 
 // connect to db
 
