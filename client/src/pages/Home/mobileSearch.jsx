@@ -10,11 +10,6 @@ function MSearch(props){
                 <button className="border-2 border-gray-500 rounded-sm w-1/2 self-end">search</button>
             </div>
             <div className="flex flex-col items-center gap-1">
-                <div className="w-11/12 h-44 rounded-sm bg-black"></div>
-                <div className="w-11/12 h-44 rounded-sm bg-black"></div>
-                <div className="w-11/12 h-44 rounded-sm bg-black"></div>
-                <div className="w-11/12 h-44 rounded-sm bg-black"></div>
-                <div className="w-11/12 h-44 rounded-sm bg-black"></div>
             </div>
         </div>
     )

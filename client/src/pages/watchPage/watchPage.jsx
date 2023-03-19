@@ -3,23 +3,25 @@ import {useParams, Navigate, Link} from'react-router-dom'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import ReportIcon from '@mui/icons-material/Report';
+import RotateRightIcon from '@mui/icons-material/RotateRight';
 
 function Watch(){
     const [media,setMedia]=useState(null)
+    const [isLoading,setLoading]=useState(true)
     const {id}=useParams()
 
     useEffect(()=>{
         try{
-            // axios.get('http://localhost:3001/api/broadcast/single/'+id)
-            //     .then((res)=>{setMedia(res.data)})
+            axios.get('http://localhost:3001/api/broadcasts/single/'+id)
+                .then((res)=>{setMedia(res.data);setLoading(false)})
         } catch(error){
             console.log(error)
         }
-        setMedia({title:"real madrid vs barcelona",category:"sports",channel:"641431a47c134d16ebaf5617",path:id})
     },[])
     return (
         <div className="w-full min-h-screen bg-amber-200 dark:bg-amber-900">
-            {!media && <div className="w-full h-screen flex flex-col justify-center items-center gap-10 text-red-600 dark:text-red-400">
+            {isLoading && <RotateRightIcon className="absolute text-white m-auto left-9 right-0 animate-spin" style={{marginTop:"40vh", fontSize:"160px"}}/>}
+            {!media && !isLoading && <div className="w-full h-screen flex flex-col justify-center items-center gap-10 text-red-600 dark:text-red-400">
                 <ReportIcon style={{fontSize:'150px'}}/>
                 <h1 className="text-4xl">Invalid Video ID</h1>
                 <Link to='/home'>
@@ -28,7 +30,7 @@ function Watch(){
                                 dark:border-white dark:text-white dark:hover:bg-red-400">Return to Home</button>
                 </Link>
             </div>}
-            {media && <div className="w-full flex justify-center items-center">
+            {media && !isLoading && <div className="w-full flex justify-center items-center">
                 <div className="w-11/12 sm:min-h-80 bg-gray-200 dark:bg-stone-800 flex flex-col mt-20 justify-between 
                             sm:justify-evenly items-center sm:gap-8 rounded-lg shadow-lg sm:p-12">
                         <iframe className="w-full sm:w-9/12 aspect-video rounded-sm border-2 border-black dark:border-white shadow-lg"

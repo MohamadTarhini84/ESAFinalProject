@@ -13,24 +13,10 @@ function handleErrors(error){
     return err
 }
 
-// get all broadcasts
-router.get('/all',async (req,res)=>{
-    const page=req.query.page || 0
-    const broadcastsPerPage=30
-
-    try{
-        let broadcasts=await Broadcast.find().skip(page*broadcastsPerPage).limit(broadcastsPerPage)
-        res.status(200).json(broadcasts)
-    } catch (error){
-        const errors= handleErrors(error)
-        res.status(401).json({errors})
-    }
-})
-
 // get one broadcast
 router.get('/single/:broadcastId',async (req,res)=>{
     try{
-        let broadcast=await Broadcast.findOne({_id:req.params.broadcastId})
+        let broadcast=await Broadcast.findOne({path:req.params.broadcastId})
         res.status(200).json(broadcast)
     } catch (error){
         const errors= handleErrors(error)
@@ -68,7 +54,7 @@ router.patch('/edit/:broadcastId', async (req,res)=>{
         broadcast['category']=req.body.category
     }
     try{
-        const oldBroadcast=await Broadcast.findOneAndUpdate({_id:req.params.broadcastId},broadcast)
+        const oldBroadcast=await Broadcast.findOneAndUpdate({_id:mongoose.Types.ObjectId(req.params.broadcastId)},broadcast)
         res.status(200)
     } catch (error){
         const errors= handleErrors(error)
@@ -81,7 +67,7 @@ router.get('/search', async (req, res)=>{
     let match=new RegExp(req.query.value, 'i')
 
     const page=req.query.page || 0
-    const broadcastsPerPage=30
+    const broadcastsPerPage=5
     
     try{
         let results=await Broadcast.aggregate([{$match:{$or:[{title:match},{category:match},{channelName:match}]}}]).skip(page*broadcastsPerPage).limit(broadcastsPerPage)
@@ -95,7 +81,7 @@ router.get('/search', async (req, res)=>{
 // delete broadcast
 router.delete('/delete/:broadcastId', async (req,res)=>{
     try{
-        let result=await Broadcast.findOneAndDelete({_id:req.params.broadcastId})
+        let result=await Broadcast.findOneAndDelete({_id:mongoose.Types.ObjectId(req.params.broadcastId)})
         res.status(200)
     } catch (error){
         const errors= handleErrors(error)

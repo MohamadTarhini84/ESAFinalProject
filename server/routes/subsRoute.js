@@ -6,6 +6,7 @@ const User=require('../models/user')
 const Package=require('../models/package')
 const Stripe=require('stripe').default
 const stripe = new Stripe(process.env.STRIPE_KEY)
+const mongoose=require('mongoose')
 
 function handleErrors(error){
     let err={}
@@ -27,7 +28,7 @@ function handleErrors(error){
 
 router.get('/subscribe/:packageId', async (req, res)=>{
     try{
-        let packageDetails=await Package.findOne({_id:req.params.packageId})
+        let packageDetails=await Package.findOne({_id:mongoose.Types.ObjectId(req.params.packageId)})
         console.log(packageDetails)
         let session=await stripe.checkout.sessions.create({
             payment_method_types:['card'],
