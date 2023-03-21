@@ -17,10 +17,10 @@ const broadcastSchema=mongoose.Schema({
         type:String,
         required:true
     },
-    channel:{
-        type:mongoose.Types.ObjectId,
-        required:true
-    }
+    // channel:{
+    //     type:mongoose.Types.ObjectId,
+    //     required:true
+    // }
 })
 
 module.exports=mongoose.model('broadcast',broadcastSchema)

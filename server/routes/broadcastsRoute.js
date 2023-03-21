@@ -26,12 +26,13 @@ router.get('/single/:broadcastId',async (req,res)=>{
 
 // add new broadcast
 router.post('/new', async (req,res)=>{
+    console.log(req.body);
     const newBroadcast=new Broadcast({
         title:req.body.title,
         category:req.body.category,
         path:req.body.path,
         channelName: req.body.channelName,
-        channel: req.body.channel
+       // channel: req.body.channel
     })
     
     try{

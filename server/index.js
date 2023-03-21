@@ -21,12 +21,6 @@ app.use(express.json())
 app.use('*/assets', express.static(__dirname + '/assets'))
 
 
-
-// app.use((req,res,next)=>{
-//     console.log(req.path,req.method)
-//     next()
-// })
-
 //routes
 app.use(express.urlencoded({ extended: true }))
 app.use('/api/auth', authRoute)
