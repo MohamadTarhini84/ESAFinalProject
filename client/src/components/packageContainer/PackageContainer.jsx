@@ -1,10 +1,20 @@
 import "./packageContainer.css";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
-
+import axios from 'axios';
 
 const PackageContainer = ({ data }) => {
+
+    const handleDelete = (id) => {
+        console.log(`http://localhost:3001/api/packages/delete/${id}`);
+        axios.delete(`http://localhost:3001/api/packages/delete/${id}`)
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      };
 
     return (
         <div className="all-packages-container">
@@ -25,7 +35,7 @@ const PackageContainer = ({ data }) => {
                             <button className="package-button">
                                 <FontAwesomeIcon className="fa-icon" icon={faPenToSquare}></FontAwesomeIcon>
                             </button>
-                            <button>
+                            <button onClick={() => handleDelete(item._id)}>
                                 <FontAwesomeIcon className="fa-icon" icon={faTrash}></FontAwesomeIcon>
                             </button>
                         </div>

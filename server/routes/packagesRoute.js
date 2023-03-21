@@ -38,7 +38,6 @@ router.post('/new', upload.fields([{ name: 'image' }]), async (req, res) => {
     if (req.files.image) {
         newPackage['background'] = req.files.image[0].path
     }
-    // image is req?
 
     try {
         let create = await Package.create(newPackage)
@@ -50,14 +49,28 @@ router.post('/new', upload.fields([{ name: 'image' }]), async (req, res) => {
 })
 
 // delete package
+// router.delete('/delete/:packageId', async (req, res) => {
+//     try {
+//         let result = await Broadcast.findOneAndDelete({ _id: req.params.packageId })
+//         res.status(200)
+//     } catch (error) {
+//         const errors = handleErrors(error)
+//         res.status(401).json({ errors })
+//     }
+// })
+
 router.delete('/delete/:packageId', async (req, res) => {
     try {
-        let result = await Broadcast.findOneAndDelete({ _id: req.params.packageId })
-        res.status(200)
+        let result = await Package.findOneAndDelete({ _id: req.params.packageId })
+        if (!result) {
+            return res.status(404).json({ message: 'Package not found' })
+        }
+        res.status(200).json({ message: 'Package deleted successfully' })
     } catch (error) {
         const errors = handleErrors(error)
         res.status(401).json({ errors })
     }
 })
+
 
 module.exports = router;
