@@ -9,14 +9,17 @@ function DashboardDigitalInfo() {
 
     const [users, setUsers] = useState([]);
     const [packages, setPackages] = useState([]);
+    const [channels, setChannels] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             const allUsers = await axios.get("http://localhost:3001/api/user/all");
             const packages = await axios.get("http://localhost:3001/api/packages/all");
+            const channels = await axios.get("http://localhost:3001/api/channels/all");
 
             setUsers(allUsers.data);
             setPackages(packages.data);
+            setChannels(channels.data);
         };
         fetchData();
     }, []);
@@ -76,7 +79,7 @@ function DashboardDigitalInfo() {
                             </div>
                         </div>
                         <div className="card-value">
-                            157
+                            {channels.length}
                         </div>
                     </div>
                 </div>

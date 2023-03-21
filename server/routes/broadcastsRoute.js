@@ -13,6 +13,17 @@ function handleErrors(error){
     return err
 }
 
+// get all broadcasts
+router.get('/all',async (req, res)=>{
+    try{
+        let broadcasts=await Broadcast.find()
+        res.status(200).json(broadcasts)
+    } catch (error){
+        const errors= handleErrors(error)
+        res.status(401).json({errors})
+    }
+})
+
 // get one broadcast
 router.get('/single/:broadcastId',async (req,res)=>{
     try{

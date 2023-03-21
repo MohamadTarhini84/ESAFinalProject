@@ -20,7 +20,6 @@ app.use(express.json())
 
 app.use('*/assets', express.static(__dirname + '/assets'))
 
-
 //routes
 app.use(express.urlencoded({ extended: true }))
 app.use('/api/auth', authRoute)
@@ -31,6 +30,4 @@ app.use('/api/channels',channelsRoute)
 app.use('/api/broadcasts',broadcastsRoute)
 
 // connect to db
-
 connect(app)
-

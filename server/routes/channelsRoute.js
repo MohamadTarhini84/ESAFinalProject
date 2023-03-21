@@ -1,8 +1,8 @@
 const router=require("express").Router()
-const mongoose=require("mongoose")
-const upload=require('../controllers/uploadController')
-const Channel=require('../models/channel')
-const Broadcast=require('../models/broadcast')
+const mongoose=require("mongoose");
+const upload=require('../controllers/uploadController');
+const Channel=require('../models/channel');
+const Broadcast=require('../models/broadcast');
 
 function handleErrors(error){
     let err={}
@@ -25,6 +25,7 @@ router.get('/all',async (req, res)=>{
     }
 })
 
+// get one channel
 router.get('/single/:channelId',async (req,res)=>{
     try{
         let channel=await Channel.findOne({_id:req.params.channelId})
