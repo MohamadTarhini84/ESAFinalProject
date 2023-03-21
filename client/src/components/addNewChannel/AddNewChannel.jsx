@@ -2,6 +2,7 @@ import "./addNewChannel.css";
 import { useState } from 'react';
 
 function AddNewChannel() {
+
   const [name, setName] = useState("");
   const [logo, setLogo] = useState(null);
 
