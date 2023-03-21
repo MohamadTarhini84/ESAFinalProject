@@ -1,5 +1,5 @@
 :root{
-    --brown:#CA8A04;
+    --brown:#9a3412;
     --white: #FDE68A;
     --dark:#000;
     --light:rgb(173, 173, 173);
@@ -12,8 +12,8 @@
 }
 
 #logo-signin{
-    width:500px;
-    height:500px;
+    height:100vh;
+    aspect-ratio: 1/1;
     position:absolute;
     right:0;
     overflow:unset;
@@ -183,7 +183,6 @@ input, select{
     color:#fff;
     border-radius:10px;
     background-color:var(--brown);
-    font-size:13px;
     cursor:pointer;
     transition:all 0.5s;
     letter-spacing: 2px;
@@ -191,14 +190,6 @@ input, select{
 
 .login_btn button:hover{
     background-color:#d6ba2c;
-}
-
-.create{
-    margin-top:30px;
-    text-align:center;
-    text-decoration:none;
-    font-size:13px;
-    font-weight:700
 }
 
 .margin{

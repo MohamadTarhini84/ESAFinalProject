@@ -8,14 +8,14 @@ import KeyboardDoubleArrowDown from '@mui/icons-material/KeyboardDoubleArrowDown
 function Search(){
     const [results, setResults]=useState([])
     const [isLoading, setLoading]=useState(true)
-    const [showMore, setShowMore]=useState(true)
+    const [showMore, setShowMore]=useState(false)
     const [searchValue,setSearchValue]=useState("")
     const [page, setPage]=useState(0)
     const [newSearch,setNewSearch]=useState(false)
 
     function submitSearch(){
         try{
-            // setLoading(true)
+            setLoading(true)
             axios.get('http://localhost:3001/api/broadcasts/search?value='+searchValue+'&page='+page)
                 .then((res)=>{
                     if(newSearch){
@@ -24,7 +24,8 @@ function Search(){
                     } else{
                         setResults(results.concat(res.data))
                     }
-                    setPage(page+1);setLoading(false)
+                    setPage(page+1)
+                    setLoading(false)
                     if(res.data.length<5){
                         setShowMore(false)
                     }else{
@@ -65,7 +66,7 @@ function Search(){
                         <h1 className='border border-black dark:border-white px-2 mb-2 hover:bg-black hover:text-white 
                             dark:hover:bg-white dark:hover:text-black rounded-md'>show more</h1>
                         <KeyboardDoubleArrowDown className='animate-bounce'/></button>}
-                    {results.length==0 && <p className='my-6'>No available broadcasts matched your search!</p>}
+                    {results.length==0 && <p className='my-6 text-2xl'>No available broadcasts matched your search!</p>}
                     {isLoading && <RotateRightIcon className="absolute text-white m-auto left-0 right-0 animate-spin" style={{fontSize:"160px"}}/>}
                 </div>
             </div>

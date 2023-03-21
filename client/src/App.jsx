@@ -11,6 +11,7 @@ import Subscribe from './pages/subscribe/subscribePage';
 import { useContext } from 'react'
 import { themeContext } from './context/themeContext';
 import Admin from './pages/adminPage/admin';
+import { AuthContextProvider } from './context/AuthContext';
 
 
 import DashboardBroadcast from './pages/dashboardBroadcast/DashboardBroadcast';
@@ -22,6 +23,7 @@ const App = () => {
   return (
     
     <div>
+      <AuthContextProvider>
       <BrowserRouter>
         <div className={theme?"":"dark"}>
           <NavBar/>
@@ -48,6 +50,7 @@ const App = () => {
           </Routes>
         </div>
       </BrowserRouter>
+      </AuthContextProvider>
     </div>
 
   );
