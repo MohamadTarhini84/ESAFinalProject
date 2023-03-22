@@ -6,7 +6,6 @@ import axios from 'axios';
 const PackageContainer = ({ data }) => {
 
     const handleDelete = (id) => {
-        console.log(`http://localhost:3001/api/packages/delete/${id}`);
         axios.delete(`http://localhost:3001/api/packages/delete/${id}`)
           .then(response => {
             console.log(response.data);

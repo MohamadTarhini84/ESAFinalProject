@@ -1,9 +1,19 @@
 import "./allUsersTable.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-
+import axios from 'axios';
 
 const AllUsersTable = ({ data }) => {
+
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:3001/api/user/${id}`)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="table-container">
@@ -29,7 +39,7 @@ const AllUsersTable = ({ data }) => {
               <td>{item.email}</td>
               <td>{item.isAdmin ? 'Yes' : 'No'}</td> {/* Display 'Yes' if isAdmin is true, and 'No' if it's false */}
               <td>
-                <button>
+                <button onClick={() => handleDelete(item._id)}>
                   <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
                 </button>
               </td>

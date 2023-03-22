@@ -15,7 +15,6 @@ const getAllUsers = async (req, res) => {
   }
 }
 
-
 // get a User
 const getUser = async (req, res) => {
   const id = req.params.id;
@@ -57,22 +56,21 @@ const UpdateUser = async (req, res) => {
   }
 };
 
-
 // Delete user
 const DeleteUser = async (req, res) => {
   const id = req.params.id;
   const userId = req.body;
 
-  if (userId === id) {
-    try {
-      await User.findOneAndDelete({ _id: id });
-      res.status(200).json("User deleted successfully");
-    } catch (error) {
-      res.status(500).json(error);
-    }
-  } else {
-    res.status(403).json("Access Denied! you can only delete your own profile");
+  // if (userId === id) {
+  try {
+    await User.findOneAndDelete({ _id: id });
+    res.status(200).json("User deleted successfully");
+  } catch (error) {
+    res.status(500).json(error);
   }
+  // } else {
+  //   res.status(403).json("Access Denied! you can only delete your own profile");
+  // }
 };
 
 // Make Admin

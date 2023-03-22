@@ -1,9 +1,29 @@
 import "./usersTable.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
-
+import axios from 'axios';
 
 const UsersTable = ({ data }) => {
+
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:3001/api/user/${id}`)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  const handleUpdate = (id) => {
+    axios.patch(`http://localhost:3001/api/user/makeAdmin/${id}`)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="table-container">
@@ -28,12 +48,12 @@ const UsersTable = ({ data }) => {
               <td>{item.lastName}</td>
               <td>{item.email}</td>
               <td>
-                <button>
+                <button onClick={() => handleUpdate(item._id)}>
                   <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
                 </button>
               </td>
               <td>
-                <button>
+                <button onClick={() => handleDelete(item._id)}>
                   <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
                 </button>
               </td>
