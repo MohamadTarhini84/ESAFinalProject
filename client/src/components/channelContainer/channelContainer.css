@@ -1,3 +1,8 @@
+.all-channels-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .channel-container{
     background-color: #FDE047;
     width: 30%;
@@ -24,7 +29,6 @@
 .channel-footer{
     display: flex;
 }
-
 
 /* .channel-name span{
     padding: 2%;

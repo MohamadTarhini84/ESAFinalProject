@@ -49,17 +49,6 @@ router.post('/new', upload.fields([{ name: 'image' }]), async (req, res) => {
 })
 
 // delete package
-// router.delete('/delete/:packageId', async (req, res) => {
-//     try {
-//         let result = await Broadcast.findOneAndDelete({ _id: req.params.packageId })
-//         res.status(200)
-//     } catch (error) {
-//         const errors = handleErrors(error)
-//         res.status(401).json({ errors })
-//     }
-// })
-
-// delete package
 router.delete('/delete/:packageId', async (req, res) => {
     try {
         let result = await Package.findOneAndDelete({ _id: req.params.packageId })

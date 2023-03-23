@@ -13,7 +13,6 @@ function DashboardPackages() {
     useEffect(() => {
         const fetchData = async () => {
             const res = await axios.get("http://localhost:3001/api/packages/all");
-            console.log(res); // log the entire response object
             setData(res.data);
         };
         fetchData();
@@ -22,9 +21,9 @@ function DashboardPackages() {
     return (
         <div>
             <AddNewPackage />
-            <div className="dash-pack-c">
-                    <PackageContainer data={data} />
-            </div>
+            <PackageContainer data={data} />
+            {/* <div className="dash-pack-c">
+            </div> */}
         </div>
     )
 }

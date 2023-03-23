@@ -8,6 +8,7 @@ import axios from "axios";
 function DashboardHome() {
 
     const [data, setData] = useState([]);
+    const [refresh, setRefresh] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -15,13 +16,13 @@ function DashboardHome() {
             setData(res.data);
         };
         fetchData();
-    }, []);
+    }, [refresh]);
 
     return (
         <div className="dashboardHome">
             <DashboardDigitalInfo />
             <p className="table-title">All Users:</p>
-            <AllUsersTable data={data} className="users-table" />
+            <AllUsersTable refresh={(e) => {setRefresh(e)}} batata={refresh} data={data} className="users-table" />
         </div>
     )
 }

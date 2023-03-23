@@ -3,12 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-const AllUsersTable = ({ data }) => {
+
+const AllUsersTable = ({ data, refresh, batata }) => {
 
   const handleDelete = (id) => {
     axios.delete(`http://localhost:3001/api/user/${id}`)
       .then(response => {
         console.log(response.data);
+        refresh(batata + 1)
       })
       .catch(error => {
         console.log(error);
