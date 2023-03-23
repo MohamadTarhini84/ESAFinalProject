@@ -1,10 +1,11 @@
 .all-packages-container{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .package-container{
     background-color: #FDE047;
-    width: 100%;
+    width: 30%;
     box-shadow:0 15px 30px rgba(0,0,0,0.1);
     border-radius: 10px;
     margin: 1%;
@@ -21,22 +22,6 @@
 
 .package-footer{
     margin: 0% 3%;
+    display: flex;
     justify-content: space-between;
-    display: flex;
-}
-
-.package-name{
-    flex: 50%;
-}
-
-.package-buttons{
-    display: flex;
-}
-
-.package-name span{
-    padding: 2%;
-}
-
-.package-button{
-    margin: 0% 3%;
 }

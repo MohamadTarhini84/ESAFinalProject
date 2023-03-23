@@ -1,7 +1,8 @@
 import "./addNewBroadcast.css";
 import { useState } from 'react';
 
-function AddNewBroadcast() {
+
+const AddNewBroadcast = ({ data }) => {
 
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
@@ -74,10 +75,9 @@ function AddNewBroadcast() {
                         <div className="select-channel input_text flex-css">
                             <select value={channel} onChange={handleChannel}>
                                 <option selected hidden> Select Channel </option>
-                                <option value="mbc"> mbc </option>
-                                <option value="cnn"> CNN </option>
-                                <option value="bbc"> BBC </option>
-                                <option value="bein"> Be In </option>
+                                {data.map((item) => (
+                                    <option value={item.name}> {item.name} </option>
+                                ))}
                             </select>
                         </div>
                     </div>

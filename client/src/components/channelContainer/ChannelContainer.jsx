@@ -1,9 +1,20 @@
 import "./channelContainer.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 
 const ChannelContainer = ({ data }) => {
+
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:3001/api/channels/delete/${id}`)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
 
     return (
         <div className="all-channels-container">
@@ -11,7 +22,7 @@ const ChannelContainer = ({ data }) => {
                 <div key={item._id} className="channel-container">
                     <br />
                     <div className="channel-logo">
-                        <img src={"http://localhost:3001/"+ item.logo } alt="Logo" />
+                        <img className="logo-css" src={"http://localhost:3001/" + item.logo} alt="Logo" />
                     </div>
                     <div className="channel-footer">
                         <div className="channel-name">
@@ -23,7 +34,7 @@ const ChannelContainer = ({ data }) => {
                                 <FontAwesomeIcon className="fa-icon" icon={faPenToSquare}></FontAwesomeIcon>
                             </button>
 
-                            <button>
+                            <button onClick={() => handleDelete(item._id)}>
                                 <FontAwesomeIcon className="fa-icon" icon={faTrash}></FontAwesomeIcon>
                             </button>
 

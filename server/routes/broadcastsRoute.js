@@ -9,7 +9,7 @@ function handleErrors(error){
     Object.values(error.errors).forEach(({properties})=>{
         err[properties.path]=properties.message
     })
-
+    
     return err
 }
 

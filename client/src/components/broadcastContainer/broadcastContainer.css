@@ -1,3 +1,8 @@
+.all-broadcasts-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .broadcast-container{
     background-color: #FDE047;
     width: 30%;

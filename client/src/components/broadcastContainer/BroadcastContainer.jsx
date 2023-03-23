@@ -1,33 +1,49 @@
 import "./broadcastContainer.css";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 
-function BroadcastContainer() {
+const BroadcastContainer = ({ broadcast }) => {
+
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:3001/api/broadcasts/delete/${id}`)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
 
     return (
-        <div className="broadcast-container">
-            <br />
-            <div className="broadcast-live">
-            broadcast <br />
-            </div>
-            <div className="broadcast-footer">
-                <div className="broadcast-title">
-                    <span>broadcast Title</span>
+        <div className="all-broadcasts-container">
+            {broadcast.map((item) => (
+                <div className="broadcast-container">
+                    <br />
+                    <div className="broadcast-live">
+                        Category: {item.category} <br />
+                        Channel: {item.channelName} <br />
+                        Path: {item.path} <br />
+                    </div>
+                    <div className="broadcast-footer">
+                        <div className="broadcast-title">
+                            <span>{item.title}</span>
+                        </div>
+                        <div className="broadcast-buttons">
+
+                            <button className="broadcast-button">
+                                <FontAwesomeIcon className="fa-icon" icon={faPenToSquare}></FontAwesomeIcon>
+                            </button>
+
+                            <button onClick={() => handleDelete(item._id)}>
+                                <FontAwesomeIcon className="fa-icon" icon={faTrash}></FontAwesomeIcon>
+                            </button>
+
+                        </div>
+                    </div>
                 </div>
-                <div className="broadcast-buttons">
-
-                    <button className="broadcast-button">
-                        <FontAwesomeIcon className="fa-icon" icon={faPenToSquare}></FontAwesomeIcon>
-                    </button>
-
-                    <button>
-                        <FontAwesomeIcon className="fa-icon" icon={faTrash}></FontAwesomeIcon>
-                    </button>
-
-                </div>
-            </div>
+            ))}
         </div>
     )
 }

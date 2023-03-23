@@ -12,11 +12,17 @@
 }
 
 .channel-logo{
-    background-color:#D9D9D9;
+    /* background-color:#D9D9D9; */
     border-radius: 10px;
-    padding: 2%;
-    width: 90%;
+    padding: 1%;
     margin: auto;
+}
+
+.logo-css{
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    justify-content: center;
     text-align: center;
 }
 
@@ -26,14 +32,3 @@
     justify-content: space-between;
 }
 
-.channel-footer{
-    display: flex;
-}
-
-/* .channel-name span{
-    padding: 2%;
-}
-
-.channel-button{
-    margin: 0% 3%;
-} */
