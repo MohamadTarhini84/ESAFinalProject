@@ -17,16 +17,17 @@ function Featured(props){
     })
     
     return(
-        <div id='main_featured' className={` text-black flex flex-col justify-end w-full dark:text-white ${props.className}`}>
+        <div className={`h-52 sm:h-full mt-10 text-black flex flex-col justify-end w-full dark:text-white ${props.className}
+                        sm:mt-0 sm:p-16 sm:px-56 bg-gray-100 dark:bg-orange-900 shadow-lg`}>
             <span ref={test}></span>
-            <Slide>
-                <div className="w-full height-80 transition-all bg-gray-200">
+            <Slide className='h-full'>
+                <div className="w-full h-full transition-all bg-gray-200">
                     <img className='w-full h-full' src='https://i.ytimg.com/vi/qBPod1HLbw0/maxresdefault.jpg'/>
                 </div>
-                <div className="w-full height-80 transition-all bg-gray-200">
+                <div className="w-full h-full transition-all bg-gray-200">
                     <img className='w-full h-full' src='https://i.ytimg.com/vi/R4aDGpUOZdI/maxresdefault.jpg'/>
                 </div>
-                <div className="w-full height-80 transition-all bg-gray-200">
+                <div className="w-full h-full transition-all bg-gray-200">
                     <img className='w-full h-full' src='https://i.ytimg.com/vi/N6Ure2n5yD8/maxresdefault.jpg'/>
                 </div>
             </Slide>

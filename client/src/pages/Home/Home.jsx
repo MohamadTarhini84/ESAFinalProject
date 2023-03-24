@@ -6,8 +6,8 @@ function Home(){
 
     return (
         <div className='App font-mono'>
-        <div className='w-full bg-gradient-to-b from-amber-200 to-amber-100 dark:from-orange-900 
-                        dark:via-orange-900 dark:to-amber-900 flex flex-col items-center dark:text-white'>
+        <div className='w-full bg-gradient-to-b from-amber-200 to-amber-100 dark:from-stone-900 
+                        dark:via-stone-900 dark:to-stone-800 flex flex-col items-center dark:text-white'>
             <Featured/>
             <MSearch className="sm:hidden"/>
             <Search/>
