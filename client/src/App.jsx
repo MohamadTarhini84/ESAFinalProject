@@ -18,8 +18,6 @@ import DashboardBroadcast from './pages/dashboardBroadcast/DashboardBroadcast';
 const App = () => {
   const {theme}=useContext(themeContext)
 
-  // axios.get('/tasks', {headers:{authorization:`Bearer ${user.token}`}})
-
   return (
     
     <div>
