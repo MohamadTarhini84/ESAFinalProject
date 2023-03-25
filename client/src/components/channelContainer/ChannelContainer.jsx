@@ -4,12 +4,13 @@ import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
 
-const ChannelContainer = ({ data }) => {
+const ChannelContainer = ({ data, refresh, i }) => {
 
     const handleDelete = (id) => {
         axios.delete(`http://localhost:3001/api/channels/delete/${id}`)
             .then(response => {
                 console.log(response.data);
+                refresh(i + 1);
             })
             .catch(error => {
                 console.log(error);

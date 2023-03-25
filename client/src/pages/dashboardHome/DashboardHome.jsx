@@ -4,7 +4,6 @@ import AllUsersTable from '../../components/allUsersTable/AllUsersTable';
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 function DashboardHome() {
 
     const [data, setData] = useState([]);

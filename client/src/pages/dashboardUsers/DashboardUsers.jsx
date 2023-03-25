@@ -1,4 +1,5 @@
 import './dashboardUsers.css';
+
 import UsersTable from '../../components/usersTable/UsersTable';
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -6,15 +7,15 @@ import axios from "axios";
 function DashboardUsers() {
 
     const [data, setData] = useState([]);
+    const [refresh, setRefresh] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
             const res = await axios.get("http://localhost:3001/api/user/all");
-            //console.log(res); // log the entire response object
             setData(res.data);
         };
         fetchData();
-    }, []);
+    }, [refresh]);
 
     const filtered = data.filter(user => {
         return user.isAdmin == false;
@@ -31,7 +32,7 @@ function DashboardUsers() {
                     <input type="search" placeholder="Search" />
                 </div>
             </div>
-            <UsersTable data={filtered} />
+            <UsersTable refresh={(e) => {setRefresh(e)}} i={refresh} data={filtered} />
         </div>
     )
 }

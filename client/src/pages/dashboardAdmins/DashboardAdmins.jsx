@@ -6,6 +6,7 @@ import axios from "axios";
 function DashboardAdmins() {
 
     const [data, setData] = useState([]);
+    const [refresh, setRefresh] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -14,7 +15,7 @@ function DashboardAdmins() {
             setData(res.data);
         };
         fetchData();
-    }, []);
+    }, [refresh]);
 
     const filtered = data.filter(user => {
         return user.isAdmin == true;
@@ -31,7 +32,7 @@ function DashboardAdmins() {
                     <input type="search" placeholder="Search" />
                 </div>
             </div>
-            <AdminTable data={filtered} />
+            <AdminTable refresh={(e) => {setRefresh(e)}} i={refresh} data={filtered} />
         </div>
     );
 

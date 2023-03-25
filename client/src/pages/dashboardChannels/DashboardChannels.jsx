@@ -8,6 +8,7 @@ import axios from "axios";
 function DashboardChannels() {
 
     const [data, setData] = useState([]);
+    const [refresh, setRefresh] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -15,7 +16,7 @@ function DashboardChannels() {
             setData(res.data);
         };
         fetchData();
-    }, []);
+    }, [refresh]);
 
     return (
         <div className='flex flex-col w-full h-full'>
@@ -23,7 +24,7 @@ function DashboardChannels() {
             <div className="channel-search">
                 <input type="search" placeholder="Search" />
             </div>
-            <ChannelContainer data={data} />
+            <ChannelContainer refresh={(e) => {setRefresh(e)}} i={refresh} data={data} />
         </div>
     )
 }

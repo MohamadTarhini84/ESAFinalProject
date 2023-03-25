@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-const UsersTable = ({ data }) => {
+const UsersTable = ({ data, refresh, i }) => {
 
   const handleDelete = (id) => {
     axios.delete(`http://localhost:3001/api/user/${id}`)
       .then(response => {
         console.log(response.data);
+        refresh(i + 1)
       })
       .catch(error => {
         console.log(error);
@@ -19,6 +20,7 @@ const UsersTable = ({ data }) => {
     axios.patch(`http://localhost:3001/api/user/makeAdmin/${id}`)
       .then(response => {
         console.log(response.data);
+        refresh(i + 1)
       })
       .catch(error => {
         console.log(error);

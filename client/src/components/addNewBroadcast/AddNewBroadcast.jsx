@@ -25,14 +25,8 @@ const AddNewBroadcast = ({ data }) => {
         setLink(event.target.value);
     }
 
-
     function handleSubmit(event) {
         event.preventDefault();
-        // const formData = new FormData();
-        // formData.append("title", title);
-        // formData.append("category", category);
-        // formData.append("channel", channel);
-        // formData.append("link", link);
 
         fetch('http://localhost:3001/api/broadcasts/new', {
             method: "POST",

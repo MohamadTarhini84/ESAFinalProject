@@ -25,3 +25,15 @@
     display: flex;
     justify-content: space-between;
 }
+
+.package-background{
+    margin: 5%;
+}
+
+.background-css{
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+}
