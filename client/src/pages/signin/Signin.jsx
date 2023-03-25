@@ -46,7 +46,7 @@ function Signin() {
                         </div>
                         <div className="login_btn relative">
                             <button id="signup_button" type="submit">LOG IN</button>
-                            {error && <p className="absolute -bottom-12 px-4 py-2 bg-red-300 border text-white rounded-md border-red-600">{error}</p>}
+                            {error && <p className="absolute -bottom-32 sm:-bottom-12 text-xs px-4 py-2 bg-red-300 border text-white rounded-md border-red-600">{error}</p>}
                         </div>
                         <div className="input_text">
                             {/* <GoogleLogin
@@ -64,9 +64,6 @@ function Signin() {
                         </div>
                     </form>
                 </div>
-            </div>
-            <div id="profile-footer" style={{ margin: "5px", color: "var(--white)", textAlign: "center" }}>
-                &copy; 2023. All rights reserved.
             </div>
         </div>
     )

@@ -66,7 +66,7 @@ function Signup() {
                         </div>
                         <div className="login_btn relative">
                             <button id="signup_button" type="submit">SIGN UP</button>
-                            {error && <p className="absolute -bottom-12 px-4 py-2 bg-red-300 border text-white rounded-md border-red-600">{error}</p>}
+                            {error && <p className="absolute -bottom-20 sm:-bottom-14 text-xs px-4 py-2 bg-red-300 border text-white rounded-md border-red-600">{error}</p>}
                         </div>            
                         <div className="create">
                             <p>
@@ -75,11 +75,6 @@ function Signup() {
                             </p>
                         </div>
                     </form>
-                </div>
-            </div>
-            <div id="profile-footer">
-                <div style={{ margin: "5px", color: "var(var(--white))" }}>
-                    &copy; 2023. All rights reserved.
                 </div>
             </div>
         </div>

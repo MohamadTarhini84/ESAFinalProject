@@ -18,8 +18,10 @@ const loginUser = async (req, res) => {
 
     // create a token
     const token = createToken(user._id)
+    let isSub=false
+    if(user.plan){isSub=true;console.log(true)}
 
-    res.status(200).json({firstName:user.firstName, lastName:user.lastName, token})
+    res.status(200).json({sub:isSub, firstName:user.firstName, lastName:user.lastName, token})
   } catch (error) {
     res.status(400).json({error: error.message})
   }
@@ -33,7 +35,7 @@ const signupUser = async (req, res) => {
     
     const token = createToken(user._id)
     
-    res.status(200).json({firstName,lastName, token})
+    res.status(200).json({sub:false, firstName,lastName, token})
   } catch (error) {
     res.status(400).json({error: error.message})
   }

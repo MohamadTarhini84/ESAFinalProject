@@ -8,17 +8,17 @@ import EditProfile from './pages/editProfile/editProfile';
 import Home from './pages/Home/Home';
 import Watch from './pages/watchPage/watchPage';
 import Subscribe from './pages/subscribe/subscribePage';
+import Footer from './components/main/footer';
 import { useContext } from 'react'
 import { themeContext } from './context/themeContext';
 import Admin from './pages/adminPage/admin';
 import { AuthContextProvider } from './context/AuthContext';
-
-
 import DashboardBroadcast from './pages/dashboardBroadcast/DashboardBroadcast';
-
 
 const App = () => {
   const {theme}=useContext(themeContext)
+
+  // axios.get('/tasks', {headers:{authorization:`Bearer ${user.token}`}})
 
   return (
     
@@ -48,6 +48,7 @@ const App = () => {
            <Route path='*' element={<Navigate to='/home'/>}/>
 
           </Routes>
+          <Footer/>
         </div>
       </BrowserRouter>
       </AuthContextProvider>

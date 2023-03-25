@@ -29,7 +29,7 @@ function LoggedOut(){
                     <span className='tooltip sm:group-hover:scale-100'>Subscriptions</span>
                 </Link>
                 <Link to='/signin'>
-                    <button className='relative group py-1 px-3 text-xs sm:text-xl  bg-amber-300 dark:bg-stone-800 transition-colors
+                    <button className='relative group px-3 text-xs sm:text-lg  bg-amber-300 dark:bg-stone-800 transition-colors
                             text-white hover:text-black rounded-md hover:bg-white border-2 border-white hover:border-black
                             dark:hover:bg-white'>
                         Log In

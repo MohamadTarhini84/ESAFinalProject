@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 function Action(props){
     return (
         <div id="popup" style={{display:props.value?"fixed":"none"}} className="z-20">
@@ -9,7 +11,8 @@ function Action(props){
             </div>
             {props.isLoading && <p>Submitting...</p>}
             {!props.isLoading && <p>{props.action} successful</p>}
-            {!props.isLoading && <button className="px-3 py-1 rounded-md text-white bg-orange-900" onClick={()=>props.onClick(false)}>Close</button>}
+            {!props.isLoading && <Link to='/home' className="px-3 py-1 border border-orange-900 rounded-md text-white hover:text-orange-900 
+                    bg-orange-900 hover:bg-white transition-colors" onClick={()=>props.onClick(false)}>Close</Link>}
         </div>
     )
 }

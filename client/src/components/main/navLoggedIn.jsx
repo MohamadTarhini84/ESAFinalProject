@@ -32,8 +32,8 @@ function LoggedIn(){
                         <span className='tooltip sm:group-hover:scale-100'>Lightmode</span>
                     </div>}
                 <div className='relative group'>
-                    <LogoutIcon onClick={()=>console.log("ok")} className='group-hover:cursor-pointer'/>
-                    <span className='tooltip sm:group-hover:scale-100' onClick={logout}>Logout</span>
+                    <LogoutIcon onClick={logout} className='group-hover:cursor-pointer'/>
+                    <span className='tooltip sm:group-hover:scale-100'>Logout</span>
                 </div>
             </div>
     )
