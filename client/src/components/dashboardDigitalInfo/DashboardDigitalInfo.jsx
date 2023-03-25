@@ -24,6 +24,11 @@ function DashboardDigitalInfo() {
         fetchData();
     }, []);
 
+    const subscribed = users.filter(user => {
+        return user.plan == true;
+    });
+    console.log(subscribed);
+
     return (
         <div className="digital-info-container w-full">
             <div className="digital-info-left-side">
@@ -59,14 +64,14 @@ function DashboardDigitalInfo() {
                     <div className="digital-info-side">
                         <div className="card-top">
                             <div className="card-name">
-                                Subscribed Users
+                                Subscribers
                             </div>
                             <div className="card-icon">
                                 <FontAwesomeIcon icon={faUserCheck}></FontAwesomeIcon>
                             </div>
                         </div>
                         <div className="card-value">
-                            61,638
+                            {subscribed.length}
                         </div>
                     </div>
                     <div className="digital-info-side">
