@@ -1,21 +1,8 @@
 import "./packageContainer.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
 
-
-const PackageContainer = ({ data }) => {
-
-    const handleDelete = (id) => {
-        axios.delete(`http://localhost:3001/api/packages/delete/${id}`)
-            .then(response => {
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    };
-
+const PackageContainer = ({ data, handleDelete }) => {
     return (
         <div className="all-packages-container">
             {data.map((item) => (
