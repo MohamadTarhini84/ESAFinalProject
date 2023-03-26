@@ -22,35 +22,71 @@ const App = () => {
 
   return (
     
+    // <div>
+    //   <AuthContextProvider>
+    //   <BrowserRouter>
+    //     <div className={theme?"":"dark"}>
+    //       <NavBar/>
+    //       <Routes>
+    //         <Route path='/home' element={(<Home/>)}/>
+    //         <Route path='/watch/:id' element={<Watch/>}/>
+    //         <Route path='/subscribe' element={<Subscribe/>}/>
+    //         {/* signUp  */}
+    //         <Route path="/signup" element={(<Signup />)} />
+
+    //         {/* signIn  */}
+    //         <Route path="/signin" element={(<Signin />)} />
+
+    //         {/* editProfile  */}
+    //         <Route path="/editprofile" element={(<EditProfile />)} />
+
+    //         {/* admin  */}
+    //         <Route path='/admin' element={<Admin/>}/>
+           
+    //         {/* test  */}
+    //         <Route path='/test' element={<DashboardBroadcast />}/>
+    //        <Route path='*' element={<Navigate to='/home'/>}/>
+
+    //       </Routes>
+    //       <Footer/>
+    //     </div>
+    //   </BrowserRouter>
+    //   </AuthContextProvider>
+    // </div>
+
     <div>
       <AuthContextProvider>
-      <BrowserRouter>
-        <div className={theme?"":"dark"}>
-          <NavBar/>
-          <Routes>
-            <Route path='/home' element={(<Home/>)}/>
-            <Route path='/watch/:id' element={<Watch/>}/>
-            <Route path='/subscribe' element={<Subscribe/>}/>
-            {/* signUp  */}
-            <Route path="/signup" element={(<Signup />)} />
+        <BrowserRouter>
+          <div className={theme ? "" : "dark"}>
+            {/* Conditionally render the NavBar component */}
+            {window.location.pathname === "/signin" ||
+            window.location.pathname === "/signup" ? null : (
+              <NavBar />
+            )}
 
-            {/* signIn  */}
-            <Route path="/signin" element={(<Signin />)} />
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/watch/:id" element={<Watch />} />
+              <Route path="/subscribe" element={<Subscribe />} />
+              {/* signUp  */}
+              <Route path="/signup" element={<Signup />} />
 
-            {/* editProfile  */}
-            <Route path="/editprofile" element={(<EditProfile />)} />
+              {/* signIn  */}
+              <Route path="/signin" element={<Signin />} />
 
-            {/* test  */}
-            <Route path='/admin' element={<Admin/>}/>
-           
-            {/* test  */}
-            <Route path='/test' element={<DashboardBroadcast />}/>
-           <Route path='*' element={<Navigate to='/home'/>}/>
+              {/* editProfile  */}
+              <Route path="/editprofile" element={<EditProfile />} />
 
-          </Routes>
-          <Footer/>
-        </div>
-      </BrowserRouter>
+              {/* admin  */}
+              <Route path="/admin" element={<Admin />} />
+
+              {/* test  */}
+              <Route path="/test" element={<DashboardBroadcast />} />
+              <Route path="*" element={<Navigate to="/home" />} />
+            </Routes>
+            <Footer />
+          </div>
+        </BrowserRouter>
       </AuthContextProvider>
     </div>
 

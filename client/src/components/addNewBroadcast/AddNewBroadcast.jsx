@@ -36,7 +36,10 @@ const AddNewBroadcast = ({ data }) => {
             body: JSON.stringify({ title, category, channelName: channel, path: link })
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data)
+                alert("Broadcast added");
+            })
             .catch(error => {
                 console.error(error);
                 alert("There was an error adding the broadcast. Please try again later.");
