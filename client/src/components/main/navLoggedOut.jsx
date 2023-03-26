@@ -11,10 +11,10 @@ function LoggedOut(){
 
     return (
         <div className='flex gap-4 sm:gap-8 sm:mr-10 items-center'>
-                <a href='#search_goto' className='relative group text-inherit hover:text-inherit sm:mx-4'>
+                <Link to='/home#search' className='relative group text-inherit hover:text-inherit sm:mx-4'>
                     <SearchIcon className='group-hover:cursor-pointer'/>
                     <span className='tooltip sm:group-hover:scale-100'>Search</span>
-                </a>
+                </Link>
                 {theme?
                     <div className='relative group sm:mx-4'>
                         <DarkModeIcon onClick={()=>themeToggle(false)} className='group-hover:cursor-pointer'/>

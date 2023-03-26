@@ -14,10 +14,10 @@ function LoggedIn(){
 
     return (
         <div className='flex gap-4 sm:gap-16 sm:mr-10 mb-2 self-end'>
-                <a href='#search_goto' className='relative group text-inherit hover:text-inherit'>
+                <Link to='/home#search' className='relative group text-inherit hover:text-inherit'>
                     <SearchIcon className='group-hover:cursor-pointer'/>
                     <span className='tooltip sm:group-hover:scale-100'>Search</span>
-                </a>
+                </Link>
                 <Link to='/subscribe' className='relative group text-inherit hover:text-inherit'>
                     <SubscriptionsIcon className='group-hover:cursor-pointer'/>
                     <span className='tooltip sm:group-hover:scale-100'>Subscriptions</span>
