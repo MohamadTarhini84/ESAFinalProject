@@ -32,7 +32,7 @@ function Featured(props){
     
     return(
         <div className={`h-52 sm:h-full mt-10 text-black flex flex-col justify-end w-full dark:text-white ${props.className}
-                        sm:mt-0 sm:py-10 sm:px-56 bg-gray-100 dark:bg-orange-900 shadow-lg`}>
+                        sm:mt-0 sm:py-10 sm:px-56 bg-gray-100 dark:bg-stone-900 shadow-lg`}>
             <span ref={test}></span>
             <h1 className='text-center sm:text-3xl m-4'>Our Featured Broadcasts</h1>
             {slides.length>0 && 

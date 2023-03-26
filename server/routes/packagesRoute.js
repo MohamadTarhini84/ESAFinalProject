@@ -2,6 +2,7 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const upload = require('../controllers/uploadController');
 const Package = require('../models/package');
+const Auth=require('../middleware/requireAuth')
 
 function handleErrors(error) {
     let err = {}
@@ -14,10 +15,15 @@ function handleErrors(error) {
 }
 
 // get all packages
-router.get('/all', async (req, res) => {
+router.get('/all', Auth, async (req, res) => {
     try {
-        let packages = await Package.find()
-        res.status(200).json(packages)
+        const user=req.user
+        if(user.plan){
+            res.status(200).json({message:"You are already subscribed!",plan:user.plan})
+        } else{
+            let packages = await Package.find()
+            res.status(200).json(packages)
+        }
     } catch (error) {
         const errors = handleErrors(error)
         res.status(401).json({ errors })
@@ -25,7 +31,7 @@ router.get('/all', async (req, res) => {
 })
 
 // add new package
-router.post('/new', upload.fields([{ name: 'image' }]), async (req, res) => {
+router.post('/new', upload.fields([{ name: 'image' }]), Auth, async (req, res) => {
     const newPackage = new Package()
     newPackage['name'] = req.body.name
     newPackage['duration'] = parseInt(req.body.duration)
@@ -49,7 +55,11 @@ router.post('/new', upload.fields([{ name: 'image' }]), async (req, res) => {
 })
 
 // delete package
-router.delete('/delete/:packageId', async (req, res) => {
+router.delete('/delete/:packageId', Auth, async (req, res) => {
+    const user=req.user
+    if(!user.isAdmin){
+        return res.status(404).json({ message: 'You are not an admin!' })
+    }
     try {
         let result = await Package.findOneAndDelete({ _id: req.params.packageId })
         if (!result) {

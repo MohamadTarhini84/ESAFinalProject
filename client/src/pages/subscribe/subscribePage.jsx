@@ -14,7 +14,8 @@ function Subscribe(){
     useEffect(()=>{
         try{
             setLoading(true)
-            axios.get('http://localhost:3001/api/packages/all')
+            axios.get('http://localhost:3001/api/packages/all',
+            {headers:{authorization:`Bearer ${user.token}`}})
                 .then((res)=>{setPackages(res.data)})
                 .finally(()=>{setLoading(false)})
         } catch(error){

@@ -13,44 +13,11 @@ import { useContext } from 'react'
 import { themeContext } from './context/themeContext';
 import Admin from './pages/adminPage/admin';
 import { AuthContextProvider } from './context/AuthContext';
-import DashboardBroadcast from './pages/dashboardBroadcast/DashboardBroadcast';
 
 const App = () => {
   const {theme}=useContext(themeContext)
 
   return (
-    
-    // <div>
-    //   <AuthContextProvider>
-    //   <BrowserRouter>
-    //     <div className={theme?"":"dark"}>
-    //       <NavBar/>
-    //       <Routes>
-    //         <Route path='/home' element={(<Home/>)}/>
-    //         <Route path='/watch/:id' element={<Watch/>}/>
-    //         <Route path='/subscribe' element={<Subscribe/>}/>
-    //         {/* signUp  */}
-    //         <Route path="/signup" element={(<Signup />)} />
-
-    //         {/* signIn  */}
-    //         <Route path="/signin" element={(<Signin />)} />
-
-    //         {/* editProfile  */}
-    //         <Route path="/editprofile" element={(<EditProfile />)} />
-
-    //         {/* admin  */}
-    //         <Route path='/admin' element={<Admin/>}/>
-           
-    //         {/* test  */}
-    //         <Route path='/test' element={<DashboardBroadcast />}/>
-    //        <Route path='*' element={<Navigate to='/home'/>}/>
-
-    //       </Routes>
-    //       <Footer/>
-    //     </div>
-    //   </BrowserRouter>
-    //   </AuthContextProvider>
-    // </div>
 
     <div>
       <AuthContextProvider>
@@ -78,11 +45,12 @@ const App = () => {
               {/* admin  */}
               <Route path="/admin" element={<Admin />} />
 
-              {/* test  */}
-              <Route path="/test" element={<DashboardBroadcast />} />
               <Route path="*" element={<Navigate to="/home" />} />
             </Routes>
-            <Footer />
+            
+            {window.location.pathname === "/admin" ? null : (
+              <Footer />
+            )}
           </div>
         </BrowserRouter>
       </AuthContextProvider>

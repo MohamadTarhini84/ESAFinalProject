@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/user')
+const Auth=require('../middleware/requireAuth')
 
 
 // Get All Users
@@ -74,7 +75,7 @@ const DeleteUser = async (req, res) => {
 };
 
 // Make Admin
-router.patch('/makeAdmin/:userId', async (req, res) => {
+router.patch('/makeAdmin/:userId', Auth, async (req, res) => {
   try {
     const result = await User.updateOne({ _id: req.params.userId }, { isAdmin: true })
     res.status(200).json(result)
@@ -85,7 +86,7 @@ router.patch('/makeAdmin/:userId', async (req, res) => {
 }),
 
 // Remove Admin
-router.patch('/removeAdmin/:userId', async (req, res) => {
+router.patch('/removeAdmin/:userId',Auth, async (req, res) => {
   try {
     const result = await User.updateOne({ _id: req.params.userId }, { isAdmin: false })
     res.status(200).json(result)

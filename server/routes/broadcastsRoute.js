@@ -2,6 +2,7 @@ const router=require("express").Router()
 const mongoose=require("mongoose")
 const upload=require('../controllers/uploadController')
 const Broadcast=require('../models/broadcast')
+const Auth=require('../middleware/requireAuth')
 
 function handleErrors(error){
     let err={}
@@ -14,7 +15,7 @@ function handleErrors(error){
 }
 
 // get all broadcasts
-router.get('/all',async (req, res)=>{
+router.get('/all',Auth,async (req, res)=>{
     try{
         let broadcasts=await Broadcast.find()
         res.status(200).json(broadcasts)
@@ -25,7 +26,7 @@ router.get('/all',async (req, res)=>{
 })
 
 // get one broadcast
-router.get('/single/:broadcastId',async (req,res)=>{
+router.get('/single/:broadcastId',Auth,async (req,res)=>{
     try{
         let broadcast=await Broadcast.findOne({path:req.params.broadcastId})
         res.status(200).json(broadcast)
@@ -36,7 +37,7 @@ router.get('/single/:broadcastId',async (req,res)=>{
 })
 
 // add new broadcast
-router.post('/new', async (req,res)=>{
+router.post('/new',Auth, async (req,res)=>{
     console.log(req.body);
     const newBroadcast=new Broadcast({
         title:req.body.title,
@@ -56,7 +57,7 @@ router.post('/new', async (req,res)=>{
 })
 
 // edit broadcast
-router.patch('/edit/:broadcastId', async (req,res)=>{
+router.patch('/edit/:broadcastId',Auth, async (req,res)=>{
     let broadcast={}
 
     if(req.body.title){
@@ -75,7 +76,7 @@ router.patch('/edit/:broadcastId', async (req,res)=>{
 })
 
 // search for broadcast
-router.get('/search', async (req, res)=>{
+router.get('/search', Auth,async (req, res)=>{
     let match=new RegExp(req.query.value, 'i')
 
     const page=req.query.page || 0
@@ -91,7 +92,7 @@ router.get('/search', async (req, res)=>{
 })
 
 // delete broadcast
-router.delete('/delete/:broadcastId', async (req,res)=>{
+router.delete('/delete/:broadcastId', Auth,async (req,res)=>{
     try{
         let result=await Broadcast.findOneAndDelete({_id:mongoose.Types.ObjectId(req.params.broadcastId)})
         res.status(200)

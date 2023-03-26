@@ -3,6 +3,7 @@ const mongoose=require("mongoose");
 const upload=require('../controllers/uploadController');
 const Channel=require('../models/channel');
 const Broadcast=require('../models/broadcast');
+const Auth=require('../middleware/requireAuth')
 
 function handleErrors(error){
     let err={}
@@ -15,7 +16,7 @@ function handleErrors(error){
 }
 
 // get all channels
-router.get('/all',async (req, res)=>{
+router.get('/all',Auth,async (req, res)=>{
     try{
         let channels=await Channel.find()
         res.status(200).json(channels)
@@ -26,7 +27,7 @@ router.get('/all',async (req, res)=>{
 })
 
 // get one channel
-router.get('/single/:channelId',async (req,res)=>{
+router.get('/single/:channelId',Auth,async (req,res)=>{
     try{
         let channel=await Channel.findOne({_id:req.params.channelId})
         res.status(200).json(channel)
@@ -38,7 +39,7 @@ router.get('/single/:channelId',async (req,res)=>{
 })
 
 // upload channel logo
-router.post('/new', upload.fields([{name:'image'}]), async (req, res)=>{
+router.post('/new', upload.fields([{name:'image'}]),Auth, async (req, res)=>{
     try{
         const newChannel = new Channel({
             name:req.body.name,
@@ -54,7 +55,7 @@ router.post('/new', upload.fields([{name:'image'}]), async (req, res)=>{
 })
 
 // delete channel
-router.delete('/delete/:channelId', async (req, res)=>{
+router.delete('/delete/:channelId', Auth,async (req, res)=>{
     try{
         let result=await Channel.findOneAndDelete({_id:req.params.channelId})
         let cascadeDelete=await Broadcast.deleteMany({channel:result._id})
