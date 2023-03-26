@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const PackageContainer = ({ data, handleDelete }) => {
+    
     return (
         <div className="all-packages-container">
             {data.map((item) => (
