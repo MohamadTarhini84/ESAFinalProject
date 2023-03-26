@@ -4,7 +4,7 @@ import axios from 'axios'
 import RotateRightIcon from '@mui/icons-material/RotateRight';
 
 function MSearch(props){
-    const [results, setResults]=useState([1])
+    const [results, setResults]=useState([])
     const [isLoading, setLoading]=useState(true)
     const [showMore, setShowMore]=useState(false)
     const [searchValue,setSearchValue]=useState("")
@@ -13,6 +13,7 @@ function MSearch(props){
 
     function submitSearch(){
         try{
+            console.log(results)
             setShowMore(false)
             setLoading(true)
             axios.get('http://localhost:3001/api/broadcasts/search?value='+searchValue+'&page='+page)

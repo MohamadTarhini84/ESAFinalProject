@@ -1,65 +1,91 @@
 import 'react-slideshow-image/dist/styles.css'
 import 'react-slideshow-image/dist/styles.css'
+import {Slide} from 'react-slideshow-image'
 import { useContext, useEffect, useRef, useState } from "react";
 import {navBarContext} from '../../context/navBarContext'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Featured(props){
     const {setIsVisible}=useContext(navBarContext)
-    const [margin,setMargin]=useState('ml-0')
+    // const [margin,setMargin]=useState('ml-0')
+    const [slides,setSlides]=useState([])
     const test=useRef()
-
-    const slides=[
-        {img:"https://i.ytimg.com/vi/qBPod1HLbw0/maxresdefault.jpg"},
-        {img:"https://i.ytimg.com/vi/KkY3JGDqMT8/maxresdefault.jpg"},
-        {img:"https://i.ytimg.com/vi/N6Ure2n5yD8/maxresdefault.jpg"},
-        {img:"https://i.ytimg.com/vi/R4aDGpUOZdI/maxresdefault.jpg"},
-        {img:"https://i.ytimg.com/vi/Swe-drMH9Ec/maxresdefault.jpg"},
-    ]
+    const navigate=useNavigate()
     
     useEffect(()=>{
         const observer=new IntersectionObserver((entry)=>{
             setIsVisible(entry[0].isIntersecting)
         })
         observer.observe(test.current)
-    })
+
+        try{
+            axios.get('http://localhost:3001/api/broadcasts/search?page=0')
+                .then((res)=>{
+                    console.log(res.data)
+                    setSlides(res.data)
+                })
+        } catch(error){
+            console.log(error)
+        }
+    },[])
     
     return(
         <div className={`h-52 sm:h-full mt-10 text-black flex flex-col justify-end w-full dark:text-white ${props.className}
-                        sm:mt-0 sm:p-16 sm:px-56 bg-gray-100 dark:bg-orange-900 shadow-lg`}>
+                        sm:mt-0 sm:py-10 sm:px-56 bg-gray-100 dark:bg-orange-900 shadow-lg`}>
             <span ref={test}></span>
-                <div className='w-full aspect-video bg-black relative overflow-hidden'>
+            <h1 className='text-center sm:text-3xl m-4'>Our Featured Broadcasts</h1>
+            {slides.length>0 && 
+            <Slide>
+                <div className={`w-full h-full hover:cursor-pointer transition-all`}>
+                    <img className='w-full aspect-video' onClick={()=>navigate('/watch/'+slides[0].path)} src={`https://i.ytimg.com/vi/${slides[0].path}/maxresdefault.jpg`}/>
+                </div>
+                <div className="w-full aspect-video transition-all h-full">
+                    <img className='w-full h-full hover:cursor-pointer' onClick={()=>navigate('/watch/'+slides[1].path)} src={`https://i.ytimg.com/vi/${slides[1].path}/maxresdefault.jpg`}/>
+                </div>
+                <div className="w-full aspect-video transition-all h-full">
+                    <img className='w-full h-full hover:cursor-pointer' onClick={()=>navigate('/watch/'+slides[2].path)} src={`https://i.ytimg.com/vi/${slides[2].path}/maxresdefault.jpg`}/>
+                </div>
+                <div className="w-full aspect-video transition-all h-full">
+                    <img className='w-full h-full hover:cursor-pointer' onClick={()=>navigate('/watch/'+slides[3].path)} src={`https://i.ytimg.com/vi/${slides[3].path}/maxresdefault.jpg`}/>
+                </div>
+                <div className="w-full aspect-video transition-all h-full">
+                    <img className='w-full h-full hover:cursor-pointer' onClick={()=>navigate('/watch/'+slides[4].path)} src={`https://i.ytimg.com/vi/${slides[4].path}/maxresdefault.jpg`}/>
+                </div>
+            </Slide>}
+                {/* <div className='w-full aspect-video bg-black relative overflow-hidden'>
                     <input type="radio" name="r" id="r1" onClick={()=>setMargin("r1-checked")}/>
                     <input type="radio" name="r" id="r2" onClick={()=>setMargin("r2-checked")}/>
                     <input type="radio" name="r" id="r3" onClick={()=>setMargin("r3-checked")}/>
                     <input type="radio" name="r" id="r4" onClick={()=>setMargin("r4-checked")}/>
                     <input type="radio" name="r" id="r5" onClick={()=>setMargin("r5-checked")}/>
                 
-                    <div className='h-full flex' style={{width:"500%"}}>
-                        <div className={`w-1/5 transition-all h-full ease-in-out ${margin}`}>
-                            <img className='w-full h-full' src={slides[0].img}/>
+                    {slides.length>0 && <div className='h-full flex' style={{width:"500%"}}>
+                        <div className={`w-1/5 h-full ${margin} transition-all`}>
+                            <img className='w-full h-full hover:cursor-pointer' onClick={()=>navigate('/watch/'+slides[].path)} src={`https://i.ytimg.com/vi/${slides[0].path}/maxresdefault.jpg`}/>
                         </div>
-                        <div className="w-1/5 transition-all h-full">
-                            <img className='w-full h-full' src={slides[1].img}/>
+                        <div className="w-full aspect-video transition-all h-full">
+                            <img className='w-full h-full hover:cursor-pointer' onClick={()=>navigate('/watch/'+slides[].path)} src={`https://i.ytimg.com/vi/${slides[1].path}/maxresdefault.jpg`}/>
                         </div>
-                        <div className="w-1/5 transition-all h-full">
-                            <img className='w-full h-full' src={slides[2].img}/>
+                        <div className="w-full aspect-video transition-all h-full">
+                            <img className='w-full h-full hover:cursor-pointer' onClick={()=>navigate('/watch/'+slides[].path)} src={`https://i.ytimg.com/vi/${slides[2].path}/maxresdefault.jpg`}/>
                         </div>
-                        <div className="w-1/5 transition-all h-full">
-                            <img className='w-full h-full' src={slides[3].img}/>
+                        <div className="w-full aspect-video transition-all h-full">
+                            <img className='w-full h-full hover:cursor-pointer' onClick={()=>navigate('/watch/'+slides[].path)} src={`https://i.ytimg.com/vi/${slides[3].path}/maxresdefault.jpg`}/>
                         </div>
-                        <div className="w-1/5 transition-all h-full">
-                            <img className='w-full h-full' src={slides[4].img}/>
+                        <div className="w-full aspect-video transition-all h-full">
+                            <img className='w-full h-full hover:cursor-pointer' onClick={()=>navigate('/watch/'+slides[].path)} src={`https://i.ytimg.com/vi/${slides[4].path}/maxresdefault.jpg`}/>
                         </div>
-                    </div>
+                    </div>}
                     <div className='flex gap-2 absolute bottom-4 left-1/2 -translate-x-1/2'>
-                        <label htmlFor="r1" className={`foobarfoo ${margin=="r1-checked"?"bg-white":""}`}></label>
-                        <label htmlFor="r2" className={`foobarfoo ${margin=="r2-checked"?"bg-white":""}`}></label>
-                        <label htmlFor="r3" className={`foobarfoo ${margin=="r3-checked"?"bg-white":""}`}></label>
-                        <label htmlFor="r4" className={`foobarfoo ${margin=="r4-checked"?"bg-white":""}`}></label>
-                        <label htmlFor="r5" className={`foobarfoo ${margin=="r5-checked"?"bg-white":""}`}></label>
+                        <label htmlFor="r1" className={`foobarfoo ${margin=="r1-checked"?"bg-white":""}`}/>
+                        <label htmlFor="r2" className={`foobarfoo ${margin=="r2-checked"?"bg-white":""}`}/>
+                        <label htmlFor="r3" className={`foobarfoo ${margin=="r3-checked"?"bg-white":""}`}/>
+                        <label htmlFor="r4" className={`foobarfoo ${margin=="r4-checked"?"bg-white":""}`}/>
+                        <label htmlFor="r5" className={`foobarfoo ${margin=="r5-checked"?"bg-white":""}`}/>
                     </div>
 
-                </div>
+                </div> */}
         </div>
     )
 }
