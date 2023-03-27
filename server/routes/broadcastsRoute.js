@@ -98,13 +98,39 @@ router.get('/search', async (req, res)=>{
 
 // delete broadcast
 router.delete('/delete/:broadcastId', Auth,async (req,res)=>{
+    if(!user.isAdmin){
+        return res.status(404).json({ message: 'You are not an admin!' })
+    }
     try{
         let result=await Broadcast.findOneAndDelete({_id:mongoose.Types.ObjectId(req.params.broadcastId)})
-        res.status(200)
+        if (!result) {
+            return res.status(404).json({ message: 'Broadcast not found' })
+        }
+        res.status(200).json({ message: 'Broadcast deleted successfully' })
     } catch (error){
         const errors= handleErrors(error)
         res.status(401).json({errors})
     }
 })
+
+// api search
+router.get('/search', async (req, res) => {
+    const { q } = req.query;
+    try {
+        let broadcasts=await Broadcast.find()
+        res.json(search(broadcasts, q).slice(0, 20));
+    } catch (error) {
+        const errors = handleErrors(error);
+        res.status(401).json({ errors });
+    }
+});
+
+const keys = ["title", "category", "path", "channelName"];
+
+const search = (data, q) => {
+    return data.filter((item) =>
+        keys.some((key) => item[key].toLowerCase().includes(q))
+    );
+};
 
 module.exports=router;

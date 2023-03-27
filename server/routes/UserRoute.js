@@ -5,7 +5,7 @@ const User = require('../models/user')
 const Auth=require('../middleware/requireAuth')
 
 
-// Get All Users
+// get all users
 const getAllUsers = async (req, res) => {
 
   try {
@@ -96,6 +96,7 @@ router.patch('/removeAdmin/:userId',Auth, async (req, res) => {
   }
 })
 
+// what it tizzz?
 router.get('/single',Auth, async (req,res)=>{
   try {
     if(req.user){

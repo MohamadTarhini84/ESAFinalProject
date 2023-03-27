@@ -56,14 +56,42 @@ router.post('/new', upload.fields([{name:'image'}]),Auth, async (req, res)=>{
 
 // delete channel
 router.delete('/delete/:channelId', Auth,async (req, res)=>{
+    const user=req.user
+    if(!user.isAdmin){
+        return res.status(404).json({ message: 'You are not an admin!' })
+    }
     try{
         let result=await Channel.findOneAndDelete({_id:req.params.channelId})
         let cascadeDelete=await Broadcast.deleteMany({channel:result._id})
-        res.status(200)
+        if (!result) {
+            return res.status(404).json({ message: 'Channel not found' })
+        }
+        res.status(200).json({ message: 'Channel deleted successfully' })
     } catch (error){
         const errors= handleErrors(error)
         res.status(401).json({errors})
     }
 })
+
+// api search
+router.get('/search', async (req, res) => {
+    const { q } = req.query;
+    try {
+        let channels=await Channel.find()
+        res.json(search(channels, q).slice(0, 20));
+    } catch (error) {
+        const errors = handleErrors(error);
+        res.status(401).json({ errors });
+    }
+});
+
+const keys = ["name"];
+
+const search = (data, q) => {
+    return data.filter((item) =>
+        keys.some((key) => item[key].toLowerCase().includes(q))
+    );
+};
+
 
 module.exports=router;

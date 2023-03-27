@@ -30,6 +30,8 @@ router.get('/all', Auth, async (req, res) => {
         res.status(401).json({ errors })
     }
 })
+
+// get packages for admin
 router.get('/forAdmin', Auth, async (req, res) => {
     try {
         let packages = await Package.find()
@@ -40,6 +42,7 @@ router.get('/forAdmin', Auth, async (req, res) => {
     }
 })
 
+// get one package
 router.get('/single/:packageId', Auth, async (req, res) => {
     try {
         let package = await Package.findOne({_id:req.params.packageId})
@@ -49,6 +52,7 @@ router.get('/single/:packageId', Auth, async (req, res) => {
         res.status(401).json({ errors })
     }
 })
+
 // add new package
 router.post('/new', upload.fields([{ name: 'image' }]), Auth, async (req, res) => {
     const newPackage = new Package()
@@ -90,6 +94,26 @@ router.delete('/delete/:packageId', Auth, async (req, res) => {
         res.status(401).json({ errors })
     }
 })
+
+// api search
+router.get('/search', async (req, res) => {
+    const { q } = req.query;
+    try {
+        let packages = await Package.find()
+        res.json(search(packages, q).slice(0, 20));
+    } catch (error) {
+        const errors = handleErrors(error);
+        res.status(401).json({ errors });
+    }
+});
+
+const keys = ["name", "description"];
+
+const search = (data, q) => {
+    return data.filter((item) =>
+        keys.some((key) => item[key].toLowerCase().includes(q))
+    );
+};
 
 
 module.exports = router;
