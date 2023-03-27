@@ -29,8 +29,7 @@ function DashboardDigitalInfo() {
         }, [user]);
 
     const subscribed = users.filter(user => {
-        return user.plan == true;
-
+        return user.plan != null;
     });
     console.log(subscribed);
 

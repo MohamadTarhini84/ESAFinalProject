@@ -100,7 +100,7 @@ router.get('/single',Auth, async (req,res)=>{
   try {
     if(req.user){
       res.status(200).json(req.user.isAdmin)
-    }
+    } else{res.status(201).json(false)}
   } catch (error) {
     res.status(500).json(error);
   }

@@ -38,7 +38,9 @@ function AddNewPackage() {
         formData.append("duration", duration);
         formData.append("cost", cost);
         formData.append("description", description);
-        formData.append("image", background);
+        if(background!=null){
+            formData.append("image", background);
+        }
 
         fetch('http://localhost:3001/api/packages/new', {
             method: "POST",

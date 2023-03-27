@@ -14,8 +14,6 @@ import { themeContext } from './context/themeContext';
 import Admin from './pages/adminPage/admin';
 import { AuthContextProvider } from './context/AuthContext';
 
-import Plan from './pages/subscribe/showPlan';
-
 const App = () => {
   const {theme}=useContext(themeContext)
 
