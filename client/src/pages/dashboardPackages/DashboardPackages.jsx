@@ -35,7 +35,7 @@ function DashboardPackages() {
     return (
         <div>
             <AddNewPackage />
-            <PackageContainer data={data} handleDelete={handleDelete} />
+            <PackageContainer data={data} handleDelete={(id)=>handleDelete(id)} />
         </div>
     )
 }

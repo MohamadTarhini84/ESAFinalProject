@@ -2,12 +2,14 @@ import "./channelContainer.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 
 const ChannelContainer = ({ data, refresh, i }) => {
+    const {user}=useAuthContext()
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3001/api/channels/delete/${id}`,{headers:{authorization:`Bearer ${user.token}`}})
+        axios.delete(`http://localhost:3001/api/channels/delete/${id}` ,{headers:{authorization:`Bearer ${user.token}`}})
             .then(response => {
                 console.log(response.data);
                 refresh(i + 1);

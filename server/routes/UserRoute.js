@@ -96,6 +96,8 @@ router.patch('/removeAdmin/:userId',Auth, async (req, res) => {
   }
 })
 
+
+
 router.get('/all', getAllUsers)
 router.get('/:id', getUser)
 router.patch('/:id', UpdateUser)

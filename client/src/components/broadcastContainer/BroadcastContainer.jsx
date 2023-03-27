@@ -2,12 +2,13 @@ import "./broadcastContainer.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const BroadcastContainer = ({ broadcast }) => {
+    const {user}=useAuthContext()
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3001/api/broadcasts/delete/${id}`,{headers:{authorization:`Bearer ${user.token}`}})
+        axios.delete(`http://localhost:3001/api/broadcasts/delete/${id}`, {headers:{authorization:`Bearer ${user.token}`}})
             .then(response => {
                 console.log(response.data);
             })

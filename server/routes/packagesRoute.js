@@ -18,6 +18,7 @@ function handleErrors(error) {
 router.get('/all', Auth, async (req, res) => {
     try {
         const user=req.user
+        console.log(user)
         if(user.plan){
             res.status(200).json({message:"You are already subscribed!",plan:user.plan})
         } else{
