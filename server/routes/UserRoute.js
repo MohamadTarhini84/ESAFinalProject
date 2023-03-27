@@ -76,6 +76,10 @@ const DeleteUser = async (req, res) => {
 
 // Make Admin
 router.patch('/makeAdmin/:userId', Auth, async (req, res) => {
+  const user=req.user
+  if(!user.isAdmin){
+      return res.status(404).json({ message: 'You are not an admin!' })
+  }
   try {
     const result = await User.updateOne({ _id: req.params.userId }, { isAdmin: true })
     res.status(200).json(result)
@@ -87,6 +91,10 @@ router.patch('/makeAdmin/:userId', Auth, async (req, res) => {
 
 // Remove Admin
 router.patch('/removeAdmin/:userId',Auth, async (req, res) => {
+  const user=req.user
+  if(!user.isAdmin){
+      return res.status(404).json({ message: 'You are not an admin!' })
+  }
   try {
     const result = await User.updateOne({ _id: req.params.userId }, { isAdmin: false })
     res.status(200).json(result)
