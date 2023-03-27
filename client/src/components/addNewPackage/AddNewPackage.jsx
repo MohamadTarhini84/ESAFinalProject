@@ -48,7 +48,10 @@ function AddNewPackage() {
             body: formData
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data)
+                alert("Package added");
+            })
             .catch(error => {
                 console.error(error);
                 alert("There was an error adding the package. Please try again later.");

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 function AddNewChannel() {
-  const {user}=useAuthContext()
+  const { user } = useAuthContext()
   const [name, setName] = useState("");
   const [logo, setLogo] = useState(null);
 
@@ -22,16 +22,19 @@ function AddNewChannel() {
     formData.append("image", logo);
 
     fetch('http://localhost:3001/api/channels/new', {
-        method: "POST",
-        body: formData,
-        headers:{authorization:`Bearer ${user.token}`}
-      })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => {
-          console.error(error);
-          alert("There was an error adding the channel. Please try again later.");
-        });
+      method: "POST",
+      body: formData,
+      headers: { authorization: `Bearer ${user.token}` }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        alert("Channel added");
+    })
+      .catch(error => {
+        console.error(error);
+        alert("There was an error adding the channel. Please try again later.");
+      });
   }
 
   return (
