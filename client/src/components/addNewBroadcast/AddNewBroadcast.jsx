@@ -1,9 +1,10 @@
 import "./addNewBroadcast.css";
 import { useState } from 'react';
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 
 const AddNewBroadcast = ({ data }) => {
-
+    const {user}=useAuthContext()
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [channel, setChannel] = useState("");
@@ -33,8 +34,8 @@ const AddNewBroadcast = ({ data }) => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ title, category, channelName: channel, path: link })
-        })
+            body: JSON.stringify({ title, category, channelName: channel, path: link },)
+        }, {headers:{authorization:`Bearer ${user.token}`}})
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -73,7 +74,7 @@ const AddNewBroadcast = ({ data }) => {
                             <select value={channel} onChange={handleChannel}>
                                 <option selected hidden> Select Channel </option>
                                 {data.map((item) => (
-                                    <option value={item.name}> {item.name} </option>
+                                    <option key={item._id} value={item.name}> {item.name} </option>
                                 ))}
                             </select>
                         </div>

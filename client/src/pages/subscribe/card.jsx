@@ -1,14 +1,16 @@
 import { useState } from "react";
 import axios from "axios";
 import DataUsageIcon from '@mui/icons-material/DataUsage';
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 function Card(props){
+    const {user}=useAuthContext()
     const [isLoading, setIsLoading]=useState(false)
 
     async function handleClick(id){
         setIsLoading(true)
         try{
-            let result=await axios.get('http://localhost:3001/api/subscribe/subscribe/'+id)
+            let result=await axios.get('http://localhost:3001/api/subscribe/subscribe/'+id,{headers:{authorization:`Bearer ${user.token}`}})
             window.location.href=result.data
         } catch(error){
             console.log(error)

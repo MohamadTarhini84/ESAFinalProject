@@ -76,7 +76,7 @@ router.patch('/edit/:broadcastId',Auth, async (req,res)=>{
 })
 
 // search for broadcast
-router.get('/search', Auth,async (req, res)=>{
+router.get('/search', async (req, res)=>{
     let match=new RegExp(req.query.value, 'i')
 
     const page=req.query.page || 0

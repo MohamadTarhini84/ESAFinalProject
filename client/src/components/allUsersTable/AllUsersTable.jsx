@@ -6,7 +6,7 @@ import axios from 'axios';
 const AllUsersTable = ({ data, refresh, batata }) => {
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/api/user/${id}`)
+    axios.delete(`http://localhost:3001/api/user/${id}`,{headers:{authorization:`Bearer ${user.token}`}})
       .then(response => {
         console.log(response.data);
         refresh(batata + 1)
@@ -38,7 +38,8 @@ const AllUsersTable = ({ data, refresh, batata }) => {
               <td>{item.firstName}</td>
               <td>{item.lastName}</td>
               <td>{item.email}</td>
-              <td>{item.isAdmin ? 'Yes' : 'No'}</td> {/* Display 'Yes' if isAdmin is true, and 'No' if it's false */}
+              {/* Display 'Yes' if isAdmin is true, and 'No' if it's false */}
+              <td>{item.isAdmin ? 'Yes' : 'No'}</td> 
               <td>
                 <button onClick={() => handleDelete(item._id)}>
                   <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>

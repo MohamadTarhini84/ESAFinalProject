@@ -15,7 +15,7 @@ function Watch(){
 
     useEffect(()=>{
         try{
-            axios.get('http://localhost:3001/api/broadcasts/single/'+id)
+            axios.get('http://localhost:3001/api/broadcasts/single/'+id,{headers:{authorization:`Bearer ${user.token}`}})
                 .then((res)=>{setMedia(res.data);setLoading(false)})
         } catch(error){
             console.log(error)

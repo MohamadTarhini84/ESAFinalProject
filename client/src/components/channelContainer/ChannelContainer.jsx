@@ -7,7 +7,7 @@ import axios from 'axios';
 const ChannelContainer = ({ data, refresh, i }) => {
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3001/api/channels/delete/${id}`)
+        axios.delete(`http://localhost:3001/api/channels/delete/${id}`,{headers:{authorization:`Bearer ${user.token}`}})
             .then(response => {
                 console.log(response.data);
                 refresh(i + 1);

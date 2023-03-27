@@ -2,20 +2,22 @@ import './dashboardAdmins.css';
 import AdminTable from '../../components/adminTable/AdminTable';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 function DashboardAdmins() {
-
+    const {user}=useAuthContext()
     const [data, setData] = useState([]);
     const [refresh, setRefresh] = useState(0);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const res = await axios.get("http://localhost:3001/api/user/all");
-            console.log(res); // log the entire response object
-            setData(res.data);
-        };
-        fetchData();
-    }, [refresh]);
+        if(user){
+            const fetchData = async () => {
+                const res = await axios.get("http://localhost:3001/api/user/all",{headers:{authorization:`Bearer ${user.token}`}});
+                setData(res.data);
+            };
+            fetchData();
+        }
+    }, [refresh,user]);
 
     const filtered = data.filter(user => {
         return user.isAdmin == true;

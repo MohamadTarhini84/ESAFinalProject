@@ -42,7 +42,7 @@ function AddNewPackage() {
         fetch('http://localhost:3001/api/packages/new', {
             method: "POST",
             body: formData
-        })
+        },{headers:{authorization:`Bearer ${user.token}`}})
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => {

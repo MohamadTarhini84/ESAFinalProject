@@ -14,6 +14,8 @@ import { themeContext } from './context/themeContext';
 import Admin from './pages/adminPage/admin';
 import { AuthContextProvider } from './context/AuthContext';
 
+import Plan from './pages/subscribe/showPlan';
+
 const App = () => {
   const {theme}=useContext(themeContext)
 
@@ -30,6 +32,7 @@ const App = () => {
             )}
 
             <Routes>
+              <Route path="/test" element={<Plan />} />
               <Route path="/home" element={<Home />} />
               <Route path="/watch/:id" element={<Watch />} />
               <Route path="/subscribe" element={<Subscribe />} />

@@ -6,7 +6,7 @@ import axios from 'axios';
 const AdminTable = ({ data, refresh, i }) => {
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/api/user/${id}`)
+    axios.delete(`http://localhost:3001/api/user/${id}`,{headers:{authorization:`Bearer ${user.token}`}})
       .then(response => {
         console.log(response.data);
         refresh(i + 1)
@@ -17,7 +17,7 @@ const AdminTable = ({ data, refresh, i }) => {
   };
 
   const handleUpdate = (id) => {
-    axios.patch(`http://localhost:3001/api/user/removeAdmin/${id}`)
+    axios.patch(`http://localhost:3001/api/user/removeAdmin/${id}`,{headers:{authorization:`Bearer ${user.token}`}})
       .then(response => {
         console.log(response.data);
         refresh(i + 1)

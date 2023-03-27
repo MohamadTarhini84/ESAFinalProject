@@ -5,6 +5,10 @@ const SubscriptionSchema=mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         required:true
     },
+    cost:{
+        type:Number,
+        required:true
+    },
     expireAt: {
         type: Date,
         required:true,

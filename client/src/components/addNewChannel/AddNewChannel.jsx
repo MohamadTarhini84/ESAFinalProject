@@ -23,7 +23,7 @@ function AddNewChannel() {
     fetch('http://localhost:3001/api/channels/new', {
         method: "POST",
         body: formData
-      })
+      },{headers:{authorization:`Bearer ${user.token}`}})
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => {

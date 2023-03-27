@@ -3,29 +3,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faBox, faUserCheck, faTv, faSackDollar } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 
 function DashboardDigitalInfo() {
-
+    const {user}=useAuthContext()
     const [users, setUsers] = useState([]);
     const [packages, setPackages] = useState([]);
     const [channels, setChannels] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const allUsers = await axios.get("http://localhost:3001/api/user/all");
-            const packages = await axios.get("http://localhost:3001/api/packages/all");
-            const channels = await axios.get("http://localhost:3001/api/channels/all");
+        if(user){
 
-            setUsers(allUsers.data);
-            setPackages(packages.data);
-            setChannels(channels.data);
-        };
-        fetchData();
-    }, []);
+            const fetchData = async () => {
+                const allUsers = await axios.get("http://localhost:3001/api/user/all",{headers:{authorization:`Bearer ${user.token}`}});
+                const packages = await axios.get("http://localhost:3001/api/packages/all",{headers:{authorization:`Bearer ${user.token}`}});
+                const channels = await axios.get("http://localhost:3001/api/channels/all",{headers:{authorization:`Bearer ${user.token}`}});
+                
+                setUsers(allUsers.data);
+                setPackages(packages.data);
+                setChannels(channels.data);
+            };
+            fetchData();
+        }
+        }, [user]);
 
     const subscribed = users.filter(user => {
         return user.plan == true;
+
     });
     console.log(subscribed);
 
@@ -36,7 +41,7 @@ function DashboardDigitalInfo() {
                     <div className="digital-info-side">
                         <div className="card-top">
                             <div className="card-name">
-                                Total users
+                                Users
                             </div>
                             <div className="card-icon">
                                 <FontAwesomeIcon icon={faUsers}></FontAwesomeIcon>

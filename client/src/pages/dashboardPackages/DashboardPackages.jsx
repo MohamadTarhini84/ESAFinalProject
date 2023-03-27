@@ -4,22 +4,25 @@ import AddNewPackage from '../../components/addNewPackage/AddNewPackage';
 import PackageContainer from '../../components/packageContainer/PackageContainer';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 function DashboardPackages() {
-    
+    const {user}=useAuthContext()
     const [data, setData] = useState([]);
 
-    const fetchData = async () => {
-        const res = await axios.get("http://localhost:3001/api/packages/all");
+    async function fetchData(){
+        const res = await axios.get("http://localhost:3001/api/packages/all",{headers:{authorization:`Bearer ${user.token}`}});
         setData(res.data);
     };
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        if(user){
+            fetchData();
+        }
+    }, [user]);
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3001/api/packages/delete/${id}`)
+        axios.delete(`http://localhost:3001/api/packages/delete/${id}`,{headers:{authorization:`Bearer ${user.token}`}})
             .then(response => {
                 console.log(response.data);
                 fetchData(); // Refetch data after deleting an item

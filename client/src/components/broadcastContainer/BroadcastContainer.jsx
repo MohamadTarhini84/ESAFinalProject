@@ -7,7 +7,7 @@ import axios from 'axios';
 const BroadcastContainer = ({ broadcast }) => {
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3001/api/broadcasts/delete/${id}`)
+        axios.delete(`http://localhost:3001/api/broadcasts/delete/${id}`,{headers:{authorization:`Bearer ${user.token}`}})
             .then(response => {
                 console.log(response.data);
             })
@@ -19,7 +19,7 @@ const BroadcastContainer = ({ broadcast }) => {
     return (
         <div className="all-broadcasts-container">
             {broadcast.map((item) => (
-                <div className="broadcast-container">
+                <div key={item._id} className="broadcast-container">
                     <br />
                     <div className="broadcast-live">
                         Category: {item.category} <br />
