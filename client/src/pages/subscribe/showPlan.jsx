@@ -1,12 +1,14 @@
 import { useEffect,useState } from "react"
 import axios from "axios"
+import { useAuthContext } from "../../hooks/useAuthContext"
 
 function Plan(props){
+    const {user}=useAuthContext()
     const [plan,setPackage]=useState(null)
 
     useEffect(()=>{
         try{
-            axios.get('http://localhost:3001/api/packages/single'+props.content.package,
+            axios.get('http://localhost:3001/api/packages/single/'+props.content.package.trim(),
             {headers:{authorization:`Bearer ${user.token}`}})
                 .then((res)=>{
                     setPackage(res.data)
@@ -20,18 +22,23 @@ function Plan(props){
             <div className="w-5/6 min-h-80 mt-20 p-10 flex flex-col justify-center items-center flex-wrap 
                 bg-gray-200 dark:bg-stone-800 gap-6 rounded-md shadow-lg text-black dark:text-white">
                 <h1 className="text-3xl font-extrabold">You're already subscribed to a plan!</h1>
-                <div className="w-1/2 flex flex-col">
+                <div className="flex flex-col">
                     <h1>Your plan:</h1>
                                         
                     <div className="flip-card self-center">
                         <div className="flip-card-inner">
-                            <div className="flip-card-front">
-                                <img src={`http://localhost`} alt="Avatar" style={{width:"300px",height:"300px"}}/>
-                            </div>
-                            <div className="flip-card-back">
-                                <h1>John Doe</h1> 
-                                <p>Architect & Engineer</p> 
-                                <p>We love that guy</p>
+                            {plan && <div className="flip-card-front relative">
+                                <img src={`http://localhost:3001/`+plan.background} alt="Avatar" style={{width:"300px",height:"300px"}}/>
+                                <div className="absolute bottom-1/2 translate-y-1/2 right-1/2 translate-x-1/2 flex flex-col text-white">
+                                    <h1 className="text-3xl capitalize">{plan.name}</h1>
+                                    <p>{plan.description}</p>
+                                </div>
+                            </div>}
+                            <div className="flip-card-back relative">
+                            <div className="absolute bottom-1/2 translate-y-1/2 right-1/2 translate-x-1/2 flex flex-col text-white">
+                                    <h1 className="text-2xl capitalize">expires at:</h1>
+                                    <p>{new Date(props.content.expireAt).toString()}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,7 @@ const mongoose=require("mongoose")
 const upload=require('../controllers/uploadController')
 const Broadcast=require('../models/broadcast')
 const Auth=require('../middleware/requireAuth')
+const user = require("../models/user")
 
 function handleErrors(error){
     let err={}
@@ -28,8 +29,12 @@ router.get('/all',Auth,async (req, res)=>{
 // get one broadcast
 router.get('/single/:broadcastId',Auth,async (req,res)=>{
     try{
-        let broadcast=await Broadcast.findOne({path:req.params.broadcastId})
-        res.status(200).json(broadcast)
+        if(req.user.plan){
+            let broadcast=await Broadcast.findOne({path:req.params.broadcastId})
+            res.status(200).json(broadcast)
+        } else{
+            res.status(203).json({message:"You need to be subscribed!!"})
+        }
     } catch (error){
         const errors= handleErrors(error)
         res.status(401).json({errors})

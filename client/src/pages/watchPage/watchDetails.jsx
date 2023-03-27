@@ -10,7 +10,7 @@ function Details(props){
     
     useEffect(()=>{
         try{
-            axios.get('http://localhost:3001/api/channels/single/'+props.broadcast.channel)
+            axios.get('http://localhost:3001/api/channels/single/'+props.broadcast.channel,{headers:{Authorization:`Bearer ${user.token}`}})
                 .then((res)=>{setChannel(res.data)})
         } catch(error){
             alert("An error occured: ",error)

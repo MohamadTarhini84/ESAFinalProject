@@ -14,7 +14,7 @@ function NavBar(){
     useEffect(()=>{
         setShow(isVisible)
     },[isVisible,user])
- 
+
     return (
         <header className={`navBar w-full fixed z-50 h-12 flex justify-between items-center sm:items-end px-4 
                          dark:text-white sm:px-12 sm:before:block before:hidden bg-white dark:bg-orange-800 

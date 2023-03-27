@@ -21,7 +21,7 @@ router.get('/all', Auth, async (req, res) => {
         console.log(user)
         if(user.plan){
             res.status(200).json({message:"You are already subscribed!",plan:user.plan})
-        } else{
+        } else{ 
             let packages = await Package.find()
             res.status(200).json(packages)
         }
@@ -30,11 +30,20 @@ router.get('/all', Auth, async (req, res) => {
         res.status(401).json({ errors })
     }
 })
+router.get('/forAdmin', Auth, async (req, res) => {
+    try {
+        let packages = await Package.find()
+        res.status(200).json(packages)
+    } catch (error) {
+        const errors = handleErrors(error)
+        res.status(401).json({ errors })
+    }
+})
 
 router.get('/single/:packageId', Auth, async (req, res) => {
     try {
-            let package = await Package.findOne({_id:req.params.packageId})
-            res.status(200).json(package)
+        let package = await Package.findOne({_id:req.params.packageId})
+        res.status(200).json(package)
     } catch (error) {
         const errors = handleErrors(error)
         res.status(401).json({ errors })

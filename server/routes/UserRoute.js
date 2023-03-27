@@ -96,11 +96,20 @@ router.patch('/removeAdmin/:userId',Auth, async (req, res) => {
   }
 })
 
+router.get('/single',Auth, async (req,res)=>{
+  try {
+    if(req.user){
+      res.status(200).json(req.user.isAdmin)
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+})
 
 
-router.get('/all', getAllUsers)
-router.get('/:id', getUser)
-router.patch('/:id', UpdateUser)
-router.delete('/:id', DeleteUser)
+router.get('/all',Auth, getAllUsers)
+router.get('/:id',Auth, getUser)
+router.patch('/:id',Auth, UpdateUser)
+router.delete('/:id',Auth, DeleteUser)
 
 module.exports = router;

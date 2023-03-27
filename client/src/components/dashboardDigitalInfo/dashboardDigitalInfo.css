@@ -1,7 +1,10 @@
 .digital-info-container{
     display: flex;
-    margin: 1%;
     flex-wrap: wrap;
+}
+
+.dashboardHome{
+    padding:1%
 }
 
 .digital-info-left-side{

@@ -11,7 +11,7 @@ function DashboardPackages() {
     const [data, setData] = useState([]);
 
     async function fetchData(){
-        const res = await axios.get("http://localhost:3001/api/packages/all",{headers:{authorization:`Bearer ${user.token}`}});
+        const res = await axios.get("http://localhost:3001/api/packages/forAdmin",{headers:{authorization:`Bearer ${user.token}`}});
         setData(res.data);
     };
 

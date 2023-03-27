@@ -22,7 +22,7 @@ function handleErrors(error){
 router.get('/subscribe/:packageId', Auth, async (req, res)=>{
     try{
         let packageDetails=await Package.findOne({_id:mongoose.Types.ObjectId(req.params.packageId)})
-        
+        console.log(req.user._id)
         let session=await stripe.checkout.sessions.create({
             metadata:{
                 userId:req.user._id.toHexString(),
@@ -54,16 +54,14 @@ router.get('/subscribe/:packageId', Auth, async (req, res)=>{
 
 router.post('/webhook', async (req,res)=>{
     try{
-        console.log(req.body.data.object.metadata)
         let data=req.body.data.object.metadata
-        let result=await User.findOneAndUpdate({_id:data.userId},
-            {$addToSet: 
-                { plan: { 
+        let result=await User.findOneAndUpdate({_id:data.userId},{
+                plan: { 
                     package:data.packageId, 
                     cost:data.cost,
                     expireAt:new Date(new Date().getTime()+parseInt(data.duration))
                 } 
-            }})
+            })
         res.status(200).json(result)
     } catch (error){
         console.log(error)

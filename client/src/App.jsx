@@ -25,17 +25,11 @@ const App = () => {
       <AuthContextProvider>
         <BrowserRouter>
           <div className={theme ? "" : "dark"}>
-            {/* Conditionally render the NavBar component */}
-            {window.location.pathname === "/signin" ||
-            window.location.pathname === "/signup" ? null : (
-              <NavBar />
-            )}
 
             <Routes>
-              <Route path="/test" element={<Plan />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/watch/:id" element={<Watch />} />
-              <Route path="/subscribe" element={<Subscribe />} />
+              <Route path="/home" element={<div><NavBar /><Home /></div>} />
+              <Route path="/watch/:id" element={<div><NavBar /><Watch/></div>} />
+              <Route path="/subscribe" element={<div><NavBar /><Subscribe/></div>} />
               {/* signUp  */}
               <Route path="/signup" element={<Signup />} />
 
@@ -46,7 +40,7 @@ const App = () => {
               <Route path="/editprofile" element={<EditProfile />} />
 
               {/* admin  */}
-              <Route path="/admin" element={<Admin />} />
+              <Route path="/admin" element={<div><NavBar /><Admin/></div>} />
 
               <Route path="*" element={<Navigate to="/home" />} />
             </Routes>

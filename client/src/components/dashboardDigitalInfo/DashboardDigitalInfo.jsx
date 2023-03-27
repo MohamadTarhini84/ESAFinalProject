@@ -17,7 +17,7 @@ function DashboardDigitalInfo() {
 
             const fetchData = async () => {
                 const allUsers = await axios.get("http://localhost:3001/api/user/all",{headers:{authorization:`Bearer ${user.token}`}});
-                const packages = await axios.get("http://localhost:3001/api/packages/all",{headers:{authorization:`Bearer ${user.token}`}});
+                const packages = await axios.get("http://localhost:3001/api/packages/forAdmin",{headers:{authorization:`Bearer ${user.token}`}});
                 const channels = await axios.get("http://localhost:3001/api/channels/all",{headers:{authorization:`Bearer ${user.token}`}});
                 
                 setUsers(allUsers.data);

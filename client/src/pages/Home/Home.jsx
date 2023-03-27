@@ -17,7 +17,7 @@ function Home(){
 
     return (
         <div className='App font-mono'>
-        <div className='w-full bg-gradient-to-b from-amber-100 to-amber-200 dark:from-orange-700 
+        <div className='w-full bg-gradient-to-b from-amber-700 to-amber-200 dark:from-orange-700 
                         dark:via-orange-800 dark:to-orange-900 flex flex-col items-center dark:text-white'>
             <Featured/>
             <Element name='search' className='w-full fles items-center'>
