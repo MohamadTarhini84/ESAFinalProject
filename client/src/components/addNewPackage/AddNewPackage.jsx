@@ -1,9 +1,10 @@
 import "./addNewPackage.css";
 import { useState } from 'react';
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 
 function AddNewPackage() {
-
+    const {user}=useAuthContext()
     const [name, setName] = useState("");
     const [duration, setDuration] = useState("");
     const [cost, setCost] = useState("");
@@ -41,8 +42,9 @@ function AddNewPackage() {
 
         fetch('http://localhost:3001/api/packages/new', {
             method: "POST",
+            headers:{authorization:`Bearer ${user.token}`},
             body: formData
-        },{headers:{authorization:`Bearer ${user.token}`}})
+        })
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => {

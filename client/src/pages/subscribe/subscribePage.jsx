@@ -20,7 +20,7 @@ function Subscribe(){
             {headers:{authorization:`Bearer ${user.token}`}})
                 .then((res)=>{
                     if(res.data.message){
-                        setPlan(res.data)
+                        setPlan(res.data.plan)
                     }else{
                         setPackages(res.data)
                     }

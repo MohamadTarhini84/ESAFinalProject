@@ -2,11 +2,13 @@ import "./usersTable.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const UsersTable = ({ data, refresh, i }) => {
+  const {user}=useAuthContext()
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/api/user/${id}`,{headers:{authorization:`Bearer ${user.token}`}})
+    axios.delete(`http://localhost:3001/api/user/${id}`,{},{headers:{authorization:`Bearer ${user.token}`}})
       .then(response => {
         console.log(response.data);
         refresh(i + 1)
@@ -17,7 +19,7 @@ const UsersTable = ({ data, refresh, i }) => {
   };
 
   const handleUpdate = (id) => {
-    axios.patch(`http://localhost:3001/api/user/makeAdmin/${id}`,{headers:{authorization:`Bearer ${user.token}`}})
+    axios.patch(`http://localhost:3001/api/user/makeAdmin/${id}`,{},{headers:{authorization:`Bearer ${user.token}`}})
       .then(response => {
         console.log(response.data);
         refresh(i + 1)
