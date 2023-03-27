@@ -32,10 +32,11 @@ const AddNewBroadcast = ({ data }) => {
         fetch('http://localhost:3001/api/broadcasts/new', {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                authorization:`Bearer ${user.token}`,
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({ title, category, channelName: channel, path: link },)
-        }, {headers:{authorization:`Bearer ${user.token}`}})
+        })
             .then(response => response.json())
             .then(data => {
                 console.log(data)

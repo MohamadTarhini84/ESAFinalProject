@@ -1,8 +1,9 @@
 import "./addNewChannel.css";
 import { useState } from 'react';
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 function AddNewChannel() {
-
+  const {user}=useAuthContext()
   const [name, setName] = useState("");
   const [logo, setLogo] = useState(null);
 
@@ -22,8 +23,9 @@ function AddNewChannel() {
 
     fetch('http://localhost:3001/api/channels/new', {
         method: "POST",
-        body: formData
-      },{headers:{authorization:`Bearer ${user.token}`}})
+        body: formData,
+        headers:{authorization:`Bearer ${user.token}`}
+      })
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => {

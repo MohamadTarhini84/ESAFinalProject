@@ -31,6 +31,15 @@ router.get('/all', Auth, async (req, res) => {
     }
 })
 
+router.get('/single/:packageId', Auth, async (req, res) => {
+    try {
+            let package = await Package.findOne({_id:req.params.packageId})
+            res.status(200).json(package)
+    } catch (error) {
+        const errors = handleErrors(error)
+        res.status(401).json({ errors })
+    }
+})
 // add new package
 router.post('/new', upload.fields([{ name: 'image' }]), Auth, async (req, res) => {
     const newPackage = new Package()
