@@ -6,7 +6,6 @@ const connect = require('./config/db');
 const packagesRoute = require('./routes/packagesRoute');
 const channelsRoute=require('./routes/channelsRoute')
 const broadcastsRoute=require('./routes/broadcastsRoute')
-var getRawBody = require('raw-body')
 const cors = require('cors');
 
 const app = express()//creates an express app

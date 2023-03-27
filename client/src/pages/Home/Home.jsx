@@ -1,9 +1,8 @@
 import Search from './Search';
 import Featured from './Featured';
 import MSearch from './mobileSearch'
-import { Element } from 'react-scroll';
+import { Element,scroller } from 'react-scroll';
 import { useEffect } from 'react';
-import { scroller } from 'react-scroll';
 
 function Home(){
     useEffect(() => {

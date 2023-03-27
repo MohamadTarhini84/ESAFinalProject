@@ -1,8 +1,8 @@
 require('dotenv').config()
 const express = require('express')
 const router = express.Router()
-const User=require('../models/user')
 const Package=require('../models/package')
+const User=require('../models/user')
 const Stripe=require('stripe').default
 const stripe = new Stripe(process.env.STRIPE_KEY)
 const mongoose=require('mongoose')
@@ -18,20 +18,18 @@ function handleErrors(error){
     return err
 }
 
-// router.use((req, res, next) => {
-//     if (req.originalUrl === '/webhook') {
-//       next();
-//     } else {
-//       bodyParser.json()(req, res, next);
-//     }
-//   });
 
 router.get('/subscribe/:packageId', Auth, async (req, res)=>{
     try{
         let packageDetails=await Package.findOne({_id:mongoose.Types.ObjectId(req.params.packageId)})
-        console.log(packageDetails)
+        
         let session=await stripe.checkout.sessions.create({
-            metadata:{hello:"Hello World!"},
+            metadata:{
+                userId:req.user._id.toHexString(),
+                packageId:packageDetails._id.toHexString(),
+                cost:packageDetails.cost,
+                duration:packageDetails.duration
+            },
             payment_method_types:['card'],
             mode:'payment',
             line_items:[{
@@ -54,30 +52,23 @@ router.get('/subscribe/:packageId', Auth, async (req, res)=>{
     }
 })
 
-router.post('/webhook',Auth, async (req,res)=>{
-    let event;
+router.post('/webhook', async (req,res)=>{
     try{
-        // console.log(req.body)
-        const sig=req.headers['stripe-signature'].toString()
-        event=stripe.webhooks.constructEvent(req.body,sig,process.env.WEBHOOK_SECRET)
+        console.log(req.body.data.object.metadata)
+        let data=req.body.data.object.metadata
+        let result=await User.findOneAndUpdate({_id:data.userId},
+            {$addToSet: 
+                { plan: { 
+                    package:data.packageId, 
+                    cost:data.cost,
+                    expireAt:new Date(new Date().getTime()+parseInt(data.duration))
+                } 
+            }})
+        res.status(200).json(result)
     } catch (error){
-        console.log(error.raw.message)
+        console.log(error)
         res.status(400).end()
         return;
-    }
-    console.log(event.type)
-
-    switch(event.type){
-        case 'payment_intent.succeeded':
-            console.log('success')
-            // const result=User.findOneAndyUpdate({_id:})
-            break;
-        case 'checkout.session.completed':
-            console.log('gigasuccess')
-            break;
-        case 'payment_intent.payment_failed':
-            console.log("L")
-            break;
     }
 })
 

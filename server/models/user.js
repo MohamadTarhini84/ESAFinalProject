@@ -22,7 +22,8 @@ const UserSchema = mongoose.Schema({
           required: true
       },
       plan:{
-        type:subSchema
+        type:[subSchema],
+        default:[]
       },
       isAdmin : {
           type: Boolean,

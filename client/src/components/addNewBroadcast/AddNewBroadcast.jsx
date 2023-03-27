@@ -8,6 +8,7 @@ const AddNewBroadcast = ({ data }) => {
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [channel, setChannel] = useState("");
+    const [channelId, setChannelId] = useState("");
     const [link, setLink] = useState("");
 
     function handleTitle(event) {
@@ -19,7 +20,9 @@ const AddNewBroadcast = ({ data }) => {
     }
 
     function handleChannel(event) {
-        setChannel(event.target.value);
+        let array=event.target.value.split(',')
+        setChannel(array[0]);
+        setChannelId(array[1])
     }
 
     function handleLink(event) {
@@ -28,14 +31,14 @@ const AddNewBroadcast = ({ data }) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-
+        
         fetch('http://localhost:3001/api/broadcasts/new', {
             method: "POST",
             headers: {
                 authorization:`Bearer ${user.token}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ title, category, channelName: channel, path: link },)
+            body: JSON.stringify({ title, category, channelName: channel, path: link,channel:channelId },)
         })
             .then(response => response.json())
             .then(data => {
@@ -72,10 +75,10 @@ const AddNewBroadcast = ({ data }) => {
                             </select>
                         </div>
                         <div className="select-channel input_text flex-css">
-                            <select value={channel} onChange={handleChannel}>
-                                <option selected hidden> Select Channel </option>
+                            <select onChange={handleChannel}>
+                                <option hidden> Select Channel </option>
                                 {data.map((item) => (
-                                    <option key={item._id} value={item.name}> {item.name} </option>
+                                    <option key={item._id} value={item.name+","+item._id}> {item.name} </option>
                                 ))}
                             </select>
                         </div>
