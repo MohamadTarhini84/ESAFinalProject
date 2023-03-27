@@ -2,11 +2,14 @@ import "./allUsersTable.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const AllUsersTable = ({ data, refresh, batata }) => {
 
+  const {user}=useAuthContext()
+
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/api/user/${id}`,{headers:{authorization:`Bearer ${user.token}`}})
+    axios.delete(`http://localhost:3001/api/user/${id}`, {} ,{headers:{authorization:`Bearer ${user.token}`}})
       .then(response => {
         console.log(response.data);
         refresh(batata + 1)
