@@ -69,7 +69,6 @@ function AddNewPackage() {
                             <input type="text" placeholder="Package Name" onChange={handleName} />
                         </div>
                         <div className="package-duration input_text flex-css">
-                            {/* <input type="number" placeholder="Package Duration" onChange={handleDuration} /> */}
                             <select onChange={handleDuration} >
                                 <option selected hidden>Package Duration</option>
                                 <option value="2629800000">1 Month</option>
