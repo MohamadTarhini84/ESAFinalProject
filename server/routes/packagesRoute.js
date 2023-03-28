@@ -3,6 +3,11 @@ const mongoose = require("mongoose");
 const upload = require('../controllers/uploadController');
 const Package = require('../models/package');
 const Auth=require('../middleware/requireAuth')
+const fs=require('fs')
+
+function test(){
+    console.log("ok")
+}
 
 function handleErrors(error) {
     let err = {}
@@ -88,6 +93,7 @@ router.delete('/delete/:packageId', Auth, async (req, res) => {
         if (!result) {
             return res.status(404).json({ message: 'Package not found' })
         }
+        fs.unlink(result.background,test)
         res.status(200).json({ message: 'Package deleted successfully' })
     } catch (error) {
         const errors = handleErrors(error)

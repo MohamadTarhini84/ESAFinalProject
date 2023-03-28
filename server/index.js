@@ -17,24 +17,6 @@ app.use(cors({
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-// app.use(bodyParser.json({
-//     // Because Stripe needs the raw body, we compute it but only when hitting the Stripe callback URL.
-//     verify: function(req,res,buf) {
-//         var url = req.originalUrl;
-//         if (url.startsWith('/stripe-webhooks')) {
-//             req.rawBody = buf.toString()
-//         }
-//     }}));
-// app.use(function (req, res, next) {
-//     getRawBody(req, {
-//       length: req.headers['content-length'],
-//       limit: '1mb',
-//     }, function (err, string) {
-//       if (err) return next(err)
-//       req.text = string
-//       next()
-//     })
-//   })
 
 app.use('*/assets', express.static(__dirname + '/assets'))
 

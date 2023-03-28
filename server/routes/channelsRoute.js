@@ -4,6 +4,11 @@ const upload = require('../controllers/uploadController');
 const Channel = require('../models/channel');
 const Broadcast = require('../models/broadcast');
 const Auth = require('../middleware/requireAuth')
+const fs=require('fs')
+
+function test(){
+    console.log("ok")
+}
 
 function handleErrors(error) {
     let err = {}
@@ -62,6 +67,7 @@ router.delete('/delete/:channelId', Auth, async (req, res) => {
     }
     try {
         let result = await Channel.findOneAndDelete({ _id: req.params.channelId })
+        fs.unlink(result.logo,test)
         let cascadeDelete = await Broadcast.deleteMany({ channel: result._id })
         if (!result) {
             return res.status(404).json({ message: 'Channel not found' })
