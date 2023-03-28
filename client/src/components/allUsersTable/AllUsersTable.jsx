@@ -9,7 +9,7 @@ const AllUsersTable = ({ data, refresh, batata }) => {
   const {user}=useAuthContext()
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/api/user/${id}`, {} ,{headers:{authorization:`Bearer ${user.token}`}})
+    axios.delete(`http://localhost:3001/api/user/${id}`,{headers:{authorization:`Bearer ${user.token}`}})
       .then(response => {
         console.log(response.data);
         refresh(batata + 1) //update UI after deleting an item

@@ -35,7 +35,7 @@ function DashboardBroadcast() {
             const res = await axios.get(`http://localhost:3001/api/broadcasts/searchBroadcast?q=${query}`);
             setBroadcast(res.data);
         };
-        if (query.length === 0 || query.length > 2) fetchData();
+        if (query.length === 0 || query.length > 1) fetchData();
     }, [query]);
 
     return (

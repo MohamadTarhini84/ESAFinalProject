@@ -20,27 +20,20 @@ function Package(props) {
 
     return (
         <div className="package-container">
-
-            <div class="package-top">
-                <img className="batata" src={"http://localhost:3001/" + props.item.background} alt="Logo" />
-                <div className="container">
-                    <h4 className="package-name"><b>{props.item.name}</b></h4>
-                    <div className="package-info">
-                        Duration: {durationText} <br />
-                        Cost: {props.item.cost} <br />
-                        Description: {props.item.description} <br />
-                    </div>
-                </div>
+            <img className="package-background" src={"http://localhost:3001/" + props.item.background} alt="Background" />
+            <h4 className="package-name"><b>{props.item.name}</b></h4>
+            <p className="price">Cost: {props.item.cost}$ </p>
+            <div className="package-info">
+                <p>Duration: {durationText} </p>
+                <p>Description: {props.item.description} </p>
             </div>
-            <div className="package-footer">
-                <div className="package-buttons">
-                    <button className="package-button">
-                        <FontAwesomeIcon className="fa-icon" icon={faPenToSquare}></FontAwesomeIcon>
-                    </button>
-                    <button onClick={() => props.function(props.item._id)}>
-                        <FontAwesomeIcon className="fa-icon" icon={faTrash}></FontAwesomeIcon>
-                    </button>
-                </div>
+            <div className="package-buttons">
+                <button>
+                    <FontAwesomeIcon className="fa-icon" icon={faPenToSquare}></FontAwesomeIcon>
+                </button>
+                <button onClick={() => props.function(props.item._id)}>
+                    <FontAwesomeIcon className="fa-icon" icon={faTrash}></FontAwesomeIcon>
+                </button>
             </div>
         </div>
     )

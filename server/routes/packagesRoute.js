@@ -84,10 +84,10 @@ router.post('/new', upload.fields([{ name: 'image' }]), Auth, async (req, res) =
 
 // delete package
 router.delete('/delete/:packageId', Auth, async (req, res) => {
-    const user=req.user
-    if(!user.isAdmin){
-        return res.status(404).json({ message: 'You are not an admin!' })
-    }
+    // const user=req.user
+    // if(!user.isAdmin){
+    //     return res.status(404).json({ message: 'You are not an admin!' })
+    // }
     try {
         let result = await Package.findOneAndDelete({ _id: req.params.packageId })
         if (!result) {

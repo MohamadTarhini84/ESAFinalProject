@@ -29,7 +29,7 @@ function DashboardChannels() {
             const res = await axios.get(`http://localhost:3001/api/channels/search?q=${query}`);
             setData(res.data);
         };
-        if (query.length === 0 || query.length > 2) fetchData();
+        if (query.length === 0 || query.length > 1) fetchData();
     }, [query]);
 
     return (
