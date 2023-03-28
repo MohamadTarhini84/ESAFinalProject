@@ -41,6 +41,16 @@ router.get('/single/:broadcastId',Auth,async (req,res)=>{
     }
 })
 
+router.get('/channel/:channelId',Auth,async (req,res)=>{
+    try{
+        let broadcasts=await Broadcast.find({channel:req.params.channelId})
+        res.status(200).json(broadcasts)
+    } catch (error){
+        const errors= handleErrors(error)
+        res.status(401).json({errors})
+    }
+})
+
 // add new broadcast
 router.post('/new',Auth, async (req,res)=>{
     console.log(req.body);
@@ -97,7 +107,7 @@ router.get('/search', async (req, res)=>{
 
 // delete broadcast
 router.delete('/delete/:broadcastId', Auth,async (req,res)=>{
-    if(!user.isAdmin){
+    if(!req.user.isAdmin){
         return res.status(404).json({ message: 'You are not an admin!' })
     }
     try{

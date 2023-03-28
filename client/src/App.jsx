@@ -45,7 +45,7 @@ const App = () => {
               <Route path="*" element={<Navigate to="/home" />} />
 
               {/* test */}
-              <Route path="/test" element={<Channel />} />
+              <Route path="/test/:id" element={<div><NavBar/><Channel /></div>} />
             </Routes>
             
             {window.location.pathname === "/admin" ? null : (
