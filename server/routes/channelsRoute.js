@@ -1,75 +1,75 @@
-const router=require("express").Router()
-const mongoose=require("mongoose");
-const upload=require('../controllers/uploadController');
-const Channel=require('../models/channel');
-const Broadcast=require('../models/broadcast');
-const Auth=require('../middleware/requireAuth')
+const router = require("express").Router()
+const mongoose = require("mongoose");
+const upload = require('../controllers/uploadController');
+const Channel = require('../models/channel');
+const Broadcast = require('../models/broadcast');
+const Auth = require('../middleware/requireAuth')
 
-function handleErrors(error){
-    let err={}
+function handleErrors(error) {
+    let err = {}
     console.log(error)
-    Object.values(error.errors).forEach(({properties})=>{
-        err[properties.path]=properties.message
+    Object.values(error.errors).forEach(({ properties }) => {
+        err[properties.path] = properties.message
     })
 
     return err
 }
 
 // get all channels
-router.get('/all',Auth,async (req, res)=>{
-    try{
-        let channels=await Channel.find()
+router.get('/all', Auth, async (req, res) => {
+    try {
+        let channels = await Channel.find()
         res.status(200).json(channels)
-    } catch (error){
-        const errors= handleErrors(error)
-        res.status(401).json({errors})
+    } catch (error) {
+        const errors = handleErrors(error)
+        res.status(401).json({ errors })
     }
 })
 
 // get one channel
-router.get('/single/:channelId',Auth,async (req,res)=>{
-    try{
-        let channel=await Channel.findOne({_id:req.params.channelId})
+router.get('/single/:channelId', Auth, async (req, res) => {
+    try {
+        let channel = await Channel.findOne({ _id: req.params.channelId })
         res.status(200).json(channel)
-    } catch (error){
+    } catch (error) {
         // const errors= handleErrors(error)
-        res.status(401).json({error})
+        res.status(401).json({ error })
         // console.log(error)
     }
 })
 
 // upload channel logo
-router.post('/new', upload.fields([{name:'image'}]),Auth, async (req, res)=>{
-    try{
+router.post('/new', upload.fields([{ name: 'image' }]), Auth, async (req, res) => {
+    try {
         const newChannel = new Channel({
-            name:req.body.name,
-            logo:req.files.image[0].path
+            name: req.body.name,
+            logo: req.files.image[0].path
         })
 
-        let channel=await Channel.create(newChannel)
+        let channel = await Channel.create(newChannel)
         res.status(200).json(channel)
-    } catch (error){
-        const errors= handleErrors(error)
-        res.status(401).json({errors})
+    } catch (error) {
+        const errors = handleErrors(error)
+        res.status(401).json({ errors })
     }
 })
 
 // delete channel
-router.delete('/delete/:channelId', Auth,async (req, res)=>{
-    const user=req.user
-    if(!user.isAdmin){
+router.delete('/delete/:channelId', Auth, async (req, res) => {
+    const user = req.user
+    if (!user.isAdmin) {
         return res.status(404).json({ message: 'You are not an admin!' })
     }
-    try{
-        let result=await Channel.findOneAndDelete({_id:req.params.channelId})
-        let cascadeDelete=await Broadcast.deleteMany({channel:result._id})
+    try {
+        let result = await Channel.findOneAndDelete({ _id: req.params.channelId })
+        let cascadeDelete = await Broadcast.deleteMany({ channel: result._id })
         if (!result) {
             return res.status(404).json({ message: 'Channel not found' })
         }
         res.status(200).json({ message: 'Channel deleted successfully' })
-    } catch (error){
-        const errors= handleErrors(error)
-        res.status(401).json({errors})
+    } catch (error) {
+        const errors = handleErrors(error)
+        res.status(401).json({ errors })
     }
 })
 
@@ -77,7 +77,7 @@ router.delete('/delete/:channelId', Auth,async (req, res)=>{
 router.get('/search', async (req, res) => {
     const { q } = req.query;
     try {
-        let channels=await Channel.find()
+        let channels = await Channel.find();
         res.json(search(channels, q).slice(0, 20));
     } catch (error) {
         const errors = handleErrors(error);
@@ -94,4 +94,4 @@ const search = (data, q) => {
 };
 
 
-module.exports=router;
+module.exports = router;

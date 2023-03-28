@@ -10,6 +10,8 @@ function DashboardPackages() {
     const {user}=useAuthContext()
     const [data, setData] = useState([]);
 
+    const [query, setQuery] = useState(""); // set query to search for a package
+
     async function fetchData(){
         const res = await axios.get("http://localhost:3001/api/packages/forAdmin",{headers:{authorization:`Bearer ${user.token}`}});
         setData(res.data);
@@ -32,9 +34,24 @@ function DashboardPackages() {
             });
     };
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await axios.get(`http://localhost:3001/api/packages/search?q=${query}`);
+            setData(res.data);
+        };
+        if (query.length === 0 || query.length > 2) fetchData();
+    }, [query]);
+
     return (
         <div>
             <AddNewPackage />
+            <div className="package-search">
+                <input
+                    type="search"
+                    placeholder="Search.."
+                    onChange={(e) => setQuery(e.target.value.toLowerCase())}
+                />
+            </div>
             <PackageContainer data={data} handleDelete={(id)=>handleDelete(id)} />
         </div>
     )

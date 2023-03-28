@@ -114,7 +114,7 @@ router.delete('/delete/:broadcastId', Auth,async (req,res)=>{
 })
 
 // api search
-router.get('/search', async (req, res) => {
+router.get('/searchBroadcast', async (req, res) => {
     const { q } = req.query;
     try {
         let broadcasts=await Broadcast.find()
