@@ -13,9 +13,11 @@ const AllUsersTable = ({ data, refresh, batata }) => {
       .then(response => {
         console.log(response.data);
         refresh(batata + 1) //update UI after deleting an item
+        alert("User deleted");
       })
       .catch(error => {
         console.log(error);
+        alert("There was an error deleting the user. Please try again later.");
       });
   };
 
