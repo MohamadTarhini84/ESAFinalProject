@@ -69,7 +69,14 @@ function AddNewPackage() {
                             <input type="text" placeholder="Package Name" onChange={handleName} />
                         </div>
                         <div className="package-duration input_text flex-css">
-                            <input type="number" placeholder="Package Duration" onChange={handleDuration} />
+                            {/* <input type="number" placeholder="Package Duration" onChange={handleDuration} /> */}
+                            <select onChange={handleDuration} >
+                                <option selected hidden>Package Duration</option>
+                                <option value="2629800000">1 Month</option>
+                                <option value="7889400000">3 Months</option>
+                                <option value="15778800000">6 Months</option>
+                                <option value="31556926000">1 Year</option>
+                            </select>
                         </div>
                         <div className="package-price input_text flex-css">
                             <input type="number" placeholder="Package Price" onChange={handleCost} />
