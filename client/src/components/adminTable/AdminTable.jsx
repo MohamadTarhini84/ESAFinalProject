@@ -11,7 +11,7 @@ const AdminTable = ({ data, refresh, i }) => {
     axios.delete(`http://localhost:3001/api/user/${id}`,{},{headers:{authorization:`Bearer ${user.token}`}})
       .then(response => {
         console.log(response.data);
-        refresh(i + 1)
+        refresh(i + 1) //update UI after deleting an item
       })
       .catch(error => {
         console.log(error);
@@ -22,7 +22,7 @@ const AdminTable = ({ data, refresh, i }) => {
     axios.patch(`http://localhost:3001/api/user/removeAdmin/${id}`,{},{headers:{authorization:`Bearer ${user.token}`}})
       .then(response => {
         console.log(response.data);
-        refresh(i + 1)
+        refresh(i + 1) //update UI after updating an item
       })
       .catch(error => {
         console.log(error);

@@ -12,7 +12,7 @@ const AllUsersTable = ({ data, refresh, batata }) => {
     axios.delete(`http://localhost:3001/api/user/${id}`, {} ,{headers:{authorization:`Bearer ${user.token}`}})
       .then(response => {
         console.log(response.data);
-        refresh(batata + 1)
+        refresh(batata + 1) //update UI after deleting an item
       })
       .catch(error => {
         console.log(error);

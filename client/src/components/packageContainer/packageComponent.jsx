@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function Package(props){
+    // replace "\" with "/" to get the correct link & path
     let bgString=props.item.background?props.item.background.replace(/\\/g,"/"):"";
 
     return (

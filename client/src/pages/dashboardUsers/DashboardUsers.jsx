@@ -8,7 +8,7 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 function DashboardUsers() {
     const {user}=useAuthContext()
     const [data, setData] = useState([]);
-    const [refresh, setRefresh] = useState(0);
+    const [refresh, setRefresh] = useState(0); // state to update UI after an event
 
     useEffect(() => {
         if(user){
@@ -20,6 +20,7 @@ function DashboardUsers() {
         }
     }, [refresh,user]);
 
+       // filer users data to get only regular users
     const filtered = data.filter(user => {
         return user.isAdmin == false;
     });

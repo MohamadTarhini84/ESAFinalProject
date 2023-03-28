@@ -7,27 +7,29 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 
 
 function DashboardDigitalInfo() {
-    const {user}=useAuthContext()
+    const { user } = useAuthContext()
     const [users, setUsers] = useState([]);
     const [packages, setPackages] = useState([]);
     const [channels, setChannels] = useState([]);
 
     useEffect(() => {
-        if(user){
+        if (user) {
 
+            // fetch data from backend & set it in arry
             const fetchData = async () => {
-                const allUsers = await axios.get("http://localhost:3001/api/user/all",{headers:{authorization:`Bearer ${user.token}`}});
-                const packages = await axios.get("http://localhost:3001/api/packages/forAdmin",{headers:{authorization:`Bearer ${user.token}`}});
-                const channels = await axios.get("http://localhost:3001/api/channels/all",{headers:{authorization:`Bearer ${user.token}`}});
-                
+                const allUsers = await axios.get("http://localhost:3001/api/user/all", { headers: { authorization: `Bearer ${user.token}` } });
+                const packages = await axios.get("http://localhost:3001/api/packages/forAdmin", { headers: { authorization: `Bearer ${user.token}` } });
+                const channels = await axios.get("http://localhost:3001/api/channels/all", { headers: { authorization: `Bearer ${user.token}` } });
+
                 setUsers(allUsers.data);
                 setPackages(packages.data);
                 setChannels(channels.data);
             };
             fetchData();
         }
-        }, [user]);
+    }, [user]);
 
+    // filer users data to get only subscribed
     const subscribed = users.filter(user => {
         return user.plan != null;
     });

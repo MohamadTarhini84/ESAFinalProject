@@ -17,7 +17,7 @@ function AddNewChannel() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData();
+    const formData = new FormData(); // we use FormData because we are sending string & file
     formData.append("name", name);
     formData.append("image", logo);
 
@@ -30,7 +30,7 @@ function AddNewChannel() {
       .then(data => {
         console.log(data)
         alert("Channel added");
-    })
+      })
       .catch(error => {
         console.error(error);
         alert("There was an error adding the channel. Please try again later.");

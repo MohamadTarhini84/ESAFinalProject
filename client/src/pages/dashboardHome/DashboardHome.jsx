@@ -9,7 +9,7 @@ function DashboardHome() {
 
     const {user}=useAuthContext()
     const [data, setData] = useState([]);
-    const [refresh, setRefresh] = useState(0);
+    const [refresh, setRefresh] = useState(0); // state to update UI after an event
 
     useEffect(() => {
         if(user){

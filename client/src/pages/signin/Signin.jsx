@@ -49,6 +49,7 @@ function Signin() {
                             {error && <p className="absolute -bottom-32 sm:-bottom-12 text-xs px-4 py-2 bg-red-300 border text-white rounded-md border-red-600">{error}</p>}
                         </div>
                         <div className="input_text">
+                            {/* login with google */}
                             {/* <GoogleLogin
                                 style={{width:"100%"}}
                                 clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"

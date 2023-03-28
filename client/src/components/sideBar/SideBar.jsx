@@ -1,7 +1,6 @@
 import "./sideBar.css";
 
 
-
 function SideBar(props) {
 
     return (

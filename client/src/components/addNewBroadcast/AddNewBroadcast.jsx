@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 const AddNewBroadcast = ({ data }) => {
+
     const { user } = useAuthContext()
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");

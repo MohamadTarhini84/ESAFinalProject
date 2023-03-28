@@ -12,7 +12,7 @@ const ChannelContainer = ({ data, refresh, i }) => {
         axios.delete(`http://localhost:3001/api/channels/delete/${id}` ,{headers:{authorization:`Bearer ${user.token}`}})
             .then(response => {
                 console.log(response.data);
-                refresh(i + 1);
+                refresh(i + 1); //update UI after deleting an item
             })
             .catch(error => {
                 console.log(error);

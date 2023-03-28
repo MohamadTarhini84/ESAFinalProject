@@ -12,9 +12,10 @@ import axios from 'axios';
 
 function Admin(){
     const {user}=useAuthContext()
-    const [show, setShow]=useState('dashboard')
+    const [show, setShow]=useState('dashboard') // state for sidebar
     const navigate=useNavigate()
 
+    // change the show state to change page in dashboard
     function handleClick(value){
         setShow(value)
     }

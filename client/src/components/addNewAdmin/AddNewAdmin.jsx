@@ -1,5 +1,4 @@
 import "./addNewAdmin.css";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 

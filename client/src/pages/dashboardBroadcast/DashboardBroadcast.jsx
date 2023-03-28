@@ -7,19 +7,19 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 
 
 function DashboardBroadcast() {
-    const {user}=useAuthContext()
+    const { user } = useAuthContext()
     const [data, setData] = useState([]);
     const [broadcast, setBroadcast] = useState([]);
 
     useEffect(() => {
-        if(user){
+        if (user) {
             const fetchChannels = async () => {
-                const res = await axios.get("http://localhost:3001/api/channels/all",{headers:{authorization:`Bearer ${user.token}`}});
+                const res = await axios.get("http://localhost:3001/api/channels/all", { headers: { authorization: `Bearer ${user.token}` } });
                 setData(res.data);
             };
 
             const fetchBroadcasts = async () => {
-                const res = await axios.get("http://localhost:3001/api/broadcasts/all",{headers:{authorization:`Bearer ${user.token}`}});
+                const res = await axios.get("http://localhost:3001/api/broadcasts/all", { headers: { authorization: `Bearer ${user.token}` } });
                 setBroadcast(res.data);
             };
 
@@ -35,7 +35,7 @@ function DashboardBroadcast() {
                 <input type="search" placeholder="Search" />
             </div>
             <div className="all-broadcasts">
-            <BroadcastContainer broadcast={broadcast} />
+                <BroadcastContainer broadcast={broadcast} />
             </div>
         </div>
     )
