@@ -48,8 +48,7 @@ router.post('/new',Auth, async (req,res)=>{
         title:req.body.title,
         category:req.body.category,
         path:req.body.path,
-        channelName: req.body.channelName,
-       // channel: req.body.channel
+        channel: req.body.channel
     })
     
     try{
@@ -88,7 +87,7 @@ router.get('/search', async (req, res)=>{
     const broadcastsPerPage=5
     
     try{
-        let results=await Broadcast.aggregate([{$match:{$or:[{title:match},{category:match},{channelName:match}]}}]).skip(page*broadcastsPerPage).limit(broadcastsPerPage)
+        let results=await Broadcast.aggregate([{$match:{$or:[{title:match},{category:match}]}}]).skip(page*broadcastsPerPage).limit(broadcastsPerPage)
         res.status(200).json(results)
     } catch (error){
         const errors= handleErrors(error)
@@ -125,7 +124,7 @@ router.get('/searchBroadcast', async (req, res) => {
     }
 });
 
-const keys = ["title", "category", "path", "channelName"];
+const keys = ["title", "category", "path"];
 
 const search = (data, q) => {
     return data.filter((item) =>

@@ -1,17 +1,44 @@
-import {useNavigate} from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
-function Card(props){
-    const navigate=useNavigate()
+function Card(props) {
+    const [channel, setChannel] = useState()
+    const [isLoading, setLoading] = useState()
+
+    useEffect(() => {
+        try {
+            axios.get('http://localhost:3001/api/channels/single/' + props.content.channel)
+                .then((res) => { setChannel(res.data) })
+        } catch (error) {
+            console.log(error)
+        }
+    }, [])
+
 
     return (
-        <div className="w-80 aspect-video rounded-md border relative group overflow-hidden hover:cursor-pointer text-left" onClick={()=>navigate(`/watch/${props.content.path}`)}>
-            {<img className="absolute w-full h-full group-hover:brightness-75 transition-all" src={`https://i.ytimg.com/vi/${props.content.path}/mqdefault.jpg`}/>}
-            <div className="absolute w-full py-2 px-4 text-white bg-stone-900 bg-opacity-70">
-                {props.content.title}
+        <div className="w-80 aspect-video bg-amber-800 dark:bg-stone-800 px-4 pt-4 rounded 
+                shadow-lg">
+            <div className="flex items-center mb-4">
+                {channel && <img
+                    className="w-10 h-10 rounded-full"
+                    src={`http://localhost:3001/${channel.logo}`}
+                    alt="Channel Logo"
+                />}
+                <div className="ml-2">
+                    {channel && <Link to={`/channels/${channel._id}`} className="text-white text-lg font-bold">{channel.name}</Link>}
+                    <p className="text-gray-400">{props.content.category}</p>
+                </div>
             </div>
-            <div className="absolute bottom-0 w-full flex flex-col py-2 px-4 text-white bg-stone-900 bg-opacity-50 sm:-left-full sm:group-hover:left-0 transition-all">
-                <h1>{props.content.channelName}</h1>
-                <h1>{props.content.category}</h1>
+            <Link to={`/watch/${props.content.path}`}>
+                <img
+                    className="w-full h-48 object-cover rounded hover:opacity-80 border border-black dark:border-white"
+                    src={`https://i.ytimg.com/vi/${props.content.path}/mqdefault.jpg`}
+                    alt="Game thumbnail"
+                />
+            </Link>
+            <div className="my-4">
+                <h3 className="text-white text-lg font-bold mb-2">{props.content.title}</h3>
             </div>
         </div>
     )

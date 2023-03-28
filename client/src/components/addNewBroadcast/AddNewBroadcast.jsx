@@ -7,7 +7,6 @@ const AddNewBroadcast = ({ data }) => {
     const { user } = useAuthContext()
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
-    const [channel, setChannel] = useState("");
     const [channelId, setChannelId] = useState("");
     const [link, setLink] = useState("");
 
@@ -20,9 +19,7 @@ const AddNewBroadcast = ({ data }) => {
     }
 
     function handleChannel(event) {
-        let array = event.target.value.split(',')
-        setChannel(array[0]);
-        setChannelId(array[1])
+        setChannelId(event.target.value)
     }
 
     function handleLink(event) {
@@ -38,7 +35,7 @@ const AddNewBroadcast = ({ data }) => {
                 authorization: `Bearer ${user.token}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ title, category, channelName: channel, path: link, channel: channelId },)
+            body: JSON.stringify({ title, category, path: link, channel: channelId },)
         })
             .then(response => response.json())
             .then(data => {
@@ -78,7 +75,7 @@ const AddNewBroadcast = ({ data }) => {
                             <select onChange={handleChannel}>
                                 <option hidden> Select Channel </option>
                                 {data.map((item) => (
-                                    <option key={item._id} value={item.name + "," + item._id}> {item.name} </option>
+                                    <option key={item._id} value={item._id}> {item.name} </option>
                                 ))}
                             </select>
                         </div>
@@ -87,7 +84,7 @@ const AddNewBroadcast = ({ data }) => {
                         <div className="broadcast-url input_text flex-css">
                             <input type="text" placeholder="broadcast Link" onChange={handleLink} />
                         </div>
-                        <div className="add-broadcast-btn flex-css">
+                        <div className="add-broadcast-btn flex-css hover:opacity-80">
                             <button id="add-broadcast-button">Add</button>
                         </div>
                     </div>

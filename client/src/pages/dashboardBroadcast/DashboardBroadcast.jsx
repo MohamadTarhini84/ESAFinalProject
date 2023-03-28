@@ -33,7 +33,7 @@ function DashboardBroadcast() {
     useEffect(() => {
         const fetchData = async () => {
             const res = await axios.get(`http://localhost:3001/api/broadcasts/searchBroadcast?q=${query}`);
-            setData(res.data);
+            setBroadcast(res.data);
         };
         if (query.length === 0 || query.length > 2) fetchData();
     }, [query]);

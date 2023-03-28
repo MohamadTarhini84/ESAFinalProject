@@ -14,6 +14,7 @@ import { themeContext } from './context/themeContext';
 import Admin from './pages/adminPage/admin';
 import { AuthContextProvider } from './context/AuthContext';
 import SideBar from './components/sideBar/SideBar';
+import Channel from './pages/channelPage/Channel';
 
 const App = () => {
   const {theme}=useContext(themeContext)
@@ -44,7 +45,7 @@ const App = () => {
               <Route path="*" element={<Navigate to="/home" />} />
 
               {/* test */}
-              <Route path="/test" element={<SideBar />} />
+              <Route path="/test" element={<Channel />} />
             </Routes>
             
             {window.location.pathname === "/admin" ? null : (

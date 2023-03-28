@@ -55,7 +55,7 @@ function Search(){
                 <div className="w-full flex justify-center gap-6 pb-14 pt-5 items-center border-b-2 ">
                     <label className='text-3xl'>Search: </label>
                     <input ref={input} style={{border:"1px solid black"}} id="search_goto" className="w-1/2 h-14 p-2 text-black" 
-                        type="text" placeholder="Enter Title or Genre or Channel" onChange={(e)=>{setSearchValue(e.target.value);setPage(0);setNewSearch(true)}}/>
+                        type="text" placeholder="Enter Title or Category" onChange={(e)=>{setSearchValue(e.target.value);setPage(0);setNewSearch(true)}}/>
                     <button className="border-2 border-black dark:border-gray-300 rounded-md py-1 px-3 hover:bg-stone-900 
                         hover:text-white dark:hover:bg-white dark:hover:text-black h-10" 
                         onClick={submitSearch}>Search</button>

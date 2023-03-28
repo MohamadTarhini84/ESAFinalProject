@@ -27,7 +27,7 @@ router.get('/all', Auth, async (req, res) => {
 })
 
 // get one channel
-router.get('/single/:channelId', Auth, async (req, res) => {
+router.get('/single/:channelId', async (req, res) => {
     try {
         let channel = await Channel.findOne({ _id: req.params.channelId })
         res.status(200).json(channel)
