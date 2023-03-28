@@ -1,18 +1,23 @@
-.all-packages-container{
+.all-packages-container {
     display: flex;
     flex-wrap: wrap;
 }
 
-.package-container{
-    background-color: #FDE047;
+.package-container {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
     width: 30%;
-    box-shadow:0 15px 30px rgba(0,0,0,0.1);
     border-radius: 10px;
     margin: 1%;
+
 }
 
-.package-info{
-    background-color:#D9D9D9;
+/* .package{
+    text-align: center;
+}
+
+.package-info {
+    background-color: #D9D9D9;
     border-radius: 10px;
     padding: 2%;
     width: 90%;
@@ -20,20 +25,26 @@
     text-align: center;
 }
 
-.package-footer{
+.package-footer {
     margin: 0% 3%;
     display: flex;
     justify-content: space-between;
 }
 
-.package-background{
+.package-background {
     margin: 5%;
 }
 
-.background-css{
-    width: 150px;
-    height: 150px;
+.background-css {
     margin: auto;
     justify-content: center;
     text-align: center;
+} */
+
+.card:hover {
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    padding: 2px 16px;
 }

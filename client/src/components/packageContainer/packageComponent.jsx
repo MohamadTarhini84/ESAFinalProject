@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-function Package(props){
+function Package(props) {
     // replace "\" with "/" to get the correct link & path
-    let bgString=props.item.background?props.item.background.replace(/\\/g,"/"):"";
+    //let bgString = props.item.background ? props.item.background.replace(/\\/g, "/") : "";
 
     let durationText = "";
     if (props.item.duration === 2629800000) {
@@ -19,17 +19,20 @@ function Package(props){
     }
 
     return (
-        <div className="package-container" style={{backgroundImage:`url(http://localhost:3001/${bgString})`}}>
-            <br />
-            <div className="package-info">
-                Duration: {durationText} <br />
-                Cost: {props.item.cost} <br />
-                Description: {props.item.description} <br />
+        <div className="package-container">
+
+            <div class="package-top">
+                <img className="batata" src={"http://localhost:3001/" + props.item.background} alt="Logo" />
+                <div className="container">
+                    <h4 className="package-name"><b>{props.item.name}</b></h4>
+                    <div className="package-info">
+                        Duration: {durationText} <br />
+                        Cost: {props.item.cost} <br />
+                        Description: {props.item.description} <br />
+                    </div>
+                </div>
             </div>
             <div className="package-footer">
-                <div className="package-name">
-                    <span>{props.item.name}</span>
-                </div>
                 <div className="package-buttons">
                     <button className="package-button">
                         <FontAwesomeIcon className="fa-icon" icon={faPenToSquare}></FontAwesomeIcon>
