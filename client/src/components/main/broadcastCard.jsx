@@ -20,11 +20,12 @@ function Card(props) {
         <div className="w-80 aspect-video bg-amber-800 dark:bg-stone-800 px-4 pt-4 rounded 
                 shadow-lg">
             <div className="flex items-center mb-4">
-                {channel && <img
-                    className="w-10 h-10 rounded-full"
-                    src={`http://localhost:3001/${channel.logo}`}
-                    alt="Channel Logo"
-                />}
+                {channel && <Link to={`/channels/${channel._id}`}>
+                        <img
+                        className="w-10 h-10 rounded-full"
+                        src={`http://localhost:3001/${channel.logo}`}
+                        alt="Channel Logo"/>
+                    </Link>}
                 <div className="ml-2">
                     {channel && <Link to={`/channels/${channel._id}`} className="text-white text-lg font-bold">{channel.name}</Link>}
                     <p className="text-gray-400">{props.content.category}</p>
