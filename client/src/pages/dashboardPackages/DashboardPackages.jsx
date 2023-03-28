@@ -28,9 +28,11 @@ function DashboardPackages() {
             .then(response => {
                 console.log(response.data);
                 fetchData(); // Refetch data after deleting an item
+                alert("Package deleted");
             })
             .catch(error => {
                 console.log(error);
+                alert("There was an error deleting the package. Please try again later.");
             });
     };
 

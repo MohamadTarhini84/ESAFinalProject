@@ -52,7 +52,7 @@ function AddNewChannel() {
             <div className="flex-css">
               <input className="custom-file-input" type="file" onChange={handleLogo} />
             </div>
-            <div className="add-channel-btn flex-css">
+            <div className="add-channel-btn flex-css hover:opacity-80">
               <button id="add-channel-button">Add</button>
             </div>
           </div>

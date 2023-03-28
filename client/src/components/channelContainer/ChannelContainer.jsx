@@ -13,9 +13,11 @@ const ChannelContainer = ({ data, refresh, i }) => {
             .then(response => {
                 console.log(response.data);
                 refresh(i + 1); //update UI after deleting an item
+                alert("Channel deleted");
             })
             .catch(error => {
                 console.log(error);
+                alert("There was an error deleting the channel. Please try again later.");
             });
     };
 

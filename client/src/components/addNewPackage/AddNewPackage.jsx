@@ -88,7 +88,7 @@ function AddNewPackage() {
                         <div className="package-description input_text flex-css">
                             <input type="text" placeholder="Package Description" onChange={handleDescription} />
                         </div>
-                        <div className="add-package-btn flex-css">
+                        <div className="add-package-btn flex-css hover:opacity-80">
                             <button id="add-package-button">Add</button>
                         </div>
                     </div>
