@@ -13,6 +13,7 @@ import { useContext } from 'react'
 import { themeContext } from './context/themeContext';
 import Admin from './pages/adminPage/admin';
 import { AuthContextProvider } from './context/AuthContext';
+import SideBar from './components/sideBar/SideBar';
 
 const App = () => {
   const {theme}=useContext(themeContext)
@@ -41,6 +42,9 @@ const App = () => {
               <Route path="/admin" element={<div><NavBar /><Admin/></div>} />
 
               <Route path="*" element={<Navigate to="/home" />} />
+
+              {/* test */}
+              <Route path="/test" element={<SideBar />} />
             </Routes>
             
             {window.location.pathname === "/admin" ? null : (

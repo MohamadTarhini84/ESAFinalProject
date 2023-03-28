@@ -1,0 +1,16 @@
+.kabse {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-align: center;
+}
+
+.kabse :hover {
+    background-color: #ccc;
+}
+
+.active {
+    background-color: #771f09;
+    color: white;
+}
