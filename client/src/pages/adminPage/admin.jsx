@@ -35,7 +35,7 @@ function Admin(){
 
     return (
         <div className='w-full h-full pt-24 flex'>
-            <SideBar function={(value)=>handleClick(value)}/>
+            <SideBar state={show} function={(value)=>handleClick(value)}/>
             <div className='flex flex-col w-full'>
                 { show=='dashboard' && <DashboardHome/>}
                 

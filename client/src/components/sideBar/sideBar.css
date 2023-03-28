@@ -1,16 +1,8 @@
 .kabse {
-    background-color: #eee;
-    color: black;
     display: block;
     padding: 12px;
-    text-align: center;
+    cursor: pointer
 }
-
-.kabse :hover {
-    background-color: #ccc;
-}
-
-.active {
-    background-color: #7C2D12;
-    color: white;
+.kabse span{
+    margin: 0 10px;
 }
