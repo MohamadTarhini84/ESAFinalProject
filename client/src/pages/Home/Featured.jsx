@@ -32,9 +32,9 @@ function Featured(props){
     
     return(
         <div className={`h-52 sm:h-full mt-10 text-black flex flex-col justify-end w-full dark:text-white ${props.className}
-                        sm:mt-0 sm:py-10 sm:px-56 bg-gray-100 dark:bg-stone-900 shadow-lg`}>
+                        sm:mt-0 sm:py-10 sm:px-56 bg-gradient-to-b from-gray-100 via-gray-100 to-transparent dark:from-stone-900 dark:via-stone-900 dark:to-transparent`}>
             <span ref={test}></span>
-            <h1 className='text-center sm:text-3xl m-4'>Our Featured Broadcasts</h1>
+            <h1 className='text-center sm:text-4xl m-4 font-extrabold text-amber-700 dark:text-white sm:mb-10 sm:p-4'>Our Featured Broadcasts</h1>
             {slides.length>=5 && 
             <Slide>
                 <div className={`w-full h-full hover:cursor-pointer transition-all`}>

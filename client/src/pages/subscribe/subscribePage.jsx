@@ -52,7 +52,7 @@ function Subscribe(){
                     </Link>
                 </div>
             </div>}
-            {packages.length===0 && plan && <Plan content={plan}/>}
+            {user && packages.length===0 && plan && <Plan content={plan}/>}
         </div>
     )
 } 

@@ -59,7 +59,7 @@ function Channel() {
           <div className="w-full flex flex-wrap justify-center gap-4 py-4 m-auto">
               {results && results.map((item)=>{
                 return (  
-                  <div key={item._id} className="w-80 aspect-video bg-amber-800 dark:bg-stone-800 px-4 pt-4 rounded 
+                  <div key={item._id} className="w-80 aspect-video bg-gradient-to-b from-amber-900 to-amber-700 dark:from-stone-700 dark:to-stone-800 px-4 pt-4 rounded 
                         shadow-lg">
                     <Link to={`/watch/${item.path}`}>
                       <img

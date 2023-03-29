@@ -64,7 +64,7 @@ const DeleteUser = async (req, res) => {
   const userId = req.body;
 
   try {
-    await User.findOne({ _id: id, isSuper: false }).remove();
+    await User.deleteOne({ _id: id, isSuper: false })
     res.status(200).json("User deleted successfully");
   } catch (error) {
     res.status(500).json(error);
@@ -92,6 +92,7 @@ router.patch("/removeAdmin/:userId", Auth, async (req, res) => {
       { _id: req.params.userId, isSuper: false },
       { isAdmin: false }
     );
+    console.log(result)
     res.status(200).json(result);
   } catch (error) {
     const errors = handleErrors(error);

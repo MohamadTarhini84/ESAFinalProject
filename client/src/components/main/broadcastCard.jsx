@@ -17,7 +17,7 @@ function Card(props) {
 
 
     return (
-        <div className="w-80 aspect-video bg-amber-800 dark:bg-stone-800 px-4 pt-4 rounded 
+        <div className="w-80 aspect-video bg-gradient-to-b from-amber-700 to-amber-600 dark:from-stone-700 dark:to-stone-800 px-4 pt-4 rounded 
                 shadow-lg">
             <div className="flex items-center mb-4">
                 {channel && <Link to={`/channels/${channel._id}`}>

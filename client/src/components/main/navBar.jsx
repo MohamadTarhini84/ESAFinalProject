@@ -16,7 +16,7 @@ function NavBar(){
     },[isVisible,user])
 
     return (
-        <header className={`navBar w-full fixed z-50 h-12 flex justify-between items-center sm:items-end px-4 
+        <header className={`navBar w-full fixed z-50 h-12 flex justify-between items-center sm:items-end px-4 text-amber-800
                          dark:text-white sm:px-12 sm:before:block before:hidden bg-white dark:bg-orange-800 
                          sm:bg-transparent sm:dark:bg-transparent before:bg-white before:shadow-md dark:before:bg-stone-800
                         ${show?"":"show"}`}>

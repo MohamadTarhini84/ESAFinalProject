@@ -28,8 +28,13 @@ const App = () => {
 
             <Routes>
               <Route path="/home" element={<div><NavBar /><Home /></div>} />
+              
               <Route path="/watch/:id" element={<div><NavBar /><Watch/></div>} />
+              
               <Route path="/subscribe" element={<div><NavBar /><Subscribe/></div>} />
+
+              <Route path="/channels/:id" element={<div><NavBar/><Channel /></div>} />
+
               {/* signUp  */}
               <Route path="/signup" element={<Signup />} />
 
@@ -43,9 +48,6 @@ const App = () => {
               <Route path="/admin" element={<div><NavBar /><Admin/></div>} />
 
               <Route path="*" element={<Navigate to="/home" />} />
-
-              {/* test */}
-              <Route path="/test/:id" element={<div><NavBar/><Channel /></div>} />
             </Routes>
             
             {window.location.pathname === "/admin" ? null : (
