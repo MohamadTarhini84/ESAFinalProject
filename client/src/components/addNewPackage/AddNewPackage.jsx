@@ -49,7 +49,6 @@ function AddNewPackage() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 alert("Package added");
             })
             .catch(error => {

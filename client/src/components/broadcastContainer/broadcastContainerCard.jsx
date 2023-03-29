@@ -37,7 +37,7 @@ function Card({ item, user }) {
             </div>
             <div className="broadcast-footer">
                 <div className="broadcast-title">
-                    <span>{item.title}</span>
+                    <span><b>{item.title}</b></span>
                 </div>
                 <div className="broadcast-buttons">
 

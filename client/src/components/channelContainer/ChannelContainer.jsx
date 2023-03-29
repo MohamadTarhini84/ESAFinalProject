@@ -31,7 +31,7 @@ const ChannelContainer = ({ data, refresh, i }) => {
                     </div>
                     <div className="channel-footer">
                         <div className="channel-name">
-                            <span>{item.name}</span>
+                            <span><b>{item.name}</b></span>
                         </div>
                         <div className="channel-buttons">
 

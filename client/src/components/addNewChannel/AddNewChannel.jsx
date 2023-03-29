@@ -28,7 +28,6 @@ function AddNewChannel() {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         alert("Channel added");
       })
       .catch(error => {

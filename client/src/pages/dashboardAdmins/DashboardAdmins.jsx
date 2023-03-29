@@ -23,7 +23,6 @@ function DashboardAdmins() {
     const filtered = data.filter(user => {
         return user.isAdmin == true;
     });
-    console.log(filtered);
 
     return (
         <div>

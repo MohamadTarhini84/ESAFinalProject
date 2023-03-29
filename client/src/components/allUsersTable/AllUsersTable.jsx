@@ -27,11 +27,12 @@ const AllUsersTable = ({ data, refresh, batata }) => {
 
         <thead>
           <tr>
-            <th>ID</th>
+            {/* <th>ID</th> */}
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
             <th>Is Admin?</th>
+            <th>Is Subscribed?</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -39,12 +40,14 @@ const AllUsersTable = ({ data, refresh, batata }) => {
         <tbody>
           {data && data.map((item) => (
             <tr key={item._id}>
-              <td>{item._id}</td>
+              {/* <td>{item._id}</td> */}
               <td>{item.firstName}</td>
               <td>{item.lastName}</td>
               <td>{item.email}</td>
               {/* Display 'Yes' if isAdmin is true, and 'No' if it's false */}
               <td>{item.isAdmin ? 'Yes' : 'No'}</td> 
+              {/* Display 'Yes' if the user has subscription plan, and 'No' if he has not */}
+              <td>{item.plan ? 'Yes' : 'No'}</td> 
               <td>
                 <button onClick={() => handleDelete(item._id)}>
                   <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
