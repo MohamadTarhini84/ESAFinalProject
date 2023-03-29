@@ -3,7 +3,7 @@ import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 
-function Card({ item, user }) {
+function Card({ item, func }) {
     const [channel, setChannel] = useState()
 
     useEffect(() => {
@@ -15,17 +15,6 @@ function Card({ item, user }) {
         }
     }, [])
 
-    const handleDelete = (id) => {
-        axios.delete(`http://localhost:3001/api/broadcasts/delete/${id}`, { headers: { authorization: `Bearer ${user.token}` } })
-            .then(response => {
-                console.log(response.data);
-                alert("Broadcast deleted");
-            })
-            .catch(error => {
-                console.log(error);
-                alert("There was an error deleting the broadcast. Please try again later.");
-            });
-    };
 
     return (
         <div className="broadcast-container">
@@ -45,7 +34,7 @@ function Card({ item, user }) {
                         <FontAwesomeIcon className="fa-icon" icon={faPenToSquare}></FontAwesomeIcon>
                     </button>
 
-                    <button onClick={() => handleDelete(item._id)}>
+                    <button onClick={() => func(item._id)}>
                         <FontAwesomeIcon className="fa-icon" icon={faTrash}></FontAwesomeIcon>
                     </button>
 

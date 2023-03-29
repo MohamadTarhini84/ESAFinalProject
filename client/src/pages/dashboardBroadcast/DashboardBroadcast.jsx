@@ -13,18 +13,18 @@ function DashboardBroadcast() {
 
     const [query, setQuery] = useState(""); // set query to search for a broadcast
 
+    async function fetchBroadcasts() {
+        const res = await axios.get("http://localhost:3001/api/broadcasts/all", { headers: { authorization: `Bearer ${user.token}` } });
+        setBroadcast(res.data);
+    };
+
+    const fetchChannels = async () => {
+        const res = await axios.get("http://localhost:3001/api/channels/all", { headers: { authorization: `Bearer ${user.token}` } });
+        setData(res.data);
+    };
+
     useEffect(() => {
         if (user) {
-            const fetchChannels = async () => {
-                const res = await axios.get("http://localhost:3001/api/channels/all", { headers: { authorization: `Bearer ${user.token}` } });
-                setData(res.data);
-            };
-
-            const fetchBroadcasts = async () => {
-                const res = await axios.get("http://localhost:3001/api/broadcasts/all", { headers: { authorization: `Bearer ${user.token}` } });
-                setBroadcast(res.data);
-            };
-
             fetchChannels();
             fetchBroadcasts();
         }
@@ -37,6 +37,18 @@ function DashboardBroadcast() {
         };
         if (query.length === 0 || query.length > 1) fetchData();
     }, [query]);
+    
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:3001/api/broadcasts/delete/${id}`, { headers: { authorization: `Bearer ${user.token}` } })
+            .then(response => {
+                fetchBroadcasts()
+                alert("Broadcast deleted");
+            })
+            .catch(error => {
+                console.log(error);
+                alert("There was an error deleting the broadcast. Please try again later.");
+            });
+    };
 
     return (
         <div>
@@ -49,7 +61,7 @@ function DashboardBroadcast() {
                 />
             </div>
             <div className="all-broadcasts">
-                <BroadcastContainer broadcast={broadcast} />
+                <BroadcastContainer broadcast={broadcast} func={(id)=>handleDelete(id)}/>
             </div>
         </div>
     )
