@@ -3,8 +3,9 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const Auth = require("../middleware/requireAuth");
+const handleErrors = require("../controllers/handleErrorsController");
 
-// get all users
+
 const getAllUsers = async (req, res) => {
   try {
     let users = await User.find();
@@ -14,7 +15,7 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-// get a User
+
 const getUser = async (req, res) => {
   const id = req.params.id;
 
@@ -31,7 +32,7 @@ const getUser = async (req, res) => {
   }
 };
 
-// update a user
+
 const UpdateUser = async (req, res) => {
   const id = req.params.id;
   const userId = req.body;
@@ -57,24 +58,20 @@ const UpdateUser = async (req, res) => {
   }
 };
 
-// Delete user
+
 const DeleteUser = async (req, res) => {
   const id = req.params.id;
   const userId = req.body;
 
-  // if (userId === id) {
   try {
     await User.findOne({ _id: id, isSuper: false }).remove();
     res.status(200).json("User deleted successfully");
   } catch (error) {
     res.status(500).json(error);
   }
-  // } else {
-  //   res.status(403).json("Access Denied! you can only delete your own profile");
-  // }
 };
 
-// Make Admin
+
 router.patch("/makeAdmin/:userId", Auth, async (req, res) => {
   try {
     const result = await User.updateOne(
@@ -87,18 +84,20 @@ router.patch("/makeAdmin/:userId", Auth, async (req, res) => {
     res.status(401).json({ errors });
   }
 }),
-  // Remove Admin
-  router.patch("/removeAdmin/:userId", Auth, async (req, res) => {
-    try {
-      const result = await User.findOneAndUpdate({ _id: req.params.userId, isSuper:false },
-        { isAdmin: false }
-      );
-      res.status(200).json(result);
-    } catch (error) {
-      const errors = handleErrors(error);
-      res.status(401).json({ errors });
-    }
-  });
+
+
+router.patch("/removeAdmin/:userId", Auth, async (req, res) => {
+  try {
+    const result = await User.findOneAndUpdate(
+      { _id: req.params.userId, isSuper: false },
+      { isAdmin: false }
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    const errors = handleErrors(error);
+    res.status(401).json({ errors });
+  }
+});
 
 router.get("/single", Auth, async (req, res) => {
   try {

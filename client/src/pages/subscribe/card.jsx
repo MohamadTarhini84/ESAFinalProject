@@ -14,6 +14,7 @@ function Card(props){
             window.location.href=result.data
         } catch(error){
             console.log(error)
+            alert("An Error Occured")
         }
         setIsLoading(false)
     }
