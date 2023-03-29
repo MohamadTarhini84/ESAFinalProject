@@ -18,7 +18,6 @@ function DashboardChannels() {
             const fetchData = async () => {
                 const res = await axios.get("http://localhost:3001/api/channels/all", { headers: { authorization: `Bearer ${user.token}` } });
                 setData(res.data);
-                console.log(res.data)
             };
             fetchData();
         }

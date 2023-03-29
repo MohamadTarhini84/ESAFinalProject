@@ -1,5 +1,4 @@
 import "./dashboardPackages.css";
-
 import AddNewPackage from '../../components/addNewPackage/AddNewPackage';
 import PackageContainer from '../../components/packageContainer/PackageContainer';
 import { useEffect, useState } from "react";

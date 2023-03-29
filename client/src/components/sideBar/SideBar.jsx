@@ -1,6 +1,6 @@
 import "./sideBar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faBox, faTowerBroadcast, faTv, faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faBox, faTowerBroadcast, faTv, faScrewdriverWrench, faHouse } from '@fortawesome/free-solid-svg-icons';
 
 
 function SideBar(props) {
@@ -12,7 +12,7 @@ function SideBar(props) {
                     className={`kabse bg-orange-900  ${props.state == "dashboard" ? "text-white" : "text-black"}`}
                     onClick={() => props.function("dashboard")}
                 >
-                    <span><FontAwesomeIcon icon={faUsers}></FontAwesomeIcon></span>
+                    <span><FontAwesomeIcon icon={faHouse}></FontAwesomeIcon></span>
                     <button>
                         Dashboard
                     </button>

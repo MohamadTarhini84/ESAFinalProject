@@ -33,7 +33,6 @@ function DashboardDigitalInfo() {
     const subscribed = users.filter(user => {
         return user.plan != null;
     });
-    console.log(subscribed);
 
     return (
         <div className="digital-info-container w-full">
