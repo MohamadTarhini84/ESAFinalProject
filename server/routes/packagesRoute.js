@@ -4,19 +4,10 @@ const upload = require('../controllers/uploadController');
 const Package = require('../models/package');
 const Auth=require('../middleware/requireAuth')
 const fs=require('fs')
+const handleErrors=require('../controllers/handleErrorsController')
 
 function test(){
     console.log("ok")
-}
-
-function handleErrors(error) {
-    let err = {}
-    console.log(error)
-    Object.values(error.errors).forEach(({ properties }) => {
-        err[properties.path] = properties.message
-    })
-
-    return err
 }
 
 // get all packages

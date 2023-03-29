@@ -4,20 +4,11 @@ const upload = require('../controllers/uploadController');
 const Channel = require('../models/channel');
 const Broadcast = require('../models/broadcast');
 const Auth = require('../middleware/requireAuth')
+const handleErrors=require('../controllers/handleErrorsController')
 const fs=require('fs')
 
 function test(){
     console.log("ok")
-}
-
-function handleErrors(error) {
-    let err = {}
-    console.log(error)
-    Object.values(error.errors).forEach(({ properties }) => {
-        err[properties.path] = properties.message
-    })
-
-    return err
 }
 
 // get all channels

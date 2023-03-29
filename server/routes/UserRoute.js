@@ -1,27 +1,24 @@
-const express = require('express')
+const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const User = require('../models/user')
-const Auth=require('../middleware/requireAuth')
-
+const bcrypt = require("bcrypt");
+const User = require("../models/user");
+const Auth = require("../middleware/requireAuth");
 
 // get all users
 const getAllUsers = async (req, res) => {
-
   try {
     let users = await User.find();
     res.status(200).json(users);
   } catch (error) {
-    res.status(401).json({ error })
+    res.status(401).json({ error });
   }
-}
+};
 
 // get a User
 const getUser = async (req, res) => {
   const id = req.params.id;
 
   try {
-
     const user = await User.findById(id);
 
     if (user) {
@@ -41,11 +38,14 @@ const UpdateUser = async (req, res) => {
 
   if (id === userId) {
     try {
-      const user = await User.findOneAndUpdate({ _id: id }, {
-        ...req.body//spread the object,
-      });
+      const user = await User.findOneAndUpdate(
+        { _id: id },
+        {
+          ...req.body, //spread the object,
+        }
+      );
       if (!user) {
-        return res.status(400).json({ error: 'No such user' })
+        return res.status(400).json({ error: "No such user" });
       }
       console.log(user);
       res.status(200).json(user);
@@ -64,7 +64,7 @@ const DeleteUser = async (req, res) => {
 
   // if (userId === id) {
   try {
-    await User.findOneAndDelete({ _id: id });
+    await User.findOne({ _id: id, isSuper: false }).remove();
     res.status(200).json("User deleted successfully");
   } catch (error) {
     res.status(500).json(error);
@@ -75,41 +75,46 @@ const DeleteUser = async (req, res) => {
 };
 
 // Make Admin
-router.patch('/makeAdmin/:userId', Auth, async (req, res) => {
+router.patch("/makeAdmin/:userId", Auth, async (req, res) => {
   try {
-    const result = await User.updateOne({ _id: req.params.userId }, { isAdmin: true })
-    res.status(200).json(result)
+    const result = await User.updateOne(
+      { _id: req.params.userId },
+      { isAdmin: true }
+    );
+    res.status(200).json(result);
   } catch (error) {
-    const errors = handleErrors(error)
-    res.status(401).json({ errors })
+    const errors = handleErrors(error);
+    res.status(401).json({ errors });
   }
 }),
+  // Remove Admin
+  router.patch("/removeAdmin/:userId", Auth, async (req, res) => {
+    try {
+      const result = await User.findOneAndUpdate({ _id: req.params.userId, isSuper:false },
+        { isAdmin: false }
+      );
+      res.status(200).json(result);
+    } catch (error) {
+      const errors = handleErrors(error);
+      res.status(401).json({ errors });
+    }
+  });
 
-// Remove Admin
-router.patch('/removeAdmin/:userId',Auth, async (req, res) => {
+router.get("/single", Auth, async (req, res) => {
   try {
-    const result = await User.updateOne({ _id: req.params.userId }, { isAdmin: false })
-    res.status(200).json(result)
-  } catch (error) {
-    const errors = handleErrors(error)
-    res.status(401).json({ errors })
-  }
-})
-
-router.get('/single',Auth, async (req,res)=>{
-  try {
-    if(req.user){
-      res.status(200).json(req.user.isAdmin)
-    } else{res.status(201).json(false)}
+    if (req.user) {
+      res.status(200).json(req.user.isAdmin);
+    } else {
+      res.status(201).json(false);
+    }
   } catch (error) {
     res.status(500).json(error);
   }
-})
+});
 
-
-router.get('/all',Auth, getAllUsers)
-router.get('/:id',Auth, getUser)
-router.patch('/:id',Auth, UpdateUser)
-router.delete('/:id',Auth, DeleteUser)
+router.get("/all", Auth, getAllUsers);
+router.get("/:id", Auth, getUser);
+router.patch("/:id", Auth, UpdateUser);
+router.delete("/:id", Auth, DeleteUser);
 
 module.exports = router;

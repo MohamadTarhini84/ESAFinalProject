@@ -35,7 +35,7 @@ function Featured(props){
                         sm:mt-0 sm:py-10 sm:px-56 bg-gray-100 dark:bg-stone-900 shadow-lg`}>
             <span ref={test}></span>
             <h1 className='text-center sm:text-3xl m-4'>Our Featured Broadcasts</h1>
-            {slides.length>0 && 
+            {slides.length>=5 && 
             <Slide>
                 <div className={`w-full h-full hover:cursor-pointer transition-all`}>
                     <img className='w-full aspect-video' onClick={()=>navigate('/watch/'+slides[0].path)} src={`https://i.ytimg.com/vi/${slides[0].path}/maxresdefault.jpg`}/>

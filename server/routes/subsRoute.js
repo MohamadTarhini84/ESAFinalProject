@@ -7,17 +7,7 @@ const Stripe=require('stripe').default
 const stripe = new Stripe(process.env.STRIPE_KEY)
 const mongoose=require('mongoose')
 const Auth=require('../middleware/requireAuth')
-
-function handleErrors(error){
-    let err={}
-    console.log(error)
-    Object.values(error.errors).forEach(({properties})=>{
-        err[properties.path]=properties.message
-    })
-
-    return err
-}
-
+const handleErrors=require('../controllers/handleErrorsController')
 
 router.get('/subscribe/:packageId', Auth, async (req, res)=>{
     try{
