@@ -1,19 +1,17 @@
 import './App.css';
-import React from 'react';
+import { useContext } from 'react'
+import { themeContext } from './context/themeContext';
+import { AuthContextProvider } from './context/AuthContext';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import NavBar from './components/main/navBar'
+import Home from './pages/Home/Home';
 import Signup from './pages/signUp/signUp';
 import Signin from './pages/signIn/signIn';
 import EditProfile from './pages/editProfile/editProfile';
-import Home from './pages/Home/Home';
 import Watch from './pages/watchPage/watchPage';
 import Subscribe from './pages/subscribe/subscribePage';
 import Footer from './components/main/footer';
-import { useContext } from 'react'
-import { themeContext } from './context/themeContext';
 import Admin from './pages/adminPage/admin';
-import { AuthContextProvider } from './context/AuthContext';
-import SideBar from './components/sideBar/SideBar';
 import Channel from './pages/channelPage/Channel';
 
 const App = () => {
