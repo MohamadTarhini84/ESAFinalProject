@@ -22,7 +22,7 @@ function Package(props) {
         <div className="package-container">
             <img className="package-background" src={"http://localhost:3001/" + props.item.background} alt="Background" />
             <h4 className="package-name"><b>{props.item.name}</b></h4>
-            <p className="price">Cost: {props.item.cost}$ </p>
+            <p className="price">Cost: {props.item.cost/100}$ </p>
             <div className="package-info">
                 <p>Duration: {durationText} </p>
                 <p>Description: {props.item.description} </p>
