@@ -7,7 +7,10 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 function DashboardAdmins() {
     const { user } = useAuthContext()
     const [data, setData] = useState([]);
+    // state to update UI after an event
     const [refresh, setRefresh] = useState(0);
+    // set query to search for a user
+    const [query, setQuery] = useState("");
 
     useEffect(() => {
         if (user) {
@@ -18,6 +21,14 @@ function DashboardAdmins() {
             fetchData();
         }
     }, [refresh, user]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await axios.get(`http://localhost:3001/api/user/search?q=${query}`);
+            setData(res.data);
+        };
+        if (query.length === 0 || query.length > 1) fetchData();
+    }, [query]);
 
     // filer users data to get only admins
     const filtered = data.filter(user => {
@@ -31,7 +42,11 @@ function DashboardAdmins() {
                     <p className="table-title">List Of Admins:</p>
                 </div>
                 <div className="search-from-users-list-left-side">
-                    <input type="search" placeholder="Search" />
+                <input
+                        type="search"
+                        placeholder="Search.."
+                        onChange={(e) => setQuery(e.target.value.toLowerCase())}
+                    />
                 </div>
             </div>
             <AdminTable refresh={(e) => { setRefresh(e) }} i={refresh} data={filtered} />

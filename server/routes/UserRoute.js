@@ -6,6 +6,7 @@ const Auth = require("../middleware/requireAuth");
 const handleErrors = require("../controllers/handleErrorsController");
 
 
+// get all users
 const getAllUsers = async (req, res) => {
   try {
     let users = await User.find();
@@ -15,7 +16,7 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-
+// get one user
 const getUser = async (req, res) => {
   const id = req.params.id;
 
@@ -32,7 +33,7 @@ const getUser = async (req, res) => {
   }
 };
 
-
+// update user
 const UpdateUser = async (req, res) => {
   const id = req.params.id;
   const userId = req.body;
@@ -58,7 +59,7 @@ const UpdateUser = async (req, res) => {
   }
 };
 
-
+// delete user
 const DeleteUser = async (req, res) => {
   const id = req.params.id;
   const userId = req.body;
@@ -71,7 +72,7 @@ const DeleteUser = async (req, res) => {
   }
 };
 
-
+// make admin
 router.patch("/makeAdmin/:userId", Auth, async (req, res) => {
   try {
     const result = await User.updateOne(
@@ -85,7 +86,7 @@ router.patch("/makeAdmin/:userId", Auth, async (req, res) => {
   }
 }),
 
-
+// remove admin
 router.patch("/removeAdmin/:userId", Auth, async (req, res) => {
   try {
     const result = await User.findOneAndUpdate(
@@ -100,6 +101,7 @@ router.patch("/removeAdmin/:userId", Auth, async (req, res) => {
   }
 });
 
+
 router.get("/single", Auth, async (req, res) => {
   try {
     if (req.user) {
@@ -111,6 +113,28 @@ router.get("/single", Auth, async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+// api search
+router.get('/search', async (req, res) => {
+  const { q } = req.query;
+  try {
+      let users = await User.find()
+      res.json(search(users, q).slice(0, 20));
+  } catch (error) {
+      const errors = handleErrors(error);
+      res.status(401).json({ errors });
+  }
+});
+
+const keys = ["firstName", "lastName", "email"];
+
+const search = (data, q) => {
+  return data.filter((item) =>
+      keys.some((key) => item[key].toLowerCase().includes(q))
+  );
+};
+
+
 
 router.get("/all", Auth, getAllUsers);
 router.get("/:id", Auth, getUser);
