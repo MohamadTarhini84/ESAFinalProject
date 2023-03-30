@@ -52,6 +52,12 @@ function Featured(props){
                 <div className="w-full aspect-video transition-all h-full">
                     <img className='w-full h-full hover:cursor-pointer' onClick={()=>navigate('/watch/'+slides[4].path)} src={`https://i.ytimg.com/vi/${slides[4].path}/maxresdefault.jpg`}/>
                 </div>
+                <div className="w-full aspect-video transition-all h-full">
+                    <img className='w-full h-full hover:cursor-pointer' onClick={()=>navigate('/watch/'+slides[5].path)} src={`https://i.ytimg.com/vi/${slides[5].path}/maxresdefault.jpg`}/>
+                </div>
+                <div className="w-full aspect-video transition-all h-full">
+                    <img className='w-full h-full hover:cursor-pointer' onClick={()=>navigate('/watch/'+slides[6].path)} src={`https://i.ytimg.com/vi/${slides[6].path}/maxresdefault.jpg`}/>
+                </div>
             </Slide>}
                 {/* <div className='w-full aspect-video bg-black relative overflow-hidden'>
                     <input type="radio" name="r" id="r1" onClick={()=>setMargin("r1-checked")}/>
