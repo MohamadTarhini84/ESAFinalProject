@@ -33,7 +33,7 @@ function Card(props) {
             </div>
             <Link to={`/watch/${props.content.path}`}>
                 <img
-                    className="w-full h-48 object-cover rounded hover:opacity-80 border border-black dark:border-white"
+                    className="w-full h-48 object-cover rounded hover:brightness-50 transition-all border border-black dark:border-white"
                     src={`https://i.ytimg.com/vi/${props.content.path}/mqdefault.jpg`}
                     alt="Game thumbnail"
                 />

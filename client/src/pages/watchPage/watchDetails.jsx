@@ -14,7 +14,7 @@ function Details(props){
             axios.get('http://localhost:3001/api/channels/single/'+props.broadcast.channel,{headers:{Authorization:`Bearer ${user.token}`}})
                 .then((res)=>{setChannel(res.data)})
 
-            axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${props.broadcast.path}&key=AIzaSyADs2H-p5a0IwmW_mGCYM4VVblh0XeLuQs`)
+            axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${props.broadcast.path}&key=`)
                 .then((res)=>{setDesc(res.data.items[0].description)})
         } catch(error){
             alert("An error occured: ",error)

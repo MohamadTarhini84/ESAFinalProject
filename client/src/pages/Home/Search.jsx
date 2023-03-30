@@ -27,7 +27,7 @@ function Search(){
                     }
                     setPage(page+1)
                     setLoading(false)
-                    if(res.data.length<5){
+                    if(res.data.length<10){
                         setShowMore(false)
                     }else{
                         setShowMore(true)
@@ -51,7 +51,7 @@ function Search(){
         <div id="main_search" className="w-full p-6 h-auto flex flex-col gap-4 mt-16">
             <h1 className="text-4xl ml-4">Find Broadcasts: </h1>
             <div className="w-full bg-gray-100 dark:bg-stone-900 rounded-md p-4 shadow-lg">
-                <div className="w-full flex justify-center gap-6 pb-14 pt-5 items-center border-b-2 ">
+                <div className="w-full flex justify-center gap-6 pb-14 pt-5 items-center border-b-2 border-gray-700 dark:border-gray-300">
                     <label className='text-3xl'>Search: </label>
                     <input ref={input} style={{border:"1px solid black"}} id="search_goto" className="w-1/2 h-14 p-2 text-black" 
                         type="text" placeholder="Enter Title or Category" onChange={(e)=>{setSearchValue(e.target.value);setPage(0);setNewSearch(true)}}/>

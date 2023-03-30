@@ -25,7 +25,7 @@ function MSearch(props){
                     }
                     setPage(page+1)
                     setLoading(false)
-                    if(res.data.length<5){
+                    if(res.data.length<10){
                         setShowMore(false)
                     }else{
                         setShowMore(true)
