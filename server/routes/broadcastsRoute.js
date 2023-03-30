@@ -20,7 +20,7 @@ router.get('/all',Auth,async (req, res)=>{
 // get one broadcast
 router.get('/single/:broadcastId',Auth,async (req,res)=>{
     try{
-        if(req.user.plan){
+        if(req.user && req.user.plan){
             let broadcast=await Broadcast.findOne({path:req.params.broadcastId})
             res.status(200).json(broadcast)
         } else{
