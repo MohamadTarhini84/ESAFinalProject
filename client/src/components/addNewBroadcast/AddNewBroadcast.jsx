@@ -68,6 +68,7 @@ const AddNewBroadcast = ({ data }) => {
                                 <option value="Cooking">Cooking</option>
                                 <option value="Anime">Anime</option>
                                 <option value="Entertainment">Entertainment</option>
+                                <option value="Technology">Technology</option>
                             </select>
                         </div>
                         <div className="select-channel input_text flex-css">
