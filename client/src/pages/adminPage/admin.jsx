@@ -34,7 +34,7 @@ function Admin(){
     },[user])
 
     return (
-        <div className='w-full h-full pt-24 flex'>
+        <div className='w-full pt-24 flex bg-amber-100 dark:bg-stone-700 min-h-screen'>
             <SideBar state={show} function={(value)=>handleClick(value)}/>
             <div className='flex flex-col w-full'>
                 { show=='dashboard' && <DashboardHome/>}

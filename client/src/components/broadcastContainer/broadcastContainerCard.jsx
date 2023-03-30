@@ -17,28 +17,26 @@ function Card({ item, func }) {
 
 
     return (
-        <div className="broadcast-container">
-            <br />
-            <div className="broadcast-live">
-                Category: {item.category} <br />
-                Channel: {channel && channel.name} <br />
-                Path: {item.path} <br />
+        <div className="w-72 h-48 rounded-md flex flex-col justify-between border border-black bg-gray-200  dark:bg-gray-500">
+            <div className="h-14 rounded-t-md p-2 border-b border-black bg-amber-400">
+                <b>{item.title}</b>
             </div>
-            <div className="broadcast-footer">
-                <div className="broadcast-title">
-                    <span><b>{item.title}</b></span>
-                </div>
-                <div className="broadcast-buttons">
+            <div className="p-2 flex flex-col">
+                <h1>Category: {item.category}</h1>
+                <h1>Channel: {channel && channel.name}</h1>
+                <h1>Path: {item.path}</h1>
+            </div>
+            <div className="w-full p-2 flex justify-between bg-amber-400">
+                <button className="broadcast-button">
+                    Edit
+                    <FontAwesomeIcon className="fa-icon ml-1" icon={faPenToSquare}></FontAwesomeIcon>
+                </button>
 
-                    <button className="broadcast-button">
-                        <FontAwesomeIcon className="fa-icon" icon={faPenToSquare}></FontAwesomeIcon>
-                    </button>
+                <button onClick={() => func(item._id)}>
+                    Delete
+                    <FontAwesomeIcon className="fa-icon ml-1" icon={faTrash}></FontAwesomeIcon>
+                </button>
 
-                    <button onClick={() => func(item._id)}>
-                        <FontAwesomeIcon className="fa-icon" icon={faTrash}></FontAwesomeIcon>
-                    </button>
-
-                </div>
             </div>
         </div>
     )
