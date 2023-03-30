@@ -13,7 +13,6 @@ function MSearch(props){
 
     function submitSearch(){
         try{
-            console.log(results)
             setShowMore(false)
             setLoading(true)
             axios.get('http://localhost:3001/api/broadcasts/search?value='+searchValue+'&page='+page)

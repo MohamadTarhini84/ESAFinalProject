@@ -15,7 +15,6 @@ function Search(){
 
     function submitSearch(){
         try{
-            console.log(page)
             setShowMore(false)
             setLoading(true)
             axios.get('http://localhost:3001/api/broadcasts/search?value='+searchValue+'&page='+page)

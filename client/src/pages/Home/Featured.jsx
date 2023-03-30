@@ -22,7 +22,6 @@ function Featured(props){
         try{
             axios.get('http://localhost:3001/api/broadcasts/search?page=0')
                 .then((res)=>{
-                    console.log(res.data)
                     setSlides(res.data)
                 })
         } catch(error){
