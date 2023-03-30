@@ -2,16 +2,21 @@ import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from 'axios'
+require('dotenv').config()
 
 function Details(props){
     const {user}=useAuthContext()
     const [channel,setChannel]=useState(null)
+    const [desc,setDesc]=useState(null)
     const navigate=useNavigate()
     
     useEffect(()=>{
         try{
             axios.get('http://localhost:3001/api/channels/single/'+props.broadcast.channel,{headers:{Authorization:`Bearer ${user.token}`}})
                 .then((res)=>{setChannel(res.data)})
+
+            axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=kjyeCdd-dl8&key=${process.env.YOUTUBE_API_KEY}`)
+                .then((res)=>{setDesc(res.data.items[0].description)})
         } catch(error){
             alert("An error occured: ",error)
         }
@@ -30,7 +35,7 @@ function Details(props){
                     <h1 className="sm:text-2xl underline capitalize">{props.broadcast.title}</h1>
                     <h1 className="sm:text-xl underline capitalize">{props.broadcast.category}</h1>
                 </div>
-                <p className="text-gray-800 dark:text-gray-300 overflow-hidden">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, odit aliquam praesentium sit assumenda quaerat sunt tempora minus voluptate reprehenderit, eius, deleniti necessitatibus laboriosam asperiores et ipsum. Fugiat, distinctio facilis.</p>
+                <p className="text-gray-800 dark:text-gray-300 overflow-hidden">{desc}</p>
             </div>
         </div>
     )
