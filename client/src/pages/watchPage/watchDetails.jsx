@@ -2,7 +2,6 @@ import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from 'axios'
-require('dotenv').config()
 
 function Details(props){
     const {user}=useAuthContext()
@@ -15,7 +14,7 @@ function Details(props){
             axios.get('http://localhost:3001/api/channels/single/'+props.broadcast.channel,{headers:{Authorization:`Bearer ${user.token}`}})
                 .then((res)=>{setChannel(res.data)})
 
-            axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=kjyeCdd-dl8&key=${process.env.YOUTUBE_API_KEY}`)
+            axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${props.broadcast.path}&key=AIzaSyADs2H-p5a0IwmW_mGCYM4VVblh0XeLuQs`)
                 .then((res)=>{setDesc(res.data.items[0].description)})
         } catch(error){
             alert("An error occured: ",error)
