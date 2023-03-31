@@ -11,6 +11,7 @@ function DashboardDigitalInfo() {
     const [users, setUsers] = useState([]);
     const [packages, setPackages] = useState([]);
     const [channels, setChannels] = useState([]);
+    const [income, setIncome] = useState(0);
 
     useEffect(() => {
         if (user) {
@@ -20,10 +21,12 @@ function DashboardDigitalInfo() {
                 const allUsers = await axios.get("http://localhost:3001/api/user/all", { headers: { authorization: `Bearer ${user.token}` } });
                 const packages = await axios.get("http://localhost:3001/api/packages/forAdmin", { headers: { authorization: `Bearer ${user.token}` } });
                 const channels = await axios.get("http://localhost:3001/api/channels/all", { headers: { authorization: `Bearer ${user.token}` } });
+                const result = await axios.get("http://localhost:3001/api/subscribe/income", { headers: { authorization: `Bearer ${user.token}` } });
 
                 setUsers(allUsers.data);
                 setPackages(packages.data);
                 setChannels(channels.data);
+                setIncome(result)
             };
             fetchData();
         }
@@ -105,7 +108,7 @@ function DashboardDigitalInfo() {
                         </div>
                     </div>
                     <div className="card-value">
-                        615,770$
+                        {"$"+income}
                     </div>
                 </div>
             </div>

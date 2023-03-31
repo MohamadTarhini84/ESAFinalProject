@@ -9,6 +9,24 @@ const mongoose=require('mongoose')
 const Auth=require('../middleware/requireAuth')
 const handleErrors=require('../controllers/handleErrorsController')
 
+router.get('/income', Auth, async (req,res)=>{
+    try{
+        if(req.user.isAdmin){
+            let subscribed=await User.find({ plan: { $ne: null } })
+            let income=0
+            subscribed.forEach((item)=>{
+                income +=item.plan.cost
+            })
+            res.json({totalIncome:income/100})
+        } else{
+            res.status(301).json({message:"You must be an admin to access this endpoint"})
+        }
+    } catch(errors){
+        let error = handleErrors(errors)
+        res.status(401).json(error)
+    }
+})
+
 router.get('/subscribe/:packageId', Auth, async (req, res)=>{
     try{
         let packageDetails=await Package.findOne({_id:mongoose.Types.ObjectId(req.params.packageId)})
