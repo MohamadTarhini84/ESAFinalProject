@@ -85,7 +85,7 @@ router.get('/search', async (req, res)=>{
     let match=new RegExp(req.query.value, 'i')
 
     const page=req.query.page || 0
-    const broadcastsPerPage=10
+    const broadcastsPerPage=12
     
     try{
         let results=await Broadcast.aggregate([{$match:{$or:[{title:match},{category:match}]}}]).skip(page*broadcastsPerPage).limit(broadcastsPerPage)

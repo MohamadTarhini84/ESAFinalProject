@@ -30,7 +30,7 @@ function LoggedIn(){
                 <SupervisorAccountIcon className='group-hover:cursor-pointer'/>
                 <span className='tooltip sm:group-hover:scale-100'>Admin Page</span>
             </Link>}
-            <Link to='/home#search' className='relative group text-inherit hover:text-inherit'>
+            <Link to='/home#search' className='relative group text-inherit hover:text-inherit' onClick={()=>window.scrollTo(0,500)}>
                 <SearchIcon className='group-hover:cursor-pointer'/>
                 <span className='tooltip sm:group-hover:scale-100'>Search</span>
             </Link>

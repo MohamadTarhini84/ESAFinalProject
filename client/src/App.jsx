@@ -11,7 +11,7 @@ import EditProfile from './pages/editProfile/editProfile';
 import Watch from './pages/watchPage/watchPage';
 import Subscribe from './pages/subscribe/subscribePage';
 import Footer from './components/main/footer';
-import Admin from './pages/adminPage/admin';
+import Admin from './pages/admin/adminPage/admin';
 import Channel from './pages/channelPage/Channel';
 
 const App = () => {

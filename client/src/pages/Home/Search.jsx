@@ -12,11 +12,13 @@ function Search(){
     const [page, setPage]=useState(0)
     const [newSearch,setNewSearch]=useState(false)
     const input=useRef()
+    let position=0
 
     function submitSearch(){
         try{
             setShowMore(false)
             setLoading(true)
+            position=window.scrollY
             axios.get('http://localhost:3001/api/broadcasts/search?value='+searchValue+'&page='+page)
                 .then((res)=>{
                     if(newSearch){
@@ -27,7 +29,7 @@ function Search(){
                     }
                     setPage(page+1)
                     setLoading(false)
-                    if(res.data.length<10){
+                    if(res.data.length<12){
                         setShowMore(false)
                     }else{
                         setShowMore(true)
@@ -35,7 +37,12 @@ function Search(){
                 })
         } catch(error){
             console.log(error)
+            setLoading(false)
         }
+        setTimeout(() => {
+            window.scrollTo(0, position)
+        }, 1000);
+
     }
 
     useEffect(()=>{
@@ -66,12 +73,12 @@ function Search(){
                     {!isLoading && results && results.map((item)=>{
                         return <Card key={item._id} content={item}/>
                     })}
-                    {showMore && <button onClick={()=>submitSearch()} className="absolute m-auto left-0 right-0 bottom-0 w-fit">
+                    {showMore && <button onClick={()=>{submitSearch()}} className="absolute m-auto left-0 right-0 bottom-0 w-fit">
                         <h1 className='border border-black dark:border-white px-2 mb-2 hover:bg-black hover:text-white 
                             dark:hover:bg-white dark:hover:text-black rounded-md'>show more</h1>
                         <KeyboardDoubleArrowDown className='animate-bounce'/></button>}
                     {results.length==0 && <p className='my-8 text-2xl'>No available broadcasts matched your search!</p>}
-                    {isLoading && <RotateRightIcon className="absolute text-white m-auto left-0 top-0 right-0 animate-spin" style={{fontSize:"140px"}}/>}
+                    {isLoading && <RotateRightIcon className="text-white m-auto left-0 top-0 right-0 animate-spin" style={{fontSize:"140px"}}/>}
                 </div>
             </div>
         </div>

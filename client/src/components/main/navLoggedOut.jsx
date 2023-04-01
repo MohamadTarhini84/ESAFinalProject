@@ -11,7 +11,7 @@ function LoggedOut(){
 
     return (
         <div className='flex gap-4 sm:gap-8 sm:mr-10 items-center'>
-                <Link to='/home#search' className='relative group text-inherit hover:text-inherit sm:mx-4'>
+                <Link to='/home#search' className='relative group text-inherit hover:text-inherit sm:mx-4' onClick={()=>window.scrollTo(0,500)}>
                     <SearchIcon className='group-hover:cursor-pointer'/>
                     <span className='tooltip sm:group-hover:scale-100'>Search</span>
                 </Link>

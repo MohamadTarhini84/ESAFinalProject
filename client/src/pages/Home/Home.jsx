@@ -5,15 +5,17 @@ import { Element,scroller } from 'react-scroll';
 import { useEffect } from 'react';
 
 function Home(){
-    useEffect(() => {
-        const hash = window.location.hash.substring(1);
-        if (hash) {
+  useEffect(() => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        setTimeout(() => {
           scroller.scrollTo(hash, {
             duration: 500,
             smooth: true,
           });
-        }
-      }, []);
+        }, 500);
+      }
+    },[]);
 
     return (
         <div className='App font-mono'>
