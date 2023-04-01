@@ -4,9 +4,9 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from 'axios'
 
 //google api key for yt api
-// import API_KEY from './test'
+import API_KEY from './test'
 // test.js file has api key but is added to .gitignore
-const API_KEY=""
+// const API_KEY=""
 
 function Details(props){
     const {user}=useAuthContext()
